@@ -25,9 +25,24 @@
 }
 
 - (void)downloadJsonAtURL:(NSString *)urlString {
+    NSURL *urlToDownload = [NSURL URLWithString:urlString];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration]; // 3
+
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:urlToDownload
+                                            completionHandler:^(NSData *downloadedData,
+                                                                NSURLResponse *response,
+                                                                NSError *error){
+                                                [self processJSON:downloadedData];
+    }];
+    
+    [dataTask resume];
     
 }
 
+- (void)processJSON:(NSData *)jsonData {
+    
+}
 
 
 
