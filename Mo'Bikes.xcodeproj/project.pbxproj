@@ -14,6 +14,8 @@
 		495663E31FA7C08300F74646 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 495663E21FA7C08300F74646 /* Assets.xcassets */; };
 		495663E61FA7C08300F74646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 495663E41FA7C08300F74646 /* LaunchScreen.storyboard */; };
 		495663E91FA7C08300F74646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663E81FA7C08300F74646 /* main.m */; };
+		CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1E61361FA7C37C0083E619 /* LocationManager.m */; };
+		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,9 @@
 		495663E51FA7C08300F74646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		495663E71FA7C08300F74646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		495663E81FA7C08300F74646 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CE1E61351FA7C37C0083E619 /* LocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		CE1E61361FA7C37C0083E619 /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		CE1E61391FA7C3B00083E619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +52,7 @@
 			children = (
 				495663D51FA7C08300F74646 /* Mo'Bikes */,
 				495663D41FA7C08300F74646 /* Products */,
+				CE1E61381FA7C3AF0083E619 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +67,8 @@
 		495663D51FA7C08300F74646 /* Mo'Bikes */ = {
 			isa = PBXGroup;
 			children = (
+				CE1E61351FA7C37C0083E619 /* LocationManager.h */,
+				CE1E61361FA7C37C0083E619 /* LocationManager.m */,
 				495663D61FA7C08300F74646 /* AppDelegate.h */,
 				495663D71FA7C08300F74646 /* AppDelegate.m */,
 				495663D91FA7C08300F74646 /* ViewController.h */,
@@ -72,6 +81,14 @@
 				495663DF1FA7C08300F74646 /* Mo_Bikes.xcdatamodeld */,
 			);
 			path = "Mo'Bikes";
+			sourceTree = "<group>";
+		};
+		CE1E61381FA7C3AF0083E619 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE1E61391FA7C3B00083E619 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				495663DB1FA7C08300F74646 /* ViewController.m in Sources */,
+				CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */,
 				495663E11FA7C08300F74646 /* Mo_Bikes.xcdatamodeld in Sources */,
 				495663E91FA7C08300F74646 /* main.m in Sources */,
 				495663D81FA7C08300F74646 /* AppDelegate.m in Sources */,
