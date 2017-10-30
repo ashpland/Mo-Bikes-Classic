@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface LocationManager : NSObject<CLLocationManagerDelegate>
+@interface LocationManager : CLLocationManager
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
 

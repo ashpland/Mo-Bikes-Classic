@@ -13,11 +13,12 @@
 -(void) getLocation {
     
     if (self.locationManager == nil)
+        
     {
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.desiredAccuracy =
         kCLLocationAccuracyNearestTenMeters;
-        self.locationManager.delegate = self;
+        //self.locationManager.delegate = self;
     }
     [self.locationManager startUpdatingLocation];
     
