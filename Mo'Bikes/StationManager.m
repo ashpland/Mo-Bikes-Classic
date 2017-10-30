@@ -26,6 +26,12 @@
 
 -(void)updateStationsFromArray:(NSArray<NSDictionary<NSString *,id> *> *)stationArray {
     NSLog(@"%@", stationArray);
+
+    // TODO: update core data
+    //          - check if object exists
+    //              - if yes, update bike/dock values
+    //              - if no, create new object
+    
 }
 
 
