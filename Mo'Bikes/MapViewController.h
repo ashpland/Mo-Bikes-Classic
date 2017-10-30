@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MapViewController.h
 //  Mo'Bikes
 //
 //  Created by Andrew on 2017-10-30.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface MapViewController : UIViewController
 
 
 @end
