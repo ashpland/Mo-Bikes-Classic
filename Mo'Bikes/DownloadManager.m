@@ -41,6 +41,18 @@
 }
 
 - (void)processJSON:(NSData *)jsonData {
+    NSError *jsonError = nil;
+    NSDictionary *parsedJSON = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                               options:NSJSONReadingAllowFragments
+                                                                 error:&jsonError];
+    
+    if (jsonError) {
+        NSLog(@"jsonError: %@", jsonError.localizedDescription);
+    }
+    
+    NSArray *stationArray = [parsedJSON objectForKey:@"result"];
+    
+    NSLog(@"%@", stationArray);
     
 }
 
