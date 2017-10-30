@@ -39,7 +39,7 @@
                                     <barButtonItem title="Layers" id="M9H-Jf-piW"/>
                                 </items>
                             </toolbar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-1f-Wbl">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-1f-Wbl">
                                 <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veE-bJ-jDd">
@@ -73,7 +73,7 @@
                         <outlet property="bikesDocksSegmentedControl" destination="gHh-rB-ZpP" id="IKv-dS-Qkz"/>
                         <outlet property="compassButton" destination="veE-bJ-jDd" id="s0b-KB-Dco"/>
                         <outlet property="layersButton" destination="M9H-Jf-piW" id="7fq-40-EIT"/>
-                        <outlet property="myMapView" destination="fU3-1f-Wbl" id="FvN-jM-rNw"/>
+                        <outlet property="mapView" destination="fU3-1f-Wbl" id="S7Q-K4-Gt3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

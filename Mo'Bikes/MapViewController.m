@@ -13,14 +13,13 @@
 
 @interface MapViewController ()
 
-//@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *compassButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *bikesDocksSegmentedControl;
 
 @property (nonatomic, retain) CLLocation *currentPosition;
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
-@property (weak, nonatomic) IBOutlet MKMapView *myMapView;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *layersButton;
 
@@ -32,28 +31,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    
-    
     [self getLocation];
     
-    
-    
     MKCoordinateSpan span = MKCoordinateSpanMake(.007f, .007f);
-    self.myMapView.region = MKCoordinateRegionMake(self.currentPosition.coordinate, span);
+    self.mapView.region = MKCoordinateRegionMake(self.currentPosition.coordinate, span);
     
-    self.myMapView.showsUserLocation = YES;
+    self.mapView.showsUserLocation = YES;
 
     [self setupUI];
 
-    
-    
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 
-  
-     
  
  -(void) getLocation {
      
