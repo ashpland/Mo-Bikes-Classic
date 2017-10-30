@@ -14,6 +14,6 @@
 # pragma mark - init and setup
 
 + (instancetype)sharedDownloadManager;
-+ (void)downloadJsonAtURL:(NSString *)urlString;
++ (void)downloadJsonAtURL:(NSString *)urlString withCompletion:(void (^)(NSArray *jsonArray))whenDownloaded;
 
 @end

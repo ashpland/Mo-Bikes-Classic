@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DownloadManager.h"
+#import "StationManager.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +21,12 @@
     // Override point for customization after application launch.
     
     //Test download of API data. It's just logged out currently.
-    [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"];
+    [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"
+                        withCompletion:^(NSArray *stationArray)
+    {
+        [StationManager updateStationsFromArray:stationArray];
+
+    }];
     
     
     

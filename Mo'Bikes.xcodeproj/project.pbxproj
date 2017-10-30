@@ -15,6 +15,7 @@
 		495663E61FA7C08300F74646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 495663E41FA7C08300F74646 /* LaunchScreen.storyboard */; };
 		495663E91FA7C08300F74646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663E81FA7C08300F74646 /* main.m */; };
 		495663F11FA7CCE700F74646 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663F01FA7CCE700F74646 /* DownloadManager.m */; };
+		495663F41FA7E33800F74646 /* StationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663F31FA7E33800F74646 /* StationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		495663E81FA7C08300F74646 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		495663EF1FA7CCE700F74646 /* DownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
 		495663F01FA7CCE700F74646 /* DownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
+		495663F21FA7E33800F74646 /* StationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StationManager.h; sourceTree = "<group>"; };
+		495663F31FA7E33800F74646 /* StationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +72,8 @@
 				495663DA1FA7C08300F74646 /* MapViewController.m */,
 				495663EF1FA7CCE700F74646 /* DownloadManager.h */,
 				495663F01FA7CCE700F74646 /* DownloadManager.m */,
+				495663F21FA7E33800F74646 /* StationManager.h */,
+				495663F31FA7E33800F74646 /* StationManager.m */,
 				495663DC1FA7C08300F74646 /* Main.storyboard */,
 				495663E21FA7C08300F74646 /* Assets.xcassets */,
 				495663E41FA7C08300F74646 /* LaunchScreen.storyboard */,
@@ -152,6 +157,7 @@
 			files = (
 				495663DB1FA7C08300F74646 /* MapViewController.m in Sources */,
 				495663E11FA7C08300F74646 /* Mo_Bikes.xcdatamodeld in Sources */,
+				495663F41FA7E33800F74646 /* StationManager.m in Sources */,
 				495663E91FA7C08300F74646 /* main.m in Sources */,
 				495663F11FA7CCE700F74646 /* DownloadManager.m in Sources */,
 				495663D81FA7C08300F74646 /* AppDelegate.m in Sources */,

@@ -20,27 +20,31 @@
     return theDownloadManager;
 }
 
-+ (void)downloadJsonAtURL:(NSString *)urlString {
-    [[DownloadManager sharedDownloadManager] downloadJsonAtURL:urlString];
++ (void)downloadJsonAtURL:(NSString *)urlString withCompletion:(void (^)(NSArray *jsonArray))whenDownloaded {
+    DownloadManager *sharedDownloadManager = [DownloadManager sharedDownloadManager];
+    [sharedDownloadManager downloadJsonAtURL:urlString withCompletion:^(NSData *downloadedData){
+        NSArray *returnArray = [sharedDownloadManager processJSON:downloadedData];
+        whenDownloaded(returnArray);
+    }];
 }
 
-- (void)downloadJsonAtURL:(NSString *)urlString {
+- (void)downloadJsonAtURL:(NSString *)urlString withCompletion:(void (^)(NSData *downloadedData))whenDownloaded {
     NSURL *urlToDownload = [NSURL URLWithString:urlString];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration]; // 3
 
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:urlToDownload
-                                            completionHandler:^(NSData *downloadedData,
+                                            completionHandler:^(NSData *returnDownloadedData,
                                                                 NSURLResponse *response,
                                                                 NSError *error){
-                                                [self processJSON:downloadedData];
+                                                whenDownloaded(returnDownloadedData);
     }];
     
     [dataTask resume];
     
 }
 
-- (void)processJSON:(NSData *)jsonData {
+- (NSArray *)processJSON:(NSData *)jsonData {
     NSError *jsonError = nil;
     NSDictionary *parsedJSON = [NSJSONSerialization JSONObjectWithData:jsonData
                                                                options:NSJSONReadingAllowFragments
@@ -50,9 +54,8 @@
         NSLog(@"jsonError: %@", jsonError.localizedDescription);
     }
     
-    NSArray *stationArray = [parsedJSON objectForKey:@"result"];
+    return [parsedJSON objectForKey:@"result"];
     
-    NSLog(@"%@", stationArray);
     
 }
 
