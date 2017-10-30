@@ -7,6 +7,8 @@
 //
 
 #import "MapViewController.h"
+//#import "LocationManager.h"
+
 @import MapKit;
 
 @interface MapViewController ()
@@ -15,12 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *compassButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *bikesDocksSegmentedControl;
 
+@property (nonatomic, retain) CLLocation *currentPosition;
 
-- (IBAction)compassButtonPressed:(UIButton *)sender;
-
-- (IBAction)bikesDocksSegControlChanged:(UISegmentedControl *)sender;
-
-
+@property (nonatomic, retain) CLLocationManager *locationManager;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *layersButton;
 
@@ -32,15 +31,45 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getLocation];
+    
+    MKCoordinateSpan span = MKCoordinateSpanMake(.007f, .007f);
+    self.mapView.region = MKCoordinateRegionMake(self.currentPosition.coordinate, span);
+    
+    self.mapView.showsUserLocation = YES;
+
     [self setupUI];
-    
-    
-    // Do any additional setup after loading the view, typically from a nib.
+
 }
+
+
+ 
+ -(void) getLocation {
+     
+     if (self.locationManager == nil)
+         
+     {
+         self.locationManager = [[CLLocationManager alloc] init];
+         self.locationManager.desiredAccuracy =
+         kCLLocationAccuracyNearestTenMeters;
+         self.locationManager.distanceFilter = kCLDistanceFilterNone;
+         self.locationManager.delegate = self;
+     }
+     [self.locationManager startUpdatingLocation];
+     
+     self.currentPosition = self.locationManager.location;
+     NSString *latitude = [[NSNumber numberWithDouble:self.currentPosition.coordinate.latitude] stringValue];
+     NSString *longitude = [[NSNumber numberWithDouble:self.currentPosition.coordinate.longitude] stringValue];
+     
+     NSLog(@"Lat: %@", latitude);
+     NSLog(@"Long: %@", longitude);
+     
+ }
 
 - (void)setupUI {
     self.compassButton.transform = CGAffineTransformMakeRotation(M_PI / -1.5);
 }
+
 
 
 
