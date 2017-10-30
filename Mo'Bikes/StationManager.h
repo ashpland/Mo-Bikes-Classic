@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import "Station+CoreDataClass.h"
 
 @interface StationManager : NSObject
+
+@property (strong, nonatomic) NSFetchedResultsController<Station *> *fetchedResultsController;
 
 + (instancetype)sharedStationManager;
 + (void)updateStationsFromArray:(NSArray<NSDictionary<NSString *, id> *> *)stationArray;
