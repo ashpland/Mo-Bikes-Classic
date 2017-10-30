@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		495663D81FA7C08300F74646 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663D71FA7C08300F74646 /* AppDelegate.m */; };
-		495663DB1FA7C08300F74646 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663DA1FA7C08300F74646 /* MapViewController.m */; };
 		495663DE1FA7C08300F74646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 495663DC1FA7C08300F74646 /* Main.storyboard */; };
 		495663E11FA7C08300F74646 /* Mo_Bikes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 495663DF1FA7C08300F74646 /* Mo_Bikes.xcdatamodeld */; };
 		495663E31FA7C08300F74646 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 495663E21FA7C08300F74646 /* Assets.xcassets */; };
@@ -16,14 +15,15 @@
 		495663E91FA7C08300F74646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663E81FA7C08300F74646 /* main.m */; };
 		495663F11FA7CCE700F74646 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663F01FA7CCE700F74646 /* DownloadManager.m */; };
 		495663F41FA7E33800F74646 /* StationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663F31FA7E33800F74646 /* StationManager.m */; };
+		CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1E61361FA7C37C0083E619 /* LocationManager.m */; };
+		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
+		CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F4201FA7D2C300564888 /* MapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		495663D31FA7C08300F74646 /* Mo'Bikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mo'Bikes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		495663D61FA7C08300F74646 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		495663D71FA7C08300F74646 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		495663D91FA7C08300F74646 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		495663DA1FA7C08300F74646 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		495663DD1FA7C08300F74646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		495663E01FA7C08300F74646 /* Mo_Bikes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mo_Bikes.xcdatamodel; sourceTree = "<group>"; };
 		495663E21FA7C08300F74646 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -34,6 +34,11 @@
 		495663F01FA7CCE700F74646 /* DownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		495663F21FA7E33800F74646 /* StationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StationManager.h; sourceTree = "<group>"; };
 		495663F31FA7E33800F74646 /* StationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StationManager.m; sourceTree = "<group>"; };
+		CE1E61351FA7C37C0083E619 /* LocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		CE1E61361FA7C37C0083E619 /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		CE1E61391FA7C3B00083E619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CEA2F41F1FA7D2C300564888 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		CEA2F4201FA7D2C300564888 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +58,7 @@
 			children = (
 				495663D51FA7C08300F74646 /* Mo'Bikes */,
 				495663D41FA7C08300F74646 /* Products */,
+				CE1E61381FA7C3AF0083E619 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,10 +73,12 @@
 		495663D51FA7C08300F74646 /* Mo'Bikes */ = {
 			isa = PBXGroup;
 			children = (
+				CE1E61351FA7C37C0083E619 /* LocationManager.h */,
+				CE1E61361FA7C37C0083E619 /* LocationManager.m */,
 				495663D61FA7C08300F74646 /* AppDelegate.h */,
 				495663D71FA7C08300F74646 /* AppDelegate.m */,
-				495663D91FA7C08300F74646 /* MapViewController.h */,
-				495663DA1FA7C08300F74646 /* MapViewController.m */,
+				CEA2F41F1FA7D2C300564888 /* MapViewController.h */,
+				CEA2F4201FA7D2C300564888 /* MapViewController.m */,
 				495663EF1FA7CCE700F74646 /* DownloadManager.h */,
 				495663F01FA7CCE700F74646 /* DownloadManager.m */,
 				495663F21FA7E33800F74646 /* StationManager.h */,
@@ -82,6 +91,14 @@
 				495663DF1FA7C08300F74646 /* Mo_Bikes.xcdatamodeld */,
 			);
 			path = "Mo'Bikes";
+			sourceTree = "<group>";
+		};
+		CE1E61381FA7C3AF0083E619 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE1E61391FA7C3B00083E619 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,9 +172,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				495663DB1FA7C08300F74646 /* MapViewController.m in Sources */,
+				CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */,
 				495663E11FA7C08300F74646 /* Mo_Bikes.xcdatamodeld in Sources */,
 				495663F41FA7E33800F74646 /* StationManager.m in Sources */,
+				CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */,
 				495663E91FA7C08300F74646 /* main.m in Sources */,
 				495663F11FA7CCE700F74646 /* DownloadManager.m in Sources */,
 				495663D81FA7C08300F74646 /* AppDelegate.m in Sources */,
@@ -295,7 +313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T5E8L2XP69;
+				DEVELOPMENT_TEAM = L4XYQHCH99;
 				INFOPLIST_FILE = "Mo'Bikes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";
@@ -309,7 +327,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T5E8L2XP69;
+				DEVELOPMENT_TEAM = L4XYQHCH99;
 				INFOPLIST_FILE = "Mo'Bikes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";

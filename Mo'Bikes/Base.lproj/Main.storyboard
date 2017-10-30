@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,14 +24,14 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="QKm-3f-gxX"/>
                                     <barButtonItem style="plain" id="JAK-gf-17y">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="gHh-rB-ZpP">
-                                            <rect key="frame" x="127" y="7" width="121" height="30"/>
+                                            <rect key="frame" x="135" y="7.5" width="105" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Bikes"/>
                                                 <segment title="Docks"/>
                                             </segments>
                                             <connections>
-                                                <action selector="bikesDocksSegControlChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="K8E-rK-mFm"/>
+                                                <action selector="bikesDocksSegControlChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="p06-dq-VoL"/>
                                             </connections>
                                         </segmentedControl>
                                     </barButtonItem>
@@ -39,18 +39,18 @@
                                     <barButtonItem title="Layers" id="M9H-Jf-piW"/>
                                 </items>
                             </toolbar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-1f-Wbl">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-1f-Wbl">
                                 <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veE-bJ-jDd">
-                                <rect key="frame" x="307" y="555" width="60" height="60"/>
+                                <rect key="frame" x="299" y="555" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="veE-bJ-jDd" secondAttribute="height" id="4gC-H6-3u1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="➢"/>
                                 <connections>
-                                    <action selector="compassButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hZh-qG-Rwb"/>
+                                    <action selector="compassButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9gM-T0-7Rg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -65,15 +65,15 @@
                             <constraint firstItem="zOI-DP-xzX" firstAttribute="top" secondItem="veE-bJ-jDd" secondAttribute="bottom" constant="8" id="KYH-qm-4iP"/>
                             <constraint firstItem="zOI-DP-xzX" firstAttribute="top" secondItem="fU3-1f-Wbl" secondAttribute="bottom" id="XLl-Se-kFg"/>
                             <constraint firstItem="fU3-1f-Wbl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pIV-f3-qtp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="veE-bJ-jDd" secondAttribute="trailing" constant="8" id="paq-BW-FUv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="veE-bJ-jDd" secondAttribute="trailing" constant="16" id="paq-BW-FUv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="bikesDocksSegmentedControl" destination="gHh-rB-ZpP" id="mMR-Vw-IQS"/>
-                        <outlet property="compassButton" destination="veE-bJ-jDd" id="tzf-C7-DPh"/>
-                        <outlet property="layersButton" destination="M9H-Jf-piW" id="QSm-Jl-BYe"/>
-                        <outlet property="mapView" destination="fU3-1f-Wbl" id="Ozg-li-hOk"/>
+                        <outlet property="bikesDocksSegmentedControl" destination="gHh-rB-ZpP" id="IKv-dS-Qkz"/>
+                        <outlet property="compassButton" destination="veE-bJ-jDd" id="s0b-KB-Dco"/>
+                        <outlet property="layersButton" destination="M9H-Jf-piW" id="7fq-40-EIT"/>
+                        <outlet property="mapView" destination="fU3-1f-Wbl" id="S7Q-K4-Gt3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

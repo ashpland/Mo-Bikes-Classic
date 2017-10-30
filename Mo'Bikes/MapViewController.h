@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController<CLLocationManagerDelegate>
+
+
 
 
 @end
