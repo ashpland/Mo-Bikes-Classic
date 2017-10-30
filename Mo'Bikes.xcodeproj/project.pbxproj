@@ -15,6 +15,7 @@
 		495663E91FA7C08300F74646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663E81FA7C08300F74646 /* main.m */; };
 		CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1E61361FA7C37C0083E619 /* LocationManager.m */; };
 		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
+		CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F4201FA7D2C300564888 /* MapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		CE1E61351FA7C37C0083E619 /* LocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		CE1E61361FA7C37C0083E619 /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		CE1E61391FA7C3B00083E619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CEA2F41F1FA7D2C300564888 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		CEA2F4201FA7D2C300564888 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				CE1E61361FA7C37C0083E619 /* LocationManager.m */,
 				495663D61FA7C08300F74646 /* AppDelegate.h */,
 				495663D71FA7C08300F74646 /* AppDelegate.m */,
+				CEA2F41F1FA7D2C300564888 /* MapViewController.h */,
+				CEA2F4201FA7D2C300564888 /* MapViewController.m */,
 				495663DC1FA7C08300F74646 /* Main.storyboard */,
 				495663E21FA7C08300F74646 /* Assets.xcassets */,
 				495663E41FA7C08300F74646 /* LaunchScreen.storyboard */,
@@ -159,6 +164,7 @@
 			files = (
 				CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */,
 				495663E11FA7C08300F74646 /* Mo_Bikes.xcdatamodeld in Sources */,
+				CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */,
 				495663E91FA7C08300F74646 /* main.m in Sources */,
 				495663D81FA7C08300F74646 /* AppDelegate.m in Sources */,
 			);
