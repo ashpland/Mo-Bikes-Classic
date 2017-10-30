@@ -26,18 +26,21 @@
 
 
 
-
 @end
 
 @implementation MapViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];    
+    [super viewDidLoad];
+    [self setupUI];
     
     
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void)setupUI {
+    self.compassButton.transform = CGAffineTransformMakeRotation(M_PI / -1.5);
+}
 
 
 
