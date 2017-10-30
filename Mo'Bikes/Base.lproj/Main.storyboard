@@ -43,7 +43,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veE-bJ-jDd">
-                                <rect key="frame" x="307" y="555" width="60" height="60"/>
+                                <rect key="frame" x="299" y="555" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="veE-bJ-jDd" secondAttribute="height" id="4gC-H6-3u1"/>
                                 </constraints>
@@ -65,7 +65,7 @@
                             <constraint firstItem="zOI-DP-xzX" firstAttribute="top" secondItem="veE-bJ-jDd" secondAttribute="bottom" constant="8" id="KYH-qm-4iP"/>
                             <constraint firstItem="zOI-DP-xzX" firstAttribute="top" secondItem="fU3-1f-Wbl" secondAttribute="bottom" id="XLl-Se-kFg"/>
                             <constraint firstItem="fU3-1f-Wbl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pIV-f3-qtp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="veE-bJ-jDd" secondAttribute="trailing" constant="8" id="paq-BW-FUv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="veE-bJ-jDd" secondAttribute="trailing" constant="16" id="paq-BW-FUv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

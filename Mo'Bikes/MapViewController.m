@@ -26,13 +26,13 @@
 
 
 
-
 @end
 
 @implementation MapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
     
     [self getLocation];
@@ -43,10 +43,14 @@
     self.myMapView.region = MKCoordinateRegionMake(self.currentPosition.coordinate, span);
     
     self.myMapView.showsUserLocation = YES;
+
+    [self setupUI];
+
     
     
     // Do any additional setup after loading the view, typically from a nib.
 }
+
 
   
      
@@ -72,6 +76,11 @@
      NSLog(@"Long: %@", longitude);
      
  }
+
+- (void)setupUI {
+    self.compassButton.transform = CGAffineTransformMakeRotation(M_PI / -1.5);
+}
+
 
 
 
