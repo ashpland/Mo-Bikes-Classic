@@ -20,6 +20,7 @@
 @property (nonatomic, retain) CLLocation *currentPosition;
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet MKMapView *myMapView;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *layersButton;
 
@@ -35,6 +36,11 @@
     
     
     [self getLocation];
+    
+    
+    
+    MKCoordinateSpan span = MKCoordinateSpanMake(.001f, .001f);
+    self.myMapView.region = MKCoordinateRegionMake(self.currentPosition.coordinate, span);
     
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -64,27 +70,6 @@
      NSLog(@"Long: %@", longitude);
      
  }
-
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    self.currentPosition = [locations objectAtIndex:0];
-    [self.locationManager stopUpdatingLocation];
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
-    [geocoder reverseGeocodeLocation:self.currentPosition completionHandler:^(NSArray *placemarks, NSError *error)
-     {
-         if (!(error))
-         {
-             NSLog(@"\nCurrent Location Detected\n");
-
-         }
-         else
-         {
-             NSLog(@"Geocode failed with error %@", error);
-             NSLog(@"\nCurrent Location Not Detected\n");
-         }
-     }];
-}
 
 
 
