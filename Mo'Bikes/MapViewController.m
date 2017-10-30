@@ -39,8 +39,10 @@
     
     
     
-    MKCoordinateSpan span = MKCoordinateSpanMake(.001f, .001f);
+    MKCoordinateSpan span = MKCoordinateSpanMake(.007f, .007f);
     self.myMapView.region = MKCoordinateRegionMake(self.currentPosition.coordinate, span);
+    
+    self.myMapView.showsUserLocation = YES;
     
     
     // Do any additional setup after loading the view, typically from a nib.
