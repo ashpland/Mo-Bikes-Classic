@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		494C1B4D1FA8103600F00593 /* Station+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 494C1B4B1FA8103600F00593 /* Station+CoreDataClass.m */; };
+		494C1B4E1FA8103600F00593 /* Station+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 494C1B4C1FA8103600F00593 /* Station+CoreDataProperties.m */; };
 		495663D81FA7C08300F74646 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663D71FA7C08300F74646 /* AppDelegate.m */; };
 		495663DE1FA7C08300F74646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 495663DC1FA7C08300F74646 /* Main.storyboard */; };
 		495663E11FA7C08300F74646 /* Mo_Bikes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 495663DF1FA7C08300F74646 /* Mo_Bikes.xcdatamodeld */; };
@@ -22,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		494C1B491FA8103600F00593 /* Station+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Station+CoreDataProperties.h"; sourceTree = "<group>"; };
+		494C1B4A1FA8103600F00593 /* Station+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Station+CoreDataClass.h"; sourceTree = "<group>"; };
+		494C1B4B1FA8103600F00593 /* Station+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Station+CoreDataClass.m"; sourceTree = "<group>"; };
+		494C1B4C1FA8103600F00593 /* Station+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Station+CoreDataProperties.m"; sourceTree = "<group>"; };
 		495663D31FA7C08300F74646 /* Mo'Bikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mo'Bikes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		495663D61FA7C08300F74646 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		495663D71FA7C08300F74646 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -92,6 +98,10 @@
 				495663E71FA7C08300F74646 /* Info.plist */,
 				495663E81FA7C08300F74646 /* main.m */,
 				495663DF1FA7C08300F74646 /* Mo_Bikes.xcdatamodeld */,
+				494C1B491FA8103600F00593 /* Station+CoreDataProperties.h */,
+				494C1B4C1FA8103600F00593 /* Station+CoreDataProperties.m */,
+				494C1B4A1FA8103600F00593 /* Station+CoreDataClass.h */,
+				494C1B4B1FA8103600F00593 /* Station+CoreDataClass.m */,
 			);
 			path = "Mo'Bikes";
 			sourceTree = "<group>";
@@ -181,8 +191,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				494C1B4D1FA8103600F00593 /* Station+CoreDataClass.m in Sources */,
 				CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */,
 				495663E11FA7C08300F74646 /* Mo_Bikes.xcdatamodeld in Sources */,
+				494C1B4E1FA8103600F00593 /* Station+CoreDataProperties.m in Sources */,
 				495663F41FA7E33800F74646 /* StationManager.m in Sources */,
 				CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */,
 				495663E91FA7C08300F74646 /* main.m in Sources */,
