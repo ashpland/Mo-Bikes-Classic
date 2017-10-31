@@ -32,63 +32,47 @@
     //              - if yes, update bike/dock values
     //              - if no, create new object
     
+    for(NSDictionary<NSString *, id> *stationDict in stationArray) {
+        NSString *stationName = [stationDict objectForKey:@"name"];
+        
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Station"];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"name == %@", stationName]];
+        NSError *error = nil;
+        NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        if (!results) {
+            NSLog(@"Error fetching Station objects: %@\n%@", [error localizedDescription], [error userInfo]);
+            abort();
+        }
+        
+        if (results.count == 0 || ![results[0] isEqualToString:stationName]) {
+            Station *newStation = [NSEntityDescription insertNewObjectForEntityForName:@"Station" inManagedObjectContext:self.managedObjectContext];
+            
+            newStation.name = [stationDict objectForKey:@"name"];
+            newStation.total_docks = [[stationDict objectForKey:@"total_slots"] integerValue];
+            newStation.available_bikes = [[stationDict objectForKey:@"avl_bikes"] integerValue];
+            newStation.available_docks = [[stationDict objectForKey:@"free_slots"] integerValue];
+            newStation.operative = [[stationDict objectForKey:@"operative"] boolValue];
+            
+            NSString *coordinatesString = [stationDict objectForKey:@"coordinates"];
+            NSArray *separateCoordinates = [coordinatesString componentsSeparatedByString:@", "];
+            
+            newStation.latitude = separateCoordinates[0];
+            newStation.longitude = separateCoordinates[1];
+
+        }
+    }
+    
+    
+    
+//    AAAEmployeeMO *employee = [NSEntityDescription insertNewObjectForEntityForName:@"Employee" inManagedObjectContext:[self managedObjectContext];
+    
+    
+    
+    
 }
 
 
-#pragma mark - adding to model
-// should probably be somewhere else
 
-- (void)createStation:(NSDictionary<NSString *, id> *)stationDictionary {
-    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    Station *newStation = [[Station alloc] initWithContext:context];
-    
-    // If appropriate, configure the new managed object.
-    newStation.name = [stationDictionary objectForKey:@"name"];
-    
-    // Save the context.
-    NSError *error = nil;
-    if (![context save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-        abort();
-    }
-}
-
-
-- (NSFetchedResultsController<Station *> *)fetchedResultsController {
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
-    
-    NSFetchRequest<Station *> *fetchRequest = Station.fetchRequest;
-    
-    // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
-    
-    // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
-    
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
-    NSFetchedResultsController<Station *> *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
-
-        // controller delegate
-    //    aFetchedResultsController.delegate = self;
-    
-    NSError *error = nil;
-    if (![aFetchedResultsController performFetch:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-        abort();
-    }
-    
-    _fetchedResultsController = aFetchedResultsController;
-    return _fetchedResultsController;
-}
 
 
 

@@ -12,7 +12,6 @@
 
 @interface StationManager : NSObject
 
-@property (strong, nonatomic) NSFetchedResultsController<Station *> *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 + (instancetype)sharedStationManager;
