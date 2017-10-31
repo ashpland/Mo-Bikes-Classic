@@ -70,9 +70,7 @@
             //don't create new, just update
             
             //TODO: get this to update existing entries
-
         }
-        
     }
 }
 
