@@ -21,12 +21,22 @@ class KMLParser: NSObject {
         
         do {
             let xmlDoc = try AEXMLDocument(xml: xmlData!)
-//            print(xmlDoc.xml)
-            
-            
-            for child in xmlDoc.root.children {
-                print(child.name)
+//            print(xmlDoc.root.xml)
+
+            if let testOutput = xmlDoc.root["Document"]["Folder"]["Placemark"].all {
+                for placemark in testOutput {
+                    let coordinateString = placemark["Point"]["coordinates"].value
+                    print(coordinateString!)
+                }
+                
+                
             }
+            
+//            for coordinates in xmlDoc.root["Folder"]["Placemark"]["Point"]["coordinates"].all! {
+//                if let location = coordinates.value {
+//                    print(location)
+//                }
+//            }
             
             
             
