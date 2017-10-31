@@ -1,0 +1,9 @@
+{
+  "commitish" : "4.1.0",
+  "iOS" : [
+    {
+      "name" : "AEXML",
+      "hash" : "18970ff9367b7bd968d8049d26c9581a909e1f822ff44992089bbc56c5cff4f3"
+    }
+  ]
+}
