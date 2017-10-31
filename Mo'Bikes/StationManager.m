@@ -29,14 +29,6 @@
     
     for(NSDictionary<NSString *, id> *stationDict in stationArray) {
         
-        bool operative = [[stationDict objectForKey:@"operative"] boolValue];
-        
-        if (!operative) {
-            // TODO: if station exists, make inoperative
-            
-            continue;
-        }
-        
         NSString *stationName = [stationDict objectForKey:@"name"];
         
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Station"];
@@ -52,20 +44,27 @@
 
             Station *newStation = [NSEntityDescription insertNewObjectForEntityForName:@"Station" inManagedObjectContext:self.managedObjectContext];
             
-            newStation.name = [stationDict objectForKey:@"name"];
-            newStation.total_docks = [[stationDict objectForKey:@"total_slots"] integerValue];
-            newStation.available_bikes = [[stationDict objectForKey:@"avl_bikes"] integerValue];
-            newStation.available_docks = [[stationDict objectForKey:@"free_slots"] integerValue];
-            newStation.operative = [[stationDict objectForKey:@"operative"] boolValue];
+            bool operative = [[stationDict objectForKey:@"operative"] boolValue];
             
-            NSString *coordinatesString = [stationDict objectForKey:@"coordinates"];
-            
-            NSString *latString = [coordinatesString substringToIndex:9];
-            NSString *lonString = [coordinatesString substringFromIndex:(coordinatesString.length - 11)];
+            if (operative) {
+                newStation.name = [stationDict objectForKey:@"name"];
+                newStation.total_docks = [[stationDict objectForKey:@"total_slots"] integerValue];
+                newStation.available_bikes = [[stationDict objectForKey:@"avl_bikes"] integerValue];
+                newStation.available_docks = [[stationDict objectForKey:@"free_slots"] integerValue];
+                newStation.operative = YES;
+                
+                NSString *coordinatesString = [stationDict objectForKey:@"coordinates"];
+                
+                NSString *latString = [coordinatesString substringToIndex:9];
+                NSString *lonString = [coordinatesString substringFromIndex:(coordinatesString.length - 11)];
+                
+                newStation.latitude = [NSDecimalNumber decimalNumberWithString:latString];
+                newStation.longitude = [NSDecimalNumber decimalNumberWithString:lonString];
+            } else {
+                newStation.operative = NO;
+                newStation.name = [stationDict objectForKey:@"name"];
+            }
 
-            newStation.latitude = [NSDecimalNumber decimalNumberWithString:latString];
-            newStation.longitude = [NSDecimalNumber decimalNumberWithString:lonString];
-            
         } else {
             //don't create new, just update
             
