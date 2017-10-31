@@ -12,9 +12,9 @@ import MapKit
 class SupplementaryLayers: NSObject {
     static let sharedInstance = SupplementaryLayers();
     
-    let fountainsKML = Bundle.main.url(forResource: "drinking_fountains", withExtension: "kml")!
-    let washroomsKML = Bundle.main.url(forResource: "public_washrooms", withExtension: "kml")!
-    let bikewaysKML = Bundle.main.url(forResource: "bikeways", withExtension: "kml")!
+    private let fountainsKML = Bundle.main.url(forResource: "drinking_fountains", withExtension: "kml")!
+    private let washroomsKML = Bundle.main.url(forResource: "public_washrooms", withExtension: "kml")!
+    private let bikewaysKML = Bundle.main.url(forResource: "bikeways", withExtension: "kml")!
 
     public var washrooms : Array<MKAnnotation> {
         return makeAnnotations(coordinatesArray: washroomsCoordinates)
@@ -23,14 +23,14 @@ class SupplementaryLayers: NSObject {
         return makeAnnotations(coordinatesArray: fountainsCoordinates)
     }
     
-    var washroomsCoordinates : Array<String> {
+    private var washroomsCoordinates : Array<String> {
         return KMLParser.sharedInstance.getPoints(xmlurl: washroomsKML)!
     }
-    var fountainsCoordinates : Array<String> {
+    private var fountainsCoordinates : Array<String> {
         return KMLParser.sharedInstance.getPoints(xmlurl: fountainsKML)!
     }
     
-    class SupplementaryAnnotation: NSObject, MKAnnotation {
+    private class SupplementaryAnnotation: NSObject, MKAnnotation {
         var coordinate: CLLocationCoordinate2D
         
         init(latitude: Double, longitude: Double) {
@@ -38,7 +38,7 @@ class SupplementaryLayers: NSObject {
         }
     }
     
-    func makeAnnotations(coordinatesArray: Array<String>) -> Array<MKAnnotation> {
+    private func makeAnnotations(coordinatesArray: Array<String>) -> Array<MKAnnotation> {
         var annotationArray = [MKAnnotation]()
         
         for coordinateString in coordinatesArray {
