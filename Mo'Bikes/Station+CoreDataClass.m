@@ -15,4 +15,12 @@
     return CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]);
 }
 
+-(NSString *)title {
+    return self.name;
+}
+
+-(NSString *)subtitle {
+    return [NSString stringWithFormat:@"%hd bikes | %hd docks", self.available_bikes, self.available_docks];
+}
+
 @end
