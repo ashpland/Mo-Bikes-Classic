@@ -26,12 +26,7 @@
 
 -(void)updateStationsFromArray:(NSArray<NSDictionary<NSString *,id> *> *)stationArray {
     NSLog(@"%@", stationArray);
-
-    // TODO: update core data
-    //          - check if object exists
-    //              - if yes, update bike/dock values
-    //              - if no, create new object
-    
+   
     for(NSDictionary<NSString *, id> *stationDict in stationArray) {
         NSString *stationName = [stationDict objectForKey:@"name"];
         
@@ -44,7 +39,7 @@
             abort();
         }
         
-        if (results.count == 0 || ![results[0] isEqualToString:stationName]) {
+        if (results.count == 0) {
             Station *newStation = [NSEntityDescription insertNewObjectForEntityForName:@"Station" inManagedObjectContext:self.managedObjectContext];
             
             newStation.name = [stationDict objectForKey:@"name"];
@@ -54,21 +49,15 @@
             newStation.operative = [[stationDict objectForKey:@"operative"] boolValue];
             
             NSString *coordinatesString = [stationDict objectForKey:@"coordinates"];
-            NSArray *separateCoordinates = [coordinatesString componentsSeparatedByString:@", "];
+            NSArray<NSString *> *separateCoordinates = [coordinatesString componentsSeparatedByString:@", "];
             
-            newStation.latitude = separateCoordinates[0];
-            newStation.longitude = separateCoordinates[1];
+            newStation.latitude = [NSDecimalNumber decimalNumberWithString:separateCoordinates[0]];
+            newStation.longitude = [NSDecimalNumber decimalNumberWithString:separateCoordinates[1]];
 
+        } else {
+            //don't create new, just update
         }
     }
-    
-    
-    
-//    AAAEmployeeMO *employee = [NSEntityDescription insertNewObjectForEntityForName:@"Employee" inManagedObjectContext:[self managedObjectContext];
-    
-    
-    
-    
 }
 
 

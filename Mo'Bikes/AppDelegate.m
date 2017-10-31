@@ -26,8 +26,9 @@
     [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"
                         withCompletion:^(NSArray *stationArray)
     {
+        
         [StationManager updateStationsFromArray:stationArray];
-
+        
     }];
     
     
