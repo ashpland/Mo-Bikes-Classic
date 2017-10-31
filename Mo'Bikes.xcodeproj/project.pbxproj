@@ -19,6 +19,7 @@
 		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
 		CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F4201FA7D2C300564888 /* MapViewController.m */; };
 		CEA2F4231FA7F73100564888 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA2F4221FA7F73100564888 /* MapKit.framework */; };
+		CEA2F4261FA80E6B00564888 /* StationMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F4251FA80E6B00564888 /* StationMarker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		CEA2F41F1FA7D2C300564888 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		CEA2F4201FA7D2C300564888 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		CEA2F4221FA7F73100564888 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CEA2F4241FA80E6B00564888 /* StationMarker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StationMarker.h; sourceTree = "<group>"; };
+		CEA2F4251FA80E6B00564888 /* StationMarker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StationMarker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 				495663D71FA7C08300F74646 /* AppDelegate.m */,
 				CEA2F41F1FA7D2C300564888 /* MapViewController.h */,
 				CEA2F4201FA7D2C300564888 /* MapViewController.m */,
+				CEA2F4241FA80E6B00564888 /* StationMarker.h */,
+				CEA2F4251FA80E6B00564888 /* StationMarker.m */,
 				495663EF1FA7CCE700F74646 /* DownloadManager.h */,
 				495663F01FA7CCE700F74646 /* DownloadManager.m */,
 				495663F21FA7E33800F74646 /* StationManager.h */,
@@ -187,6 +192,7 @@
 				CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */,
 				495663E91FA7C08300F74646 /* main.m in Sources */,
 				495663F11FA7CCE700F74646 /* DownloadManager.m in Sources */,
+				CEA2F4261FA80E6B00564888 /* StationMarker.m in Sources */,
 				495663D81FA7C08300F74646 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

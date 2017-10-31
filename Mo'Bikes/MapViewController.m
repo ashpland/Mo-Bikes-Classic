@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *layersButton;
 
 
+@property (strong, nonatomic) NSMutableArray *stationsArray;
+@property NSMutableArray *stationsAnnotationsArray;
+
 
 @end
 
@@ -35,6 +38,9 @@
     [self getLocation];
 
     [self setupUI];
+    
+
+    
 
 }
 
@@ -75,6 +81,33 @@
 
 - (void)setupUI {
     self.compassButton.transform = CGAffineTransformMakeRotation(M_PI / -1.5);
+}
+
+-(void) showMarkers {
+    
+    self.stationsArray = [[NSMutableArray alloc] init];
+    
+    //self.myMapView.delegate = self;
+    self.stationsAnnotationsArray = [[NSMutableArray alloc] init];
+    
+    //add annotation for each cat
+    for (Station station in self.stationsArray){
+        
+        MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc]init];
+        myAnnotation.coordinate =station.coordinate;
+        NSLog(@"%f, %f", cat.coordinate.latitude, cat.coordinate.longitude);
+        [myAnnotation setTitle:[NSString stringWithFormat:@"%@", station.name]];
+        
+        //        MKAnnotationView *myCatAnnotation = [[MKAnnotationView alloc] init];
+        //        myCatAnnotation.image = cat.catImage;
+        //        myCatAnnotation.annotation = myAnnotation;
+        
+        [self.stationsAnnotationsArray addObject:myAnnotation];
+    }
+    
+    //add all the annotations
+    [self.mapView addAnnotations:self.stationsAnnotationsArray];
+    
 }
 
 
