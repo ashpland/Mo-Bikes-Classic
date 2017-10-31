@@ -16,11 +16,11 @@ class SupplementaryLayers: NSObject {
     let washroomsKML = Bundle.main.url(forResource: "public_washrooms", withExtension: "kml")!
     let bikewaysKML = Bundle.main.url(forResource: "bikeways", withExtension: "kml")!
 
-    public var washrooms : Array<String> {
-        return KMLParser.sharedInstance.getPoints(xmlurl: washroomsKML)!
+    public var washrooms : Array<MKAnnotation> {
+        return makeAnnotations(coordinatesArray: washroomsCoordinates)
     }
-    public var fountains : Array<String> {
-        return KMLParser.sharedInstance.getPoints(xmlurl: fountainsKML)!
+    public var fountains : Array<MKAnnotation> {
+        return makeAnnotations(coordinatesArray: fountainsCoordinates)
     }
     
     var washroomsCoordinates : Array<String> {
@@ -30,18 +30,24 @@ class SupplementaryLayers: NSObject {
         return KMLParser.sharedInstance.getPoints(xmlurl: fountainsKML)!
     }
     
-    
+    class SupplementaryAnnotation: NSObject, MKAnnotation {
+        var coordinate: CLLocationCoordinate2D
+        
+        init(latitude: Double, longitude: Double) {
+            coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+        }
+    }
     
     func makeAnnotations(coordinatesArray: Array<String>) -> Array<MKAnnotation> {
         var annotationArray = [MKAnnotation]()
         
         for coordinateString in coordinatesArray {
             let stringPieces = coordinateString.split(separator: ",")
-            let longitude = Float(stringPieces[0])
-            
-//            let newAnnotation = MKPointAnnotation()
+            let longitude = Double(stringPieces[0])!
+            let latitude = Double(stringPieces[1])!
+
+            annotationArray.append(SupplementaryAnnotation(latitude: latitude, longitude: longitude))
         }
-        
         return annotationArray
     }
     
