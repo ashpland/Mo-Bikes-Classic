@@ -25,7 +25,6 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *layersButton;
 
-
 @property (strong, nonatomic) NSArray<Station*> *stationsArray;
 @property NSMutableArray *stationsAnnotationsArray;
 
@@ -36,6 +35,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.mapView.delegate = self;
+    
     
     //Test download of API data. It's just logged out currently.
     [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"
@@ -62,13 +63,18 @@
 }
 
 
+
 //updates our location after we authorize
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     //get currentPosition
     self.currentPosition = self.locationManager.location;
     //set region
-    MKCoordinateSpan span = MKCoordinateSpanMake(.007f, .007f);
-    self.mapView.region = MKCoordinateRegionMake(self.currentPosition.coordinate, span);
+    
+    if(self.mapView.region.center.latitude == 0) {
+    
+        MKCoordinateSpan span = MKCoordinateSpanMake(.007f, .007f);
+        self.mapView.region = MKCoordinateRegionMake(self.currentPosition.coordinate, span);
+}
 }
 
  
@@ -103,6 +109,8 @@
 - (void)setupUI {
     self.compassButton.transform = CGAffineTransformMakeRotation(M_PI / -1.5);
 }
+
+
 
 
 

@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface MapViewController : UIViewController<CLLocationManagerDelegate>
+@interface MapViewController : UIViewController<CLLocationManagerDelegate, MKMapViewDelegate>
 
 
 
