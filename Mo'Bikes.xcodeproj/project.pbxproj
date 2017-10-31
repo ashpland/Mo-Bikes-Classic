@@ -322,7 +322,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L4XYQHCH99;
+				DEVELOPMENT_TEAM = T5E8L2XP69;
 				INFOPLIST_FILE = "Mo'Bikes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";
@@ -336,7 +336,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L4XYQHCH99;
+				DEVELOPMENT_TEAM = T5E8L2XP69;
 				INFOPLIST_FILE = "Mo'Bikes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";

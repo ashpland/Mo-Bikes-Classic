@@ -26,7 +26,6 @@
 }
 
 -(void)updateStationsFromArray:(NSArray<NSDictionary<NSString *,id> *> *)stationArray {
-    NSLog(@"%@", stationArray);
     
     for(NSDictionary<NSString *, id> *stationDict in stationArray) {
         
@@ -35,7 +34,6 @@
         if (!operative) {
             // TODO: if station exists, make inoperative
             
-            NSLog(@"%@: Inoperative", [stationDict objectForKey:@"name"]);
             continue;
         }
         
@@ -68,10 +66,10 @@
             newStation.latitude = [NSDecimalNumber decimalNumberWithString:latString];
             newStation.longitude = [NSDecimalNumber decimalNumberWithString:lonString];
             
-            NSLog(@"%@: lat: %@, lon: %@", newStation.name, newStation.latitude, newStation.longitude);
-
         } else {
             //don't create new, just update
+            
+            //TODO: get this to update existing entries
 
         }
         
@@ -89,7 +87,8 @@
         NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
         abort();
     } else {
-        NSLog(@"%@", results);
+        //NSLog(@"%@", results);
+        NSLog(@"CoreData Count: %lu", results.count);
     }
 }
 
