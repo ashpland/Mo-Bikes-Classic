@@ -51,6 +51,10 @@
          self.locationManager.distanceFilter = kCLDistanceFilterNone;
          self.locationManager.delegate = self;
      }
+     
+     //alert for requesting access
+     [self.locationManager requestWhenInUseAuthorization];
+     
      [self.locationManager startUpdatingLocation];
      
      //get currentPosition
@@ -60,9 +64,6 @@
      
      NSLog(@"Lat: %@", latitude);
      NSLog(@"Long: %@", longitude);
-     
-     //alert for requesting access
-     [self.locationManager requestWhenInUseAuthorization];
      
      //set region
      MKCoordinateSpan span = MKCoordinateSpanMake(.007f, .007f);
