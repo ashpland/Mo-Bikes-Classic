@@ -16,11 +16,7 @@
 }
 
 -(NSString *)title {
-    return self.name;
-}
-
--(NSString *)subtitle {
-    return [NSString stringWithFormat:@"%hd bikes | %hd docks", self.available_bikes, self.available_docks];
+    return [NSString stringWithFormat:@"%hd bikes\n%hd docks", self.available_bikes, self.available_docks];
 }
 
 @end
