@@ -69,6 +69,7 @@
      self.mapView.region = MKCoordinateRegionMake(self.currentPosition.coordinate, span);
      
      self.mapView.showsUserLocation = YES;
+     self.mapView.showsPointsOfInterest = NO;
  }
 
 - (void)setupUI {
