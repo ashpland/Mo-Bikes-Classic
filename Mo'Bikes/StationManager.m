@@ -26,8 +26,18 @@
 
 -(void)updateStationsFromArray:(NSArray<NSDictionary<NSString *,id> *> *)stationArray {
     NSLog(@"%@", stationArray);
-   
+    
     for(NSDictionary<NSString *, id> *stationDict in stationArray) {
+        
+        bool operative = [[stationDict objectForKey:@"operative"] boolValue];
+        
+        if (!operative) {
+            // TODO: if station exists, make inoperative
+            
+            NSLog(@"%@: Inoperative", [stationDict objectForKey:@"name"]);
+            continue;
+        }
+        
         NSString *stationName = [stationDict objectForKey:@"name"];
         
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Station"];
@@ -40,6 +50,7 @@
         }
         
         if (results.count == 0) {
+
             Station *newStation = [NSEntityDescription insertNewObjectForEntityForName:@"Station" inManagedObjectContext:self.managedObjectContext];
             
             newStation.name = [stationDict objectForKey:@"name"];
@@ -49,14 +60,20 @@
             newStation.operative = [[stationDict objectForKey:@"operative"] boolValue];
             
             NSString *coordinatesString = [stationDict objectForKey:@"coordinates"];
-            NSArray<NSString *> *separateCoordinates = [coordinatesString componentsSeparatedByString:@", "];
             
-            newStation.latitude = [NSDecimalNumber decimalNumberWithString:separateCoordinates[0]];
-            newStation.longitude = [NSDecimalNumber decimalNumberWithString:separateCoordinates[1]];
+            NSString *latString = [coordinatesString substringToIndex:9];
+            NSString *lonString = [coordinatesString substringFromIndex:(coordinatesString.length - 11)];
+
+            newStation.latitude = [NSDecimalNumber decimalNumberWithString:latString];
+            newStation.longitude = [NSDecimalNumber decimalNumberWithString:lonString];
+            
+            NSLog(@"%@: lat: %@, lon: %@", newStation.name, newStation.latitude, newStation.longitude);
 
         } else {
             //don't create new, just update
+
         }
+        
     }
 }
 
