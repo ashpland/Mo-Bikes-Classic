@@ -20,9 +20,38 @@
     return theStationManager;
 }
 
+# pragma mark - Adding and Updating Stations
+
 +(void)updateStationsFromArray:(NSArray<NSDictionary<NSString *,id> *> *)stationArray {
     [[StationManager sharedStationManager] updateStationsFromArray:stationArray];
     [[StationManager sharedStationManager] checkWhatsInCoreData];
+}
+
+- (void)setCoordinates:(NSString *)coordinatesString forStation:(Station *)newStation {
+    NSString *latString = [coordinatesString substringToIndex:9];
+    NSString *lonString = [coordinatesString substringFromIndex:(coordinatesString.length - 11)];
+    
+    newStation.latitude = [NSDecimalNumber decimalNumberWithString:latString];
+    newStation.longitude = [NSDecimalNumber decimalNumberWithString:lonString];
+}
+
+- (void)updateBikesFor:(Station *)newStation stationDict:(NSDictionary<NSString *,id> *)stationDict {
+    newStation.total_docks = [[stationDict objectForKey:@"total_slots"] integerValue];
+    newStation.available_bikes = [[stationDict objectForKey:@"avl_bikes"] integerValue];
+    newStation.available_docks = [[stationDict objectForKey:@"free_slots"] integerValue];
+}
+
+- (NSArray<Station *> *)checkIfExisiting:(NSString *)stationName {
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Station"];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"name == %@", stationName]];
+    
+    NSError *error = nil;
+    NSArray<Station *> *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (!results) {
+        NSLog(@"Error fetching Station objects: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
+    }
+    return results;
 }
 
 -(void)updateStationsFromArray:(NSArray<NSDictionary<NSString *,id> *> *)stationArray {
@@ -30,70 +59,62 @@
     for(NSDictionary<NSString *, id> *stationDict in stationArray) {
         
         NSString *stationName = [stationDict objectForKey:@"name"];
+        bool isOperative = [[stationDict objectForKey:@"operative"] boolValue];
         
-        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Station"];
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"name == %@", stationName]];
-        NSError *error = nil;
-        NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        if (!results) {
-            NSLog(@"Error fetching Station objects: %@\n%@", [error localizedDescription], [error userInfo]);
-            abort();
-        }
+        NSArray<Station *> * results = [self checkIfExisiting:stationName];
+        bool stationDoesNotExist = results.count == 0;
         
-        if (results.count == 0) {
-
+        if (stationDoesNotExist) {
             Station *newStation = [NSEntityDescription insertNewObjectForEntityForName:@"Station" inManagedObjectContext:self.managedObjectContext];
+            newStation.name = stationName;
             
-            bool operative = [[stationDict objectForKey:@"operative"] boolValue];
-            
-            if (operative) {
-                newStation.name = [stationDict objectForKey:@"name"];
-                newStation.total_docks = [[stationDict objectForKey:@"total_slots"] integerValue];
-                newStation.available_bikes = [[stationDict objectForKey:@"avl_bikes"] integerValue];
-                newStation.available_docks = [[stationDict objectForKey:@"free_slots"] integerValue];
+            if (isOperative) {
                 newStation.operative = YES;
-                
-                NSString *coordinatesString = [stationDict objectForKey:@"coordinates"];
-                
-                NSString *latString = [coordinatesString substringToIndex:9];
-                NSString *lonString = [coordinatesString substringFromIndex:(coordinatesString.length - 11)];
-                
-                newStation.latitude = [NSDecimalNumber decimalNumberWithString:latString];
-                newStation.longitude = [NSDecimalNumber decimalNumberWithString:lonString];
-            } else {
+                [self updateBikesFor:newStation stationDict:stationDict];
+                [self setCoordinates:[stationDict objectForKey:@"coordinates"] forStation:newStation];
+            }
+            else {
                 newStation.operative = NO;
-                newStation.name = [stationDict objectForKey:@"name"];
             }
 
-        } else {
-            //don't create new, just update
+        }
+        else {
+            Station *existingStation = results[0];
             
-            //TODO: get this to update existing entries
+            if (isOperative) {
+                [self updateBikesFor:existingStation stationDict:stationDict];
+            } else {
+                existingStation.operative = NO;
+            }
         }
     }
 }
+
+#pragma mark - Getting Stations
 
 +(NSArray<Station *> *)getAllStations {
     return [[StationManager sharedStationManager] getAllStations];
 }
 
 -(NSArray<Station *> *)getAllStations {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Station"];
-    
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Station"];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"operative == YES"]];
+
     NSError *error = nil;
-    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     if (!results) {
         NSLog(@"Error fetching Station objects: %@\n%@", [error localizedDescription], [error userInfo]);
         abort();
     } else {
         return results;
     }
-
 }
 
-// TODO: Get rid of this eventually
 - (void)checkWhatsInCoreData{
+    // TODO: Get rid of this eventually
+
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Station"];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"operative == NO"]];
     
     NSError *error = nil;
     NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
@@ -102,7 +123,7 @@
         abort();
     } else {
         //NSLog(@"%@", results);
-        NSLog(@"CoreData Count: %lu", results.count);
+        NSLog(@"Inoperative Stations: %lu", results.count);
     }
 }
 
