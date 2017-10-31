@@ -62,6 +62,15 @@
 }
 
 
+//updates our location after we authorize
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    //get currentPosition
+    self.currentPosition = self.locationManager.location;
+    //set region
+    MKCoordinateSpan span = MKCoordinateSpanMake(.007f, .007f);
+    self.mapView.region = MKCoordinateRegionMake(self.currentPosition.coordinate, span);
+}
+
  
  -(void) getLocation {
      
@@ -82,11 +91,6 @@
      
      //get currentPosition
      self.currentPosition = self.locationManager.location;
-     NSString *latitude = [[NSNumber numberWithDouble:self.currentPosition.coordinate.latitude] stringValue];
-     NSString *longitude = [[NSNumber numberWithDouble:self.currentPosition.coordinate.longitude] stringValue];
-     
-     NSLog(@"Lat: %@", latitude);
-     NSLog(@"Long: %@", longitude);
      
      //set region
      MKCoordinateSpan span = MKCoordinateSpanMake(.007f, .007f);
@@ -99,6 +103,8 @@
 - (void)setupUI {
     self.compassButton.transform = CGAffineTransformMakeRotation(M_PI / -1.5);
 }
+
+
 
 //-(void) showMarkers {
     
