@@ -74,6 +74,23 @@
     }
 }
 
++(NSArray<Station *> *)getAllStations {
+    return [[StationManager sharedStationManager] getAllStations];
+}
+
+-(NSArray<Station *> *)getAllStations {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Station"];
+    
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (!results) {
+        NSLog(@"Error fetching Station objects: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
+    } else {
+        return results;
+    }
+
+}
 
 // TODO: Get rid of this eventually
 - (void)checkWhatsInCoreData{
@@ -89,7 +106,6 @@
         NSLog(@"CoreData Count: %lu", results.count);
     }
 }
-
 
 
 
