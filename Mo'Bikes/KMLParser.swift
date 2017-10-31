@@ -6,53 +6,30 @@
 //  Copyright © 2017 hearthedge. All rights reserved.
 //
 
-import UIKit
 import AEXML
 
 class KMLParser: NSObject {
-    let fountainsKML = Bundle.main.url(forResource: "drinking_fountains", withExtension: "kml")
-    let washroomsKML = Bundle.main.url(forResource: "public_washrooms", withExtension: "kml")
+    static let sharedInstance = KMLParser();
     
-//    let fountainsData = try? Data()
-    
-    public func KMLTest() {
+    public func getPoints(xmlurl: URL) -> Array<String>? {
         
-        let xmlData = try? Data(contentsOf: fountainsKML!)
+        let xmlData = try? Data(contentsOf: xmlurl)
         
         do {
+            var returnArray = [String]()
             let xmlDoc = try AEXMLDocument(xml: xmlData!)
-//            print(xmlDoc.root.xml)
 
             if let testOutput = xmlDoc.root["Document"]["Folder"]["Placemark"].all {
                 for placemark in testOutput {
                     let coordinateString = placemark["Point"]["coordinates"].value
-                    print(coordinateString!)
+                    returnArray.append(coordinateString!)
                 }
-                
-                
             }
-            
-//            for coordinates in xmlDoc.root["Folder"]["Placemark"]["Point"]["coordinates"].all! {
-//                if let location = coordinates.value {
-//                    print(location)
-//                }
-//            }
-            
-            
-            
+            return returnArray
+
         } catch  {
             print("\(error)")
+            return nil
         }
-    
     }
-    
-    
-    
-    
-    
-    
-
-    
-
-
 }

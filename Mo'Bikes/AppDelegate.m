@@ -23,7 +23,6 @@
     
     [StationManager sharedStationManager].managedObjectContext = self.persistentContainer.viewContext;
 
-    [[KMLParser new] KMLTest];
     
     
     return YES;

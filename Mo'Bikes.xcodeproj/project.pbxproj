@@ -22,6 +22,7 @@
 		495663E91FA7C08300F74646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663E81FA7C08300F74646 /* main.m */; };
 		495663F11FA7CCE700F74646 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663F01FA7CCE700F74646 /* DownloadManager.m */; };
 		495663F41FA7E33800F74646 /* StationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663F31FA7E33800F74646 /* StationManager.m */; };
+		496579C01FA921A1005C6920 /* SupplementaryLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */; };
 		CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1E61361FA7C37C0083E619 /* LocationManager.m */; };
 		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
 		CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F4201FA7D2C300564888 /* MapViewController.m */; };
@@ -53,6 +54,7 @@
 		495663F01FA7CCE700F74646 /* DownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		495663F21FA7E33800F74646 /* StationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StationManager.h; sourceTree = "<group>"; };
 		495663F31FA7E33800F74646 /* StationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StationManager.m; sourceTree = "<group>"; };
+		496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryLayers.swift; sourceTree = "<group>"; };
 		CE1E61351FA7C37C0083E619 /* LocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		CE1E61361FA7C37C0083E619 /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		CE1E61391FA7C3B00083E619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -129,6 +131,7 @@
 				494C1B4C1FA8103600F00593 /* Station+CoreDataProperties.m */,
 				494C1B4A1FA8103600F00593 /* Station+CoreDataClass.h */,
 				494C1B4B1FA8103600F00593 /* Station+CoreDataClass.m */,
+				496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */,
 				490233B61FA9099D0048D688 /* KMLParser.swift */,
 				490233AB1FA9085A0048D688 /* Spatial Data */,
 				490233B51FA9099D0048D688 /* Mo'Bikes-Bridging-Header.h */,
@@ -253,6 +256,7 @@
 				CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */,
 				495663E91FA7C08300F74646 /* main.m in Sources */,
 				495663F11FA7CCE700F74646 /* DownloadManager.m in Sources */,
+				496579C01FA921A1005C6920 /* SupplementaryLayers.swift in Sources */,
 				CEA2F4261FA80E6B00564888 /* StationMarker.m in Sources */,
 				495663D81FA7C08300F74646 /* AppDelegate.m in Sources */,
 			);
