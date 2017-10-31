@@ -21,19 +21,7 @@
     // Override point for customization after application launch.
     
     [StationManager sharedStationManager].managedObjectContext = self.persistentContainer.viewContext;
-    
-    //Test download of API data. It's just logged out currently.
-    [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"
-                        withCompletion:^(NSArray *stationArray)
-    {
-        
-        [StationManager updateStationsFromArray:stationArray];
-        
-    }];
-    
-    
-    
-    
+
     return YES;
 }
 

@@ -8,6 +8,8 @@
 
 #import "MapViewController.h"
 //#import "LocationManager.h"
+#import "StationManager.h"
+#import "DownloadManager.h"
 
 @import MapKit;
 
@@ -24,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *layersButton;
 
 
+@property (strong, nonatomic) NSArray<Station*> *stationsArray;
+@property NSMutableArray *stationsAnnotationsArray;
+
 
 @end
 
@@ -32,10 +37,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //Test download of API data. It's just logged out currently.
+    [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"
+                        withCompletion:^(NSArray *stationArray)
+     {
+         
+         [StationManager updateStationsFromArray:stationArray];
+         
+         self.stationsArray = [StationManager getAllStations];
+         [self.mapView addAnnotations:self.stationsArray];
+         
+     }];
+    
+    
+    
     [self getLocation];
 
     [self setupUI];
+    
 
+    
+
+    
 }
 
 
@@ -76,6 +99,30 @@
 - (void)setupUI {
     self.compassButton.transform = CGAffineTransformMakeRotation(M_PI / -1.5);
 }
+
+//-(void) showMarkers {
+    
+   // self.stationsArray = [[NSMutableArray alloc] init];
+    
+    //self.myMapView.delegate = self;
+   // self.stationsAnnotationsArray = [[NSMutableArray alloc] init];
+    
+    //add annotation for each cat
+//    for (Station *station in self.stationsArray){
+//
+//        //MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc]init];[myAnnotation setTitle:[NSString stringWithFormat:@"%@", station.name]];
+//
+//        //        MKAnnotationView *myCatAnnotation = [[MKAnnotationView alloc] init];
+//        //        myCatAnnotation.image = cat.catImage;
+//        //        myCatAnnotation.annotation = myAnnotation;
+//
+//        //[self.stationsAnnotationsArray addObject:myAnnotation];
+//    }
+    
+    //add all the annotations
+    
+    
+//}
 
 
 
