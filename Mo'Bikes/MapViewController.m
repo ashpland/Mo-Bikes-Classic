@@ -10,6 +10,8 @@
 //#import "LocationManager.h"
 #import "StationManager.h"
 #import "DownloadManager.h"
+#import "Mo_Bikes-Swift.h"
+
 
 @import MapKit;
 
@@ -54,6 +56,8 @@
     [self getLocation];
 
     [self setupUI];
+    
+    [self testSupplementary];
     
 
     
@@ -144,4 +148,13 @@
 
 - (IBAction)bikesDocksSegControlChanged:(UISegmentedControl *)sender {
 }
+
+
+- (void)testSupplementary {
+    [self.mapView addAnnotations: [SupplementaryLayers sharedInstance].washrooms];
+    [self.mapView addAnnotations: [SupplementaryLayers sharedInstance].fountains];
+}
+
+
+
 @end

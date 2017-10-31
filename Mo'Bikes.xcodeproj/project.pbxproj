@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490233AF1FA908750048D688 /* public_washrooms.kml in Resources */ = {isa = PBXBuildFile; fileRef = 490233AC1FA908750048D688 /* public_washrooms.kml */; };
+		490233B01FA908750048D688 /* drinking_fountains.kml in Resources */ = {isa = PBXBuildFile; fileRef = 490233AD1FA908750048D688 /* drinking_fountains.kml */; };
+		490233B11FA908750048D688 /* bikeways.kml in Resources */ = {isa = PBXBuildFile; fileRef = 490233AE1FA908750048D688 /* bikeways.kml */; };
+		490233B31FA909250048D688 /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490233B21FA909250048D688 /* AEXML.framework */; };
+		490233B71FA9099D0048D688 /* KMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490233B61FA9099D0048D688 /* KMLParser.swift */; };
 		494C1B4D1FA8103600F00593 /* Station+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 494C1B4B1FA8103600F00593 /* Station+CoreDataClass.m */; };
 		494C1B4E1FA8103600F00593 /* Station+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 494C1B4C1FA8103600F00593 /* Station+CoreDataProperties.m */; };
 		495663D81FA7C08300F74646 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663D71FA7C08300F74646 /* AppDelegate.m */; };
@@ -17,6 +22,7 @@
 		495663E91FA7C08300F74646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663E81FA7C08300F74646 /* main.m */; };
 		495663F11FA7CCE700F74646 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663F01FA7CCE700F74646 /* DownloadManager.m */; };
 		495663F41FA7E33800F74646 /* StationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663F31FA7E33800F74646 /* StationManager.m */; };
+		496579C01FA921A1005C6920 /* SupplementaryLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */; };
 		CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1E61361FA7C37C0083E619 /* LocationManager.m */; };
 		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
 		CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F4201FA7D2C300564888 /* MapViewController.m */; };
@@ -25,6 +31,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		490233AC1FA908750048D688 /* public_washrooms.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = public_washrooms.kml; sourceTree = "<group>"; };
+		490233AD1FA908750048D688 /* drinking_fountains.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = drinking_fountains.kml; sourceTree = "<group>"; };
+		490233AE1FA908750048D688 /* bikeways.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = bikeways.kml; sourceTree = "<group>"; };
+		490233B21FA909250048D688 /* AEXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AEXML.framework; path = Carthage/Build/iOS/AEXML.framework; sourceTree = "<group>"; };
+		490233B51FA9099D0048D688 /* Mo'Bikes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mo'Bikes-Bridging-Header.h"; sourceTree = "<group>"; };
+		490233B61FA9099D0048D688 /* KMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMLParser.swift; sourceTree = "<group>"; };
 		494C1B491FA8103600F00593 /* Station+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Station+CoreDataProperties.h"; sourceTree = "<group>"; };
 		494C1B4A1FA8103600F00593 /* Station+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Station+CoreDataClass.h"; sourceTree = "<group>"; };
 		494C1B4B1FA8103600F00593 /* Station+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Station+CoreDataClass.m"; sourceTree = "<group>"; };
@@ -42,6 +54,7 @@
 		495663F01FA7CCE700F74646 /* DownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		495663F21FA7E33800F74646 /* StationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StationManager.h; sourceTree = "<group>"; };
 		495663F31FA7E33800F74646 /* StationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StationManager.m; sourceTree = "<group>"; };
+		496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryLayers.swift; sourceTree = "<group>"; };
 		CE1E61351FA7C37C0083E619 /* LocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		CE1E61361FA7C37C0083E619 /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		CE1E61391FA7C3B00083E619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -59,12 +72,23 @@
 			files = (
 				CEA2F4231FA7F73100564888 /* MapKit.framework in Frameworks */,
 				CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */,
+				490233B31FA909250048D688 /* AEXML.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		490233AB1FA9085A0048D688 /* Spatial Data */ = {
+			isa = PBXGroup;
+			children = (
+				490233AE1FA908750048D688 /* bikeways.kml */,
+				490233AD1FA908750048D688 /* drinking_fountains.kml */,
+				490233AC1FA908750048D688 /* public_washrooms.kml */,
+			);
+			path = "Spatial Data";
+			sourceTree = "<group>";
+		};
 		495663CA1FA7C08200F74646 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +131,10 @@
 				494C1B4C1FA8103600F00593 /* Station+CoreDataProperties.m */,
 				494C1B4A1FA8103600F00593 /* Station+CoreDataClass.h */,
 				494C1B4B1FA8103600F00593 /* Station+CoreDataClass.m */,
+				496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */,
+				490233B61FA9099D0048D688 /* KMLParser.swift */,
+				490233AB1FA9085A0048D688 /* Spatial Data */,
+				490233B51FA9099D0048D688 /* Mo'Bikes-Bridging-Header.h */,
 			);
 			path = "Mo'Bikes";
 			sourceTree = "<group>";
@@ -114,6 +142,7 @@
 		CE1E61381FA7C3AF0083E619 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				490233B21FA909250048D688 /* AEXML.framework */,
 				CEA2F4221FA7F73100564888 /* MapKit.framework */,
 				CE1E61391FA7C3B00083E619 /* CoreLocation.framework */,
 			);
@@ -130,6 +159,7 @@
 				495663CF1FA7C08300F74646 /* Sources */,
 				495663D01FA7C08300F74646 /* Frameworks */,
 				495663D11FA7C08300F74646 /* Resources */,
+				490233B41FA909310048D688 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -151,6 +181,7 @@
 				TargetAttributes = {
 					495663D21FA7C08300F74646 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -184,18 +215,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				495663E61FA7C08300F74646 /* LaunchScreen.storyboard in Resources */,
+				490233B01FA908750048D688 /* drinking_fountains.kml in Resources */,
 				495663E31FA7C08300F74646 /* Assets.xcassets in Resources */,
 				495663DE1FA7C08300F74646 /* Main.storyboard in Resources */,
+				490233AF1FA908750048D688 /* public_washrooms.kml in Resources */,
+				490233B11FA908750048D688 /* bikeways.kml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		490233B41FA909310048D688 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/AEXML.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		495663CF1FA7C08300F74646 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				490233B71FA9099D0048D688 /* KMLParser.swift in Sources */,
 				494C1B4D1FA8103600F00593 /* Station+CoreDataClass.m in Sources */,
 				CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */,
 				495663E11FA7C08300F74646 /* Mo_Bikes.xcdatamodeld in Sources */,
@@ -204,6 +256,7 @@
 				CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */,
 				495663E91FA7C08300F74646 /* main.m in Sources */,
 				495663F11FA7CCE700F74646 /* DownloadManager.m in Sources */,
+				496579C01FA921A1005C6920 /* SupplementaryLayers.swift in Sources */,
 				CEA2F4261FA80E6B00564888 /* StationMarker.m in Sources */,
 				495663D81FA7C08300F74646 /* AppDelegate.m in Sources */,
 			);
@@ -339,12 +392,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = T5E8L2XP69;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Mo'Bikes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mo'Bikes/Mo'Bikes-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -353,12 +415,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = T5E8L2XP69;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Mo'Bikes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mo'Bikes/Mo'Bikes-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
