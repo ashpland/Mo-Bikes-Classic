@@ -22,6 +22,7 @@
 
 +(void)updateStationsFromArray:(NSArray<NSDictionary<NSString *,id> *> *)stationArray {
     [[StationManager sharedStationManager] updateStationsFromArray:stationArray];
+    [[StationManager sharedStationManager] checkWhatsInCoreData];
 }
 
 -(void)updateStationsFromArray:(NSArray<NSDictionary<NSString *,id> *> *)stationArray {
@@ -74,6 +75,21 @@
 
         }
         
+    }
+}
+
+
+// TODO: Get rid of this eventually
+- (void)checkWhatsInCoreData{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Station"];
+    
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (!results) {
+        NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
+    } else {
+        NSLog(@"%@", results);
     }
 }
 
