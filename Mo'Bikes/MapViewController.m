@@ -76,6 +76,29 @@
     // If its a station, use dynamic markers
     if ([annotation isKindOfClass:[Station class]])
     {
+        if(self.bikesDocksSegmentedControl.selectedSegmentIndex == 1){
+            
+            MKMarkerAnnotationView *dockAnnotationView = (MKMarkerAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"dockAnnotationView"];
+            
+            Station *station = (Station *)annotation;
+            
+            if(dockAnnotationView == nil){
+                
+                dockAnnotationView = [[MKMarkerAnnotationView alloc] initWithAnnotation:station reuseIdentifier:@"dockAnnotationView"];
+                dockAnnotationView.canShowCallout = YES;
+                
+                dockAnnotationView.glyphImage = [UIImage imageNamed:@"bikeMarker"];
+                dockAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_docks];
+                dockAnnotationView.titleVisibility = MKFeatureVisibilityHidden;
+                
+                return dockAnnotationView;
+            }
+            
+            else  dockAnnotationView.annotation = annotation;
+            
+            return dockAnnotationView;
+        }
+        else {
         // Try to dequeue an existing pin view first.
         StationAnnotation *pinView = (StationAnnotation*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
      
@@ -121,6 +144,7 @@
             pinView.annotation = annotation;
         }
         return  pinView;
+        }
     }
     else return  nil;
 }
@@ -188,6 +212,19 @@
 }
 
 - (IBAction)bikesDocksSegControlChanged:(UISegmentedControl *)sender {
+    
+    if (sender.selectedSegmentIndex==0)
+    {
+        //show bikes
+        [self.mapView removeAnnotations:self.stationsArray];
+        [self.mapView addAnnotations:self.stationsArray];
+    }
+    else if (sender.selectedSegmentIndex ==1)
+    {
+        //show docks
+        [self.mapView removeAnnotations:self.stationsArray];
+        [self.mapView addAnnotations:self.stationsArray];
+    }
 }
 
 
