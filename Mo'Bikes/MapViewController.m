@@ -7,9 +7,10 @@
 //
 
 #import "MapViewController.h"
-//#import "LocationManager.h"
+
 #import "StationManager.h"
 #import "DownloadManager.h"
+#import "StationAnnotation.h"
 #import "Mo_Bikes-Swift.h"
 
 
@@ -24,7 +25,6 @@
 @property (nonatomic, retain) CLLocationManager *locationManager;
 
 @property (strong, nonatomic) NSArray<Station*> *stationsArray;
-@property NSMutableArray *stationsAnnotationsArray;
 
 - (IBAction)contactButtonPressed:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *toiletButton;
@@ -41,6 +41,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.mapView.delegate = self;
+    
     
     //Test download of API data. It's just logged out currently.
     [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"
@@ -59,19 +61,81 @@
     [self getLocation];
 
     [self setupUI];
-    
     [self testSupplementary];
-    
+
 }
 
+
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    
+    // If it's the user location, just return nil.
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    
+    // If its a station, use dynamic markers
+    if ([annotation isKindOfClass:[Station class]])
+    {
+        // Try to dequeue an existing pin view first.
+        StationAnnotation *pinView = (StationAnnotation*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
+        
+        Station *station = (Station *)annotation;
+        UIImage * tempImage;
+        
+        if(pinView == nil){
+            pinView = [[StationAnnotation alloc] initWithAnnotation:station reuseIdentifier:@"CustomPinAnnotationView"];
+            pinView.canShowCallout = YES;
+            
+            //dynamism -  0>3, 3>8, 8+
+            if((station.available_bikes < 3) && (station.available_bikes >= 0))
+            {
+                tempImage = [UIImage imageNamed:@"stationLow"];
+            }
+            else if ((station.available_bikes < 8) && (station.available_bikes >= 3))
+            {
+                tempImage = [UIImage imageNamed:@"stationMedium"];
+            }
+            else if (station.available_bikes >=8)
+            {
+                tempImage = [UIImage imageNamed:@"stationHigh"];
+            }
+            else
+            {
+                tempImage = [UIImage imageNamed:@"station"];
+            }
+            
+            //resize the image
+            CGRect resizeRect;
+            resizeRect.size.height = 40;
+            resizeRect.size.width = 40;
+            resizeRect.origin = (CGPoint){0.0f, 0.0f};
+            UIGraphicsBeginImageContext(resizeRect.size);
+            [tempImage drawInRect:resizeRect];
+            UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+            pinView.image = resizedImage;
+            
+        }
+        else {
+            pinView.annotation = annotation;
+        }
+        return  pinView;
+    }
+    else return  nil;
+}
 
 //updates our location after we authorize
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     //get currentPosition
     self.currentPosition = self.locationManager.location;
     //set region
-    MKCoordinateSpan span = MKCoordinateSpanMake(.007f, .007f);
-    self.mapView.region = MKCoordinateRegionMake(self.currentPosition.coordinate, span);
+    
+    if(self.mapView.region.center.latitude == 0) {
+        
+        MKCoordinateSpan span = MKCoordinateSpanMake(.007f, .007f);
+        self.mapView.region = MKCoordinateRegionMake(self.currentPosition.coordinate, span);
+    }
 }
 
  
@@ -104,7 +168,7 @@
  }
 
 - (void)setupUI {
-    
+ 
     UIImage *image = [[UIImage imageNamed:@"compass"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self.compassButton setImage:image forState:UIControlStateNormal];
     
@@ -113,9 +177,6 @@
     self.fountainButton.tintColor = self.disabledButtonColor;
     self.toiletButton.tintColor = self.disabledButtonColor;
 }
-
-
-
 
 
 - (IBAction)compassButtonPressed:(UIButton *)sender {
