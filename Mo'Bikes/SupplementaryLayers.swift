@@ -33,10 +33,6 @@ class SupplementaryLayers: NSObject {
         return bikewaysArray
     }
     
-    func testBikeways() {
-        print(bikeways[0])
-    }
-    
     
     private let fountainsKML = Bundle.main.url(forResource: "drinking_fountains", withExtension: "kml")!
     private let washroomsKML = Bundle.main.url(forResource: "public_washrooms", withExtension: "kml")!

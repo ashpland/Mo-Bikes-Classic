@@ -28,8 +28,7 @@ class Bikeway: NSObject {
     }
     
     override var description: String {
-        
-        
+
         return "Type: \(type)\n\(lines)"
     }
 }

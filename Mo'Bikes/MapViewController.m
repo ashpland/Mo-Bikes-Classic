@@ -69,8 +69,7 @@
     
     self.stationsArray = [StationManager getAllStations];
     [self.mapView addAnnotations:self.stationsArray];
-    
-    [[SupplementaryLayers sharedInstance] testBikeways];
+    [self displayBikeways];
 }
 
 
@@ -283,6 +282,23 @@
         return [SupplementaryLayers sharedInstance].fountains;
     }
     return nil;
+}
+
+- (void)displayBikeways {
+    NSArray<Bikeway *> *bikeways = [SupplementaryLayers sharedInstance].bikeways;
+    for (Bikeway *currentBikeway in bikeways) {
+        [self.mapView addOverlays:[currentBikeway makeMKPolylines] level:MKOverlayLevelAboveRoads];
+    }
+}
+
+-(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+    MKPolylineRenderer *bikewayRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+    
+    bikewayRenderer.strokeColor = self.view.tintColor;
+    bikewayRenderer.lineWidth = 1.0;
+    
+    
+    return bikewayRenderer;
 }
 
 
