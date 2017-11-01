@@ -21,14 +21,18 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *compassButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *bikesDocksSegmentedControl;
-
 @property (nonatomic, retain) CLLocation *currentPosition;
-
 @property (nonatomic, retain) CLLocationManager *locationManager;
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *layersButton;
-
 @property (strong, nonatomic) NSArray<Station*> *stationsArray;
+
+- (IBAction)contactButtonPressed:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *toiletButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *fountainButton;
+- (IBAction)layerButtonPressed:(UIBarButtonItem *)sender;
+
+@property (strong, nonatomic) UIColor *disabledButtonColor;
+
 
 
 @end
@@ -57,11 +61,9 @@
     [self getLocation];
 
     [self setupUI];
-    
+
 }
 
-    [self testSupplementary];
-    
 
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
@@ -70,12 +72,13 @@
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
+    
     // If its a station, use dynamic markers
     if ([annotation isKindOfClass:[Station class]])
     {
         // Try to dequeue an existing pin view first.
         StationAnnotation *pinView = (StationAnnotation*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
-        
+     
         Station *station = (Station *)annotation;
         UIImage * tempImage;
         
@@ -165,7 +168,14 @@
  }
 
 - (void)setupUI {
-    self.compassButton.transform = CGAffineTransformMakeRotation(M_PI / -1.5);
+ 
+    UIImage *image = [[UIImage imageNamed:@"compass"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.compassButton setImage:image forState:UIControlStateNormal];
+    
+    self.disabledButtonColor = [UIColor lightGrayColor];
+    
+    self.fountainButton.tintColor = self.disabledButtonColor;
+    self.toiletButton.tintColor = self.disabledButtonColor;
 }
 
 
@@ -181,11 +191,57 @@
 }
 
 
-- (void)testSupplementary {
-    [self.mapView addAnnotations: [SupplementaryLayers sharedInstance].washrooms];
-    [self.mapView addAnnotations: [SupplementaryLayers sharedInstance].fountains];
+
+- (IBAction)contactButtonPressed:(UIBarButtonItem *)sender {
+    UIAlertController *contactAlert = [UIAlertController alertControllerWithTitle:@"Wow!" message:@"You pressed the contact button!" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:contactAlert animated:YES completion:nil];
+    
+    [self performSelector:@selector(dismissAlert:) withObject:contactAlert afterDelay:1.0];
 }
 
+-(void)dismissAlert:(UIAlertController *)alert
+{
+    [alert dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (IBAction)layerButtonPressed:(UIBarButtonItem *)sender {
+    
+    if (sender.tintColor) {
+        [self.mapView addAnnotations:[self getAnnotationArray:sender]];
+        sender.tintColor = nil;
+        
+        UIBarButtonItem *notThisButton = [self notThisButton:sender];
+        if (!notThisButton.tintColor) {
+            [self.mapView removeAnnotations:[self getAnnotationArray:notThisButton]];
+            notThisButton.tintColor = self.disabledButtonColor;
+        }
+    }
+    
+    else {
+        [self.mapView removeAnnotations:[self getAnnotationArray:sender]];
+        sender.tintColor = self.disabledButtonColor;
+    }
+}
+
+- (UIBarButtonItem *)notThisButton:(UIBarButtonItem *)thisButton {
+    if ([thisButton isEqual:self.toiletButton]) {
+        return self.fountainButton;
+    } else if ([thisButton isEqual:self.fountainButton]) {
+        return self.toiletButton;
+    }
+    return nil;
+}
+
+- (NSArray *)getAnnotationArray:(UIBarButtonItem *)thisButton {
+    if ([thisButton isEqual: self.toiletButton]) {
+        return [SupplementaryLayers sharedInstance].washrooms;
+    } else if ([thisButton isEqual:self.fountainButton]) {
+        return [SupplementaryLayers sharedInstance].fountains;
+    }
+    return nil;
+}
 
 
 @end
