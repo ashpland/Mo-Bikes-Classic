@@ -20,7 +20,7 @@ import MapKit
     }
 }
 
-public enum SupplementaryLayerType {
+@objc public enum SupplementaryLayerType : Int {
     case fountain
     case washroom
 }

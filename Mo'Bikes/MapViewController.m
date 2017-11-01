@@ -56,6 +56,8 @@
          
      }];
     
+    [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"SupplementaryAnnotationMarker"];
+    
     
     
     [self getLocation];
@@ -72,6 +74,29 @@
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
+    if ([annotation isKindOfClass:[SupplementaryAnnotation class]]) {
+        
+        SupplementaryAnnotation *curAnnotation = (SupplementaryAnnotation *)annotation;
+
+        UIColor *supColor = self.view.tintColor;
+        UIImage *icon;
+        
+        if (curAnnotation.layerType == SupplementaryLayerTypeWashroom)
+            icon = [UIImage imageNamed:@"toilet"];
+        else if (curAnnotation.layerType == SupplementaryLayerTypeFountain)
+            icon = [UIImage imageNamed:@"fountain"];
+        
+        
+        
+        MKMarkerAnnotationView *newMarkerView = (MKMarkerAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"SupplementaryAnnotationMarker" forAnnotation:annotation];
+        
+        newMarkerView.markerTintColor = supColor;
+        newMarkerView.glyphImage = icon;
+        
+        return newMarkerView;
+        
+    }
+
     
     // If its a station, use dynamic markers
     if ([annotation isKindOfClass:[Station class]])
