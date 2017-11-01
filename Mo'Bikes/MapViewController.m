@@ -69,7 +69,8 @@
     
     self.stationsArray = [StationManager getAllStations];
     [self.mapView addAnnotations:self.stationsArray];
-
+    
+    [[SupplementaryLayers sharedInstance] testBikeways];
 }
 
 
