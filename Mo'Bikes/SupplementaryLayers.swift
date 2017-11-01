@@ -14,14 +14,14 @@ class SupplementaryLayers: NSObject {
     
     public var washrooms : Array<MKAnnotation> {
         if (washroomAnnotations == nil) {
-            washroomAnnotations = makeAnnotations(coordinatesArray: washroomsCoordinates)
+            washroomAnnotations = makeAnnotations(coordinatesArray: washroomsCoordinates, ofType: SupplementaryLayerType.washroom)
         }
         return washroomAnnotations
     }
     
     public var fountains : Array<MKAnnotation> {
         if (fountainAnnotations == nil) {
-            fountainAnnotations = makeAnnotations(coordinatesArray: fountainsCoordinates)
+            fountainAnnotations = makeAnnotations(coordinatesArray: fountainsCoordinates, ofType: SupplementaryLayerType.fountain)
         }
         return fountainAnnotations
     }
@@ -46,18 +46,23 @@ class SupplementaryLayers: NSObject {
     
     
     
+    enum SupplementaryLayerType {
+        case fountain
+        case washroom
+    }
     
     
-    
-    private class SupplementaryAnnotation: NSObject, MKAnnotation {
-        var coordinate: CLLocationCoordinate2D
+    public class SupplementaryAnnotation: NSObject, MKAnnotation {
+        var coordinate : CLLocationCoordinate2D
+        var layerType : SupplementaryLayerType
         
-        init(latitude: Double, longitude: Double) {
+        init(latitude: Double, longitude: Double, type: SupplementaryLayerType) {
             coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+            layerType = type
         }
     }
     
-    private func makeAnnotations(coordinatesArray: Array<String>) -> Array<MKAnnotation> {
+    private func makeAnnotations(coordinatesArray: Array<String>, ofType: SupplementaryLayerType) -> Array<MKAnnotation> {
         var annotationArray = [MKAnnotation]()
         
         for coordinateString in coordinatesArray {
@@ -65,7 +70,7 @@ class SupplementaryLayers: NSObject {
             let longitude = Double(stringPieces[0])!
             let latitude = Double(stringPieces[1])!
 
-            annotationArray.append(SupplementaryAnnotation(latitude: latitude, longitude: longitude))
+            annotationArray.append(SupplementaryAnnotation(latitude: latitude, longitude: longitude, type: ofType))
         }
         return annotationArray
     }

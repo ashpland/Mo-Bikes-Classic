@@ -72,6 +72,9 @@
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
+//    if ([annotation isKindOfClass:[]])
+    
+    
     // If its a station, use dynamic markers
     if ([annotation isKindOfClass:[Station class]])
     {
