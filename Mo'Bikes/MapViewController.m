@@ -11,6 +11,8 @@
 #import "StationManager.h"
 #import "DownloadManager.h"
 #import "StationAnnotation.h"
+#import "Mo_Bikes-Swift.h"
+
 
 @import MapKit;
 
@@ -57,6 +59,10 @@
     [self setupUI];
     
 }
+
+    [self testSupplementary];
+    
+
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     
@@ -173,4 +179,13 @@
 
 - (IBAction)bikesDocksSegControlChanged:(UISegmentedControl *)sender {
 }
+
+
+- (void)testSupplementary {
+    [self.mapView addAnnotations: [SupplementaryLayers sharedInstance].washrooms];
+    [self.mapView addAnnotations: [SupplementaryLayers sharedInstance].fountains];
+}
+
+
+
 @end

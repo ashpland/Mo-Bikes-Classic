@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DownloadManager.h"
 #import "StationManager.h"
+#import "Mo_Bikes-Swift.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +23,10 @@
     
     [StationManager sharedStationManager].managedObjectContext = self.persistentContainer.viewContext;
 
+    
+    
+    
+    
     return YES;
 }
 
