@@ -19,10 +19,13 @@ class Bikeway: NSObject {
         lines = bikewayLines
     }
     
-//    func makeMKPolyline() -> MKPolyline {
-//        //TODO: make Polyline builder
-////        return MKPolyline(coordinates: lines, count: lines.count)
-//    }
+    func makeMKPolylines() -> Array<MKPolyline> {
+        var polylineArray = [MKPolyline]()
+        for lineArray in lines {
+            polylineArray.append(MKPolyline(coordinates: lineArray, count: lineArray.count))
+        }
+        return polylineArray
+    }
     
     override var description: String {
         
