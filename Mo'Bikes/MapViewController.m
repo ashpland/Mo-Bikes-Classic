@@ -73,15 +73,6 @@
         return nil;
     
     
-    // TODO: Get this to work. Can't access SuplementaryAnnotation properties :|
-//    if ([annotation isKindOfClass:[SupplementaryAnnotation class]]) {
-//        MKAnnotationView *pinView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"SupplementaryLayerPin"];
-//
-//        SupplementaryAnnotation *currentAnnotation = (SupplementaryAnnotation *)annotation;
-//
-//    }
-    
-    
     // If its a station, use dynamic markers
     if ([annotation isKindOfClass:[Station class]])
     {
