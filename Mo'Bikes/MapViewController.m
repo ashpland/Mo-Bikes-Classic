@@ -93,7 +93,6 @@
             icon = [UIImage imageNamed:@"fountain"];
         
         
-        
         MKMarkerAnnotationView *newMarkerView = (MKMarkerAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"SupplementaryAnnotationMarker" forAnnotation:annotation];
         
         newMarkerView.markerTintColor = supColor;
@@ -119,6 +118,8 @@
                 dockAnnotationView.canShowCallout = YES;
                 
                 dockAnnotationView.glyphImage = [UIImage imageNamed:@"bikeMarker"];
+                
+                dockAnnotationView.markerTintColor = [UIColor purpleColor];
                 dockAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_docks];
                 dockAnnotationView.titleVisibility = MKFeatureVisibilityHidden;
                 
@@ -131,50 +132,22 @@
         }
         else {
         // Try to dequeue an existing pin view first.
-        StationAnnotation *pinView = (StationAnnotation*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
+        MKMarkerAnnotationView *bikeAnnotationView = (MKMarkerAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
      
         Station *station = (Station *)annotation;
-        UIImage * tempImage;
-        
-        if(pinView == nil){
-            pinView = [[StationAnnotation alloc] initWithAnnotation:station reuseIdentifier:@"CustomPinAnnotationView"];
-            pinView.canShowCallout = YES;
+  
+        if(bikeAnnotationView == nil){
+            bikeAnnotationView = [[MKMarkerAnnotationView alloc] initWithAnnotation:station reuseIdentifier:@"CustomPinAnnotationView"];
+            bikeAnnotationView.canShowCallout = YES;
             
-            //dynamism -  0>3, 3>8, 8+
-            if((station.available_bikes < 3) && (station.available_bikes >= 0))
-            {
-                tempImage = [UIImage imageNamed:@"stationLow"];
-            }
-            else if ((station.available_bikes < 8) && (station.available_bikes >= 3))
-            {
-                tempImage = [UIImage imageNamed:@"stationMedium"];
-            }
-            else if (station.available_bikes >=8)
-            {
-                tempImage = [UIImage imageNamed:@"stationHigh"];
-            }
-            else
-            {
-                tempImage = [UIImage imageNamed:@"station"];
-            }
-            
-            //resize the image
-            CGRect resizeRect;
-            resizeRect.size.height = 40;
-            resizeRect.size.width = 40;
-            resizeRect.origin = (CGPoint){0.0f, 0.0f};
-            UIGraphicsBeginImageContext(resizeRect.size);
-            [tempImage drawInRect:resizeRect];
-            UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            
-            pinView.image = resizedImage;
-            
+            bikeAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_bikes];
+            bikeAnnotationView.markerTintColor = [UIColor purpleColor];
+            bikeAnnotationView.titleVisibility = MKFeatureVisibilityHidden;
         }
         else {
-            pinView.annotation = annotation;
+            bikeAnnotationView.annotation = annotation;
         }
-        return  pinView;
+        return  bikeAnnotationView;
         }
     }
     else return  nil;
