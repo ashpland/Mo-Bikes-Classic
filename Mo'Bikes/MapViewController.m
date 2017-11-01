@@ -66,6 +66,9 @@
     [self getLocation];
 
     [self setupUI];
+    
+    self.stationsArray = [StationManager getAllStations];
+    [self.mapView addAnnotations:self.stationsArray];
 
 }
 
