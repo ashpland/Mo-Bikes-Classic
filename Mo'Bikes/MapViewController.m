@@ -14,6 +14,7 @@
 #import "Mo_Bikes-Swift.h"
 
 
+
 @import MapKit;
 
 @interface MapViewController ()
@@ -234,11 +235,51 @@
 
 
 - (IBAction)contactButtonPressed:(UIBarButtonItem *)sender {
-    UIAlertController *contactAlert = [UIAlertController alertControllerWithTitle:@"Wow!" message:@"You pressed the contact button!" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *contactAlert = [UIAlertController alertControllerWithTitle:@"Wow!" message:@"Something wrong brah?" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *callAction = [UIAlertAction actionWithTitle:@"Call Mobi" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //call mobi
+        UIApplication *application = [UIApplication sharedApplication];
+        [application openURL:[NSURL URLWithString: @"tel:7786551800"] options:@{} completionHandler:nil];
+        
+    }];
+    UIAlertAction *emailAction = [UIAlertAction actionWithTitle:@"Email Mobi" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        Email *newEmail = [[Email alloc] init];
+        
+        // set modal presentation style to popover on your view controller
+        // must be done before you reference controller.popoverPresentationController
+       //newEmail.modalPresentationStyle = UIModalPresentationPopover;
+        //newEmail.preferredContentSize = CGSizeMake(150, 300);
+       
+        // configure popover style & delegate
+        //UIPopoverPresentationController *popover =  newEmail.popoverPresentationController;
+        //newEmail.popoverPresentationController.delegate = newEmail;
+        //newEmail.popoverPresentationController.sourceView = self.view;
+        
+       // newEmail.popoverPresentationController.sourceRect = CGRectMake(150,300,1,1);
+        //newEmail.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+        
+        //right now just static info
+        [newEmail sendEmailWithMyName:@"Sanjay Shah" myEmail:@"sanjay@shah.com"];
+        
+        // display the controller in the usual way
+        [self presentViewController:newEmail animated:YES completion:nil];
+
+        
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [contactAlert dismissViewControllerAnimated:YES completion:nil];
+        NSLog(@"Cacnelled");
+    }];
+    
+    [contactAlert addAction:callAction];
+    [contactAlert addAction:emailAction];
+    [contactAlert addAction:cancelAction];
     
     [self presentViewController:contactAlert animated:YES completion:nil];
     
-    [self performSelector:@selector(dismissAlert:) withObject:contactAlert afterDelay:1.0];
+   // [self performSelector:@selector(dismissAlert:) withObject:contactAlert afterDelay:1.0];
 }
 
 -(void)dismissAlert:(UIAlertController *)alert
@@ -283,6 +324,10 @@
     }
     return nil;
 }
+
+
+
+
 
 
 @end

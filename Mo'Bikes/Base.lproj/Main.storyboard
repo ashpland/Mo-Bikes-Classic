@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -19,11 +19,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-1f-Wbl">
-                                <rect key="frame" x="0.0" y="20" width="414" height="416"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-1f-Wbl">
+                                <rect key="frame" x="0.0" y="20" width="414" height="672"/>
                             </mapView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zOI-DP-xzX">
-                                <rect key="frame" x="0.0" y="436" width="414" height="44"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOI-DP-xzX">
+                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <items>
                                     <barButtonItem title="Contact" image="phone" id="wcg-2M-h5z">
                                         <connections>
@@ -33,7 +33,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="QKm-3f-gxX"/>
                                     <barButtonItem style="plain" id="JAK-gf-17y">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="gHh-rB-ZpP">
-                                            <rect key="frame" x="154.66666666666666" y="7.6666666666666856" width="104.99999999999997" height="29"/>
+                                            <rect key="frame" x="154.66666666666669" y="7.6666666666666288" width="105.00000000000006" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Bikes"/>
@@ -57,8 +57,8 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veE-bJ-jDd">
-                                <rect key="frame" x="356.66666666666669" y="396" width="41.333333333333314" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veE-bJ-jDd">
+                                <rect key="frame" x="356.66666666666674" y="642.66666666666652" width="41.333333333333314" height="41.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="veE-bJ-jDd" secondAttribute="height" id="DjV-nE-G3t"/>
                                 </constraints>
@@ -78,6 +78,7 @@
                             <constraint firstItem="zOI-DP-xzX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="G06-L5-jjN"/>
                             <constraint firstItem="zOI-DP-xzX" firstAttribute="top" secondItem="veE-bJ-jDd" secondAttribute="bottom" constant="8" id="KYH-qm-4iP"/>
                             <constraint firstItem="fU3-1f-Wbl" firstAttribute="bottom" secondItem="zOI-DP-xzX" secondAttribute="top" id="Oa2-57-AlZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zOI-DP-xzX" secondAttribute="bottom" id="UdB-Dy-7aW"/>
                             <constraint firstItem="veE-bJ-jDd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.1" id="lNf-95-Qiy"/>
                             <constraint firstItem="fU3-1f-Wbl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oa6-A4-ta1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="veE-bJ-jDd" secondAttribute="trailing" constant="16" id="paq-BW-FUv"/>

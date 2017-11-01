@@ -27,6 +27,7 @@
 		CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1E61361FA7C37C0083E619 /* LocationManager.m */; };
 		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
 		CE85E3C41FA942B200AF5B8F /* StationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C31FA942B200AF5B8F /* StationAnnotation.m */; };
+		CE85E3C61FAA584F00AF5B8F /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C51FAA584F00AF5B8F /* Email.swift */; };
 		CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F4201FA7D2C300564888 /* MapViewController.m */; };
 		CEA2F4231FA7F73100564888 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA2F4221FA7F73100564888 /* MapKit.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		CE1E61391FA7C3B00083E619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CE85E3C21FA942B200AF5B8F /* StationAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StationAnnotation.h; sourceTree = "<group>"; };
 		CE85E3C31FA942B200AF5B8F /* StationAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StationAnnotation.m; sourceTree = "<group>"; };
+		CE85E3C51FAA584F00AF5B8F /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
 		CEA2F41F1FA7D2C300564888 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		CEA2F4201FA7D2C300564888 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		CEA2F4221FA7F73100564888 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -119,6 +121,7 @@
 				495663D71FA7C08300F74646 /* AppDelegate.m */,
 				CEA2F41F1FA7D2C300564888 /* MapViewController.h */,
 				CEA2F4201FA7D2C300564888 /* MapViewController.m */,
+				CE85E3C51FAA584F00AF5B8F /* Email.swift */,
 				495663EF1FA7CCE700F74646 /* DownloadManager.h */,
 				495663F01FA7CCE700F74646 /* DownloadManager.m */,
 				495663F21FA7E33800F74646 /* StationManager.h */,
@@ -258,6 +261,7 @@
 				494C1B4E1FA8103600F00593 /* Station+CoreDataProperties.m in Sources */,
 				495663F41FA7E33800F74646 /* StationManager.m in Sources */,
 				CE85E3C41FA942B200AF5B8F /* StationAnnotation.m in Sources */,
+				CE85E3C61FAA584F00AF5B8F /* Email.swift in Sources */,
 				CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */,
 				495663E91FA7C08300F74646 /* main.m in Sources */,
 				495663F11FA7CCE700F74646 /* DownloadManager.m in Sources */,
@@ -406,7 +410,7 @@
 				);
 				INFOPLIST_FILE = "Mo'Bikes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sanjayshah.Cats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mo'Bikes/Mo'Bikes-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -429,7 +433,7 @@
 				);
 				INFOPLIST_FILE = "Mo'Bikes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sanjayshah.Cats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mo'Bikes/Mo'Bikes-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
