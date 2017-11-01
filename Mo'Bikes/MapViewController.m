@@ -61,7 +61,6 @@
     [self getLocation];
 
     [self setupUI];
-    [self testSupplementary];
 
 }
 
@@ -191,12 +190,6 @@
 }
 
 
-- (void)testSupplementary {
-    [self.mapView addAnnotations: [SupplementaryLayers sharedInstance].washrooms];
-    [self.mapView addAnnotations: [SupplementaryLayers sharedInstance].fountains];
-}
-
-
 
 - (IBAction)contactButtonPressed:(UIBarButtonItem *)sender {
     UIAlertController *contactAlert = [UIAlertController alertControllerWithTitle:@"Wow!" message:@"You pressed the contact button!" preferredStyle:UIAlertControllerStyleAlert];
@@ -213,10 +206,20 @@
 
 
 - (IBAction)layerButtonPressed:(UIBarButtonItem *)sender {
+    NSArray *annotations;
+    
+    if ([sender isEqual: self.toiletButton]) {
+        annotations = [SupplementaryLayers sharedInstance].washrooms;
+    } else if ([sender isEqual:self.fountainButton]) {
+        annotations = [SupplementaryLayers sharedInstance].fountains;
+    }
+    
     if (sender.tintColor) {
         sender.tintColor = nil;
+        [self.mapView addAnnotations:annotations];
     } else {
         sender.tintColor = self.disabledButtonColor;
+        [self.mapView removeAnnotations:annotations];
     }
     
 }

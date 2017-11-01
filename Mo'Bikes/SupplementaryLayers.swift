@@ -12,16 +12,24 @@ import MapKit
 class SupplementaryLayers: NSObject {
     static let sharedInstance = SupplementaryLayers();
     
+    public var washrooms : Array<MKAnnotation> {
+        if (washroomAnnotations == nil) {
+            washroomAnnotations = makeAnnotations(coordinatesArray: washroomsCoordinates)
+        }
+        return washroomAnnotations
+    }
+    
+    public var fountains : Array<MKAnnotation> {
+        if (fountainAnnotations == nil) {
+            fountainAnnotations = makeAnnotations(coordinatesArray: fountainsCoordinates)
+        }
+        return fountainAnnotations
+    }
+    
+    
     private let fountainsKML = Bundle.main.url(forResource: "drinking_fountains", withExtension: "kml")!
     private let washroomsKML = Bundle.main.url(forResource: "public_washrooms", withExtension: "kml")!
     private let bikewaysKML = Bundle.main.url(forResource: "bikeways", withExtension: "kml")!
-
-    public var washrooms : Array<MKAnnotation> {
-        return makeAnnotations(coordinatesArray: washroomsCoordinates)
-    }
-    public var fountains : Array<MKAnnotation> {
-        return makeAnnotations(coordinatesArray: fountainsCoordinates)
-    }
     
     private var washroomsCoordinates : Array<String> {
         return KMLParser.sharedInstance.getPoints(xmlurl: washroomsKML)!
@@ -29,6 +37,17 @@ class SupplementaryLayers: NSObject {
     private var fountainsCoordinates : Array<String> {
         return KMLParser.sharedInstance.getPoints(xmlurl: fountainsKML)!
     }
+    
+    private var washroomAnnotations : Array<MKAnnotation>!
+    private var fountainAnnotations : Array<MKAnnotation>!
+
+    
+    
+    
+    
+    
+    
+    
     
     private class SupplementaryAnnotation: NSObject, MKAnnotation {
         var coordinate: CLLocationCoordinate2D
