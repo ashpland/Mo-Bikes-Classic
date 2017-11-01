@@ -52,7 +52,10 @@
          [StationManager updateStationsFromArray:stationArray];
          
          self.stationsArray = [StationManager getAllStations];
-         [self.mapView addAnnotations:self.stationsArray];
+         
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [self.mapView addAnnotations:self.stationsArray];
+         });
          
      }];
     
