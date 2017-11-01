@@ -206,21 +206,41 @@
 
 
 - (IBAction)layerButtonPressed:(UIBarButtonItem *)sender {
-    NSArray *annotations;
-    
-    if ([sender isEqual: self.toiletButton]) {
-        annotations = [SupplementaryLayers sharedInstance].washrooms;
-    } else if ([sender isEqual:self.fountainButton]) {
-        annotations = [SupplementaryLayers sharedInstance].fountains;
-    }
     
     if (sender.tintColor) {
+        [self.mapView addAnnotations:[self getAnnotationArray:sender]];
         sender.tintColor = nil;
-        [self.mapView addAnnotations:annotations];
-    } else {
-        sender.tintColor = self.disabledButtonColor;
-        [self.mapView removeAnnotations:annotations];
+        
+        UIBarButtonItem *notThisButton = [self notThisButton:sender];
+        if (!notThisButton.tintColor) {
+            [self.mapView removeAnnotations:[self getAnnotationArray:notThisButton]];
+            notThisButton.tintColor = self.disabledButtonColor;
+        }
     }
     
+    else {
+        [self.mapView removeAnnotations:[self getAnnotationArray:sender]];
+        sender.tintColor = self.disabledButtonColor;
+    }
 }
+
+- (UIBarButtonItem *)notThisButton:(UIBarButtonItem *)thisButton {
+    if ([thisButton isEqual:self.toiletButton]) {
+        return self.fountainButton;
+    } else if ([thisButton isEqual:self.fountainButton]) {
+        return self.toiletButton;
+    }
+    return nil;
+}
+
+- (NSArray *)getAnnotationArray:(UIBarButtonItem *)thisButton {
+    if ([thisButton isEqual: self.toiletButton]) {
+        return [SupplementaryLayers sharedInstance].washrooms;
+    } else if ([thisButton isEqual:self.fountainButton]) {
+        return [SupplementaryLayers sharedInstance].fountains;
+    }
+    return nil;
+}
+
+
 @end
