@@ -12,16 +12,17 @@ import MapKit
 
 class Bikeway: NSObject {
     var type : BikewayType
-    var lines : Array<CLLocationCoordinate2D>
+    var lines : Array<Array<CLLocationCoordinate2D>>
     
-    init(bikewayType: BikewayType, bikewayLines: Array<CLLocationCoordinate2D>) {
+    init(bikewayType: BikewayType, bikewayLines: Array<Array<CLLocationCoordinate2D>>) {
         type = bikewayType
         lines = bikewayLines
     }
     
-    func makeMKPolyline() -> MKPolyline {
-        return MKPolyline(coordinates: lines, count: lines.count)
-    }
+//    func makeMKPolyline() -> MKPolyline {
+//        //TODO: make Polyline builder
+////        return MKPolyline(coordinates: lines, count: lines.count)
+//    }
     
     override var description: String {
         

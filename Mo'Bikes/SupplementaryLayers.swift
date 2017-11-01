@@ -88,21 +88,22 @@ class SupplementaryLayers: NSObject {
             default: continue
             }
             
-            var coordinatesArray = [CLLocationCoordinate2D]()
+            var lineSegmentArray = [[CLLocationCoordinate2D]]()
             
             for lineSegment in rawBikeway.lineSegmentsArray {
-                //gonna dump all the points into one array. if the segments need to be separate this is where to fix it
-                for segment in lineSegment.split(separator: " ") {
-                    let lon = Double(segment.split(separator: ",")[0])!
-                    let lat = Double(segment.split(separator: ",")[1])!
+                var coordinatesArray = [CLLocationCoordinate2D]()
+                for coordinate in lineSegment.split(separator: " ") {
+                    let lon = Double(coordinate.split(separator: ",")[0])!
+                    let lat = Double(coordinate.split(separator: ",")[1])!
                     coordinatesArray.append(CLLocationCoordinate2D(latitude: lat,
                                                                    longitude: lon))
                 }
+                lineSegmentArray.append(coordinatesArray)
             }
             
             bikewayArray.append(
                 Bikeway(bikewayType: bikewayType,
-                        bikewayLines: coordinatesArray))
+                        bikewayLines: lineSegmentArray))
         }
         
         return bikewayArray
