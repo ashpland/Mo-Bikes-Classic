@@ -20,16 +20,18 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *compassButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *bikesDocksSegmentedControl;
-
 @property (nonatomic, retain) CLLocation *currentPosition;
-
 @property (nonatomic, retain) CLLocationManager *locationManager;
-
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *layersButton;
-
 
 @property (strong, nonatomic) NSArray<Station*> *stationsArray;
 @property NSMutableArray *stationsAnnotationsArray;
+
+- (IBAction)contactButtonPressed:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *toiletButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *fountainButton;
+- (IBAction)layerButtonPressed:(UIBarButtonItem *)sender;
+
+
 
 
 @end
@@ -101,34 +103,10 @@
  }
 
 - (void)setupUI {
-    self.compassButton.transform = CGAffineTransformMakeRotation(M_PI / -1.5);
+    
+    UIImage *image = [[UIImage imageNamed:@"compass"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.compassButton setImage:image forState:UIControlStateNormal];
 }
-
-
-
-//-(void) showMarkers {
-    
-   // self.stationsArray = [[NSMutableArray alloc] init];
-    
-    //self.myMapView.delegate = self;
-   // self.stationsAnnotationsArray = [[NSMutableArray alloc] init];
-    
-    //add annotation for each cat
-//    for (Station *station in self.stationsArray){
-//
-//        //MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc]init];[myAnnotation setTitle:[NSString stringWithFormat:@"%@", station.name]];
-//
-//        //        MKAnnotationView *myCatAnnotation = [[MKAnnotationView alloc] init];
-//        //        myCatAnnotation.image = cat.catImage;
-//        //        myCatAnnotation.annotation = myAnnotation;
-//
-//        //[self.stationsAnnotationsArray addObject:myAnnotation];
-//    }
-    
-    //add all the annotations
-    
-    
-//}
 
 
 
@@ -153,4 +131,20 @@
 
 
 
+- (IBAction)contactButtonPressed:(UIBarButtonItem *)sender {
+    UIAlertController *contactAlert = [UIAlertController alertControllerWithTitle:@"Wow!" message:@"You pressed the contact button!" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:contactAlert animated:YES completion:nil];
+    
+    [self performSelector:@selector(dismissAlert:) withObject:contactAlert afterDelay:1.0];
+}
+
+-(void)dismissAlert:(UIAlertController *)alert
+{
+    [alert dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (IBAction)layerButtonPressed:(UIBarButtonItem *)sender {
+}
 @end
