@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *fountainButton;
 - (IBAction)layerButtonPressed:(UIBarButtonItem *)sender;
 
+@property (strong, nonatomic) UIColor *disabledButtonColor;
 
 
 
@@ -106,6 +107,11 @@
     
     UIImage *image = [[UIImage imageNamed:@"compass"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self.compassButton setImage:image forState:UIControlStateNormal];
+    
+    self.disabledButtonColor = [UIColor lightGrayColor];
+    
+    self.fountainButton.tintColor = self.disabledButtonColor;
+    self.toiletButton.tintColor = self.disabledButtonColor;
 }
 
 
@@ -146,5 +152,11 @@
 
 
 - (IBAction)layerButtonPressed:(UIBarButtonItem *)sender {
+    if (sender.tintColor) {
+        sender.tintColor = nil;
+    } else {
+        sender.tintColor = self.disabledButtonColor;
+    }
+    
 }
 @end
