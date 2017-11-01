@@ -19,13 +19,13 @@
 }
 */
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.annotation = [Station new];
-    }
-    return self;
-}
+//- (instancetype)init
+//{
+//    self = [super init];
+//    if (self) {
+//        self.annotation = [Station new];
+//    }
+//    return self;
+//}
 
 @end
