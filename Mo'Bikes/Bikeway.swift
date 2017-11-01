@@ -22,10 +22,17 @@ class Bikeway: NSObject {
     func makeMKPolyline() -> MKPolyline {
         return MKPolyline(coordinates: lines, count: lines.count)
     }
+    
+    override var description: String {
+        
+        
+        return "Type: \(type)\n\(lines)"
+    }
 }
 
 enum BikewayType {
     case local
+    case shared
     case painted
     case protected
 }

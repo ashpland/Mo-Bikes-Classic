@@ -26,14 +26,15 @@ class SupplementaryLayers: NSObject {
         return fountainAnnotations
     }
     
-//    public var bikeways : Array<Array<CLLocationCoordinate2D>> {
-//        if (bikewaysLines == nil) {
-//            bikewaysLines =
-//        }
-//    }
+    public var bikeways : Array<Bikeway> {
+        if (bikewaysArray == nil) {
+            bikewaysArray = makeBikeways(rawBikewaysArray: rawBikeways)
+        }
+        return bikewaysArray
+    }
     
     func testBikeways() {
-//        print(rawBikeways)
+        print(bikeways[0])
     }
     
     
@@ -55,7 +56,7 @@ class SupplementaryLayers: NSObject {
     
     private var washroomAnnotations : Array<MKAnnotation>!
     private var fountainAnnotations : Array<MKAnnotation>!
-    private var bikewaysLines: Array<Array<CLLocationCoordinate2D>>!
+    private var bikewaysArray: Array<Bikeway>!
 
     private func makeAnnotations(coordinatesArray: Array<String>, ofType: SupplementaryLayerType) -> Array<MKAnnotation> {
         var annotationArray = [MKAnnotation]()
@@ -68,6 +69,43 @@ class SupplementaryLayers: NSObject {
             annotationArray.append(SupplementaryAnnotation(latitude: latitude, longitude: longitude, type: ofType))
         }
         return annotationArray
+    }
+    
+    func makeBikeways(rawBikewaysArray: Array<KMLParser.RawBikeway>) -> Array<Bikeway> {
+        var bikewayArray = [Bikeway]()
+        
+        for rawBikeway in rawBikewaysArray {
+            
+            let bikewayDescription = String(rawBikeway.descriptionString.split(separator: "<",
+                                                                        maxSplits: 1,
+                                                                        omittingEmptySubsequences: true)[0])
+            var bikewayType: BikewayType
+            switch bikewayDescription {
+            case "Local Street": bikewayType = BikewayType.local
+            case "Shared Lanes": bikewayType = BikewayType.shared
+            case "Painted Lanes": bikewayType = BikewayType.painted
+            case "Protected Bike Lanes": bikewayType = BikewayType.protected
+            default: continue
+            }
+            
+            var coordinatesArray = [CLLocationCoordinate2D]()
+            
+            for lineSegment in rawBikeway.lineSegmentsArray {
+                //gonna dump all the points into one array. if the segments need to be separate this is where to fix it
+                for segment in lineSegment.split(separator: " ") {
+                    let lon = Double(segment.split(separator: ",")[0])!
+                    let lat = Double(segment.split(separator: ",")[1])!
+                    coordinatesArray.append(CLLocationCoordinate2D(latitude: lat,
+                                                                   longitude: lon))
+                }
+            }
+            
+            bikewayArray.append(
+                Bikeway(bikewayType: bikewayType,
+                        bikewayLines: coordinatesArray))
+        }
+        
+        return bikewayArray
     }
     
     
