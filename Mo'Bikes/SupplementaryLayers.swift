@@ -41,27 +41,6 @@ class SupplementaryLayers: NSObject {
     private var washroomAnnotations : Array<MKAnnotation>!
     private var fountainAnnotations : Array<MKAnnotation>!
 
-    
-    
-    
-    
-    
-    enum SupplementaryLayerType {
-        case fountain
-        case washroom
-    }
-    
-    
-    public class SupplementaryAnnotation: NSObject, MKAnnotation {
-        var coordinate : CLLocationCoordinate2D
-        var layerType : SupplementaryLayerType
-        
-        init(latitude: Double, longitude: Double, type: SupplementaryLayerType) {
-            coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-            layerType = type
-        }
-    }
-    
     private func makeAnnotations(coordinatesArray: Array<String>, ofType: SupplementaryLayerType) -> Array<MKAnnotation> {
         var annotationArray = [MKAnnotation]()
         
@@ -74,10 +53,4 @@ class SupplementaryLayers: NSObject {
         }
         return annotationArray
     }
-    
-    
-    
-    
-    
-    
 }

@@ -72,7 +72,14 @@
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
-//    if ([annotation isKindOfClass:[]])
+    
+    // TODO: Get this to work. Can't access SuplementaryAnnotation properties :|
+//    if ([annotation isKindOfClass:[SupplementaryAnnotation class]]) {
+//        MKAnnotationView *pinView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"SupplementaryLayerPin"];
+//
+//        SupplementaryAnnotation *currentAnnotation = (SupplementaryAnnotation *)annotation;
+//
+//    }
     
     
     // If its a station, use dynamic markers
@@ -80,7 +87,7 @@
     {
         // Try to dequeue an existing pin view first.
         StationAnnotation *pinView = (StationAnnotation*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
-        
+     
         Station *station = (Station *)annotation;
         UIImage * tempImage;
         
