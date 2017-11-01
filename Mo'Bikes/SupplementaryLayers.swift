@@ -33,7 +33,7 @@ class SupplementaryLayers: NSObject {
 //    }
     
     func testBikeways() {
-        print(rawBikeways)
+//        print(rawBikeways)
     }
     
     
@@ -69,4 +69,6 @@ class SupplementaryLayers: NSObject {
         }
         return annotationArray
     }
+    
+    
 }

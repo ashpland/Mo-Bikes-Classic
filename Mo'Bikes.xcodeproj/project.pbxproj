@@ -12,6 +12,7 @@
 		490233B11FA908750048D688 /* bikeways.kml in Resources */ = {isa = PBXBuildFile; fileRef = 490233AE1FA908750048D688 /* bikeways.kml */; };
 		490233B31FA909250048D688 /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490233B21FA909250048D688 /* AEXML.framework */; };
 		490233B71FA9099D0048D688 /* KMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490233B61FA9099D0048D688 /* KMLParser.swift */; };
+		4922BBDE1FAA5E62005323A7 /* Bikeway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4922BBDD1FAA5E62005323A7 /* Bikeway.swift */; };
 		493497D11FA99FF5007CE719 /* SupplementaryAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493497D01FA99FF5007CE719 /* SupplementaryAnnotation.swift */; };
 		494C1B4D1FA8103600F00593 /* Station+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 494C1B4B1FA8103600F00593 /* Station+CoreDataClass.m */; };
 		494C1B4E1FA8103600F00593 /* Station+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 494C1B4C1FA8103600F00593 /* Station+CoreDataProperties.m */; };
@@ -38,6 +39,7 @@
 		490233B21FA909250048D688 /* AEXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AEXML.framework; path = Carthage/Build/iOS/AEXML.framework; sourceTree = "<group>"; };
 		490233B51FA9099D0048D688 /* Mo'Bikes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mo'Bikes-Bridging-Header.h"; sourceTree = "<group>"; };
 		490233B61FA9099D0048D688 /* KMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMLParser.swift; sourceTree = "<group>"; };
+		4922BBDD1FAA5E62005323A7 /* Bikeway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bikeway.swift; sourceTree = "<group>"; };
 		493497D01FA99FF5007CE719 /* SupplementaryAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryAnnotation.swift; sourceTree = "<group>"; };
 		494C1B491FA8103600F00593 /* Station+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Station+CoreDataProperties.h"; sourceTree = "<group>"; };
 		494C1B4A1FA8103600F00593 /* Station+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Station+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				494C1B4B1FA8103600F00593 /* Station+CoreDataClass.m */,
 				496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */,
 				493497D01FA99FF5007CE719 /* SupplementaryAnnotation.swift */,
+				4922BBDD1FAA5E62005323A7 /* Bikeway.swift */,
 				490233B61FA9099D0048D688 /* KMLParser.swift */,
 				490233AB1FA9085A0048D688 /* Spatial Data */,
 				490233B51FA9099D0048D688 /* Mo'Bikes-Bridging-Header.h */,
@@ -262,6 +265,7 @@
 				495663E91FA7C08300F74646 /* main.m in Sources */,
 				495663F11FA7CCE700F74646 /* DownloadManager.m in Sources */,
 				496579C01FA921A1005C6920 /* SupplementaryLayers.swift in Sources */,
+				4922BBDE1FAA5E62005323A7 /* Bikeway.swift in Sources */,
 				495663D81FA7C08300F74646 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
