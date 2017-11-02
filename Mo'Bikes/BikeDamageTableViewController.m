@@ -8,6 +8,8 @@
 
 #import "BikeDamageTableViewController.h"
 #import "Mo'Bikes-Bridging-Header.h"
+#import "Mo_Bikes-Swift.h"
+
 //#import <Mo'Bikes/Mo'Bikes-Bridging-Header.h>
 //#import "QRViewController.swift"
 
@@ -30,6 +32,7 @@
     //self.tableView.allowsMultipleSelection = true;
     //self.tableView.editing = NO;
     self.damageTypesArray = [[NSArray alloc] initWithObjects:@"Tires", @"Gears", @"Seats", nil];
+    self.tickedDamagesArray = [[NSMutableArray alloc] init];
     
 
 }
@@ -78,7 +81,7 @@
     }
     else{
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [self.tickedDamagesArray addObject:self.damageTypesArray[indexPath.row]];
+        [self.tickedDamagesArray addObject:(self.damageTypesArray[indexPath.row])];
     }
 
 }
@@ -86,19 +89,10 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString: @"showQRVC"]){
         
-//
-        QRViewController *qrvc = (QRViewController*)[segue destinationViewController];
+        QRViewController *qrvc =  (QRViewController*)[segue destinationViewController];
         qrvc.damageArray= self.tickedDamagesArray;
         
-        
-//        
-//        (QRViewController*)[segue destinationViewController];
-//        qrvc.damageArray = self.tickedDamagesArray;
-//
-        
-        
-    
-        //Data has to be a variable name in your RandomViewController
+
     }
 }
 

@@ -299,7 +299,8 @@
         //newEmail.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
         
         //right now just static info
-        [newEmail sendEmailWithMyName:@"Sanjay Shah" qrCode:@"sanjay@shah.com"];
+        [newEmail sendEmailWithMyName:@"Sanjay Shah" qrCode:@"sanjay@shah.com" damageArray:NULL];
+        //[newEmail sendEmailWithMyName:@"Sanjay Shah" qrCode:@"sanjay@shah.com"];
         
         // display the controller in the usual way
         [self presentViewController:newEmail animated:YES completion:nil];

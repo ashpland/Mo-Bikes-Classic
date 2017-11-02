@@ -152,7 +152,7 @@ import AVFoundation
         //newEmail.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
         
         //right now just static info
-        newEmail.sendEmail(myName: "Sanjay Shah", qrCode: "\(statusLabel.text ?? "No QRCode")", damageArray: damageArray!);
+        newEmail.sendEmail(myName: "Sanjay Shah", qrCode: "\(statusLabel.text ?? "No QRCode")", damageArray: damageArray!)
        
         // display the controller in the usual way
         self.present(newEmail, animated: true, completion: nil)

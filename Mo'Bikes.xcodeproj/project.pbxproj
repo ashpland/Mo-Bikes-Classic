@@ -425,7 +425,7 @@
 				INFOPLIST_FILE = "Mo'Bikes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sanjayshah.Cats;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Mo'Bikes";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mo'Bikes/Mo'Bikes-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -448,7 +448,7 @@
 				INFOPLIST_FILE = "Mo'Bikes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sanjayshah.Cats;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Mo'Bikes";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mo'Bikes/Mo'Bikes-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

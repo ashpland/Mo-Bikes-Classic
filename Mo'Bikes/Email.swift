@@ -33,9 +33,7 @@ class Email: UIViewController,MFMailComposeViewControllerDelegate {
         } else {
             self.showSendMailErrorAlert()
         }
-//        if(!MFMailComposeViewController.canSendMail()){
-//            self.showSendMailErrorAlert()
-//        }
+
         
         //mailVC properties
         mailComposerVC.setToRecipients([destinationEmail])
