@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-1f-Wbl">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-1f-Wbl">
                                 <rect key="frame" x="0.0" y="20" width="414" height="672"/>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOI-DP-xzX">
@@ -90,11 +90,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zOI-DP-xzX" secondAttribute="bottom" id="FRb-Hn-W3Z"/>
                             <constraint firstItem="zOI-DP-xzX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="G06-L5-jjN"/>
                             <constraint firstItem="zOI-DP-xzX" firstAttribute="top" secondItem="veE-bJ-jDd" secondAttribute="bottom" constant="8" id="KYH-qm-4iP"/>
-                            <constraint firstItem="fU3-1f-Wbl" firstAttribute="bottom" secondItem="zOI-DP-xzX" secondAttribute="top" id="Oa2-57-AlZ"/>
+                            <constraint firstItem="fU3-1f-Wbl" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="Oa2-57-AlZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zOI-DP-xzX" secondAttribute="bottom" id="UdB-Dy-7aW"/>
                             <constraint firstItem="vhn-EC-OBg" firstAttribute="leading" secondItem="fU3-1f-Wbl" secondAttribute="leading" constant="16" id="hkw-SV-f6k"/>
                             <constraint firstItem="veE-bJ-jDd" firstAttribute="height" secondItem="vhn-EC-OBg" secondAttribute="height" id="lNf-95-Qiy"/>
-                            <constraint firstItem="fU3-1f-Wbl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oa6-A4-ta1"/>
+                            <constraint firstItem="fU3-1f-Wbl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="oa6-A4-ta1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="veE-bJ-jDd" secondAttribute="trailing" constant="16" id="paq-BW-FUv"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vhn-EC-OBg" secondAttribute="trailing" constant="20" symbolic="YES" id="tVQ-s8-i8S"/>
                             <constraint firstItem="vhn-EC-OBg" firstAttribute="centerY" secondItem="veE-bJ-jDd" secondAttribute="centerY" id="wen-1o-qKf"/>
