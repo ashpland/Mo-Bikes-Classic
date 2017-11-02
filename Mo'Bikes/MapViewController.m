@@ -78,7 +78,6 @@
 }
 
 
-
 - (MKAnnotationView * _Nullable)getStationMarkerFor:(id<MKAnnotation> _Nonnull)annotation mapView:(MKMapView * _Nonnull)mapView {
     
     Station *station = (Station *)annotation;
@@ -86,7 +85,7 @@
     
     newStationMarkerView.markerTintColor = self.normalStationColor;
     newStationMarkerView.titleVisibility = MKFeatureVisibilityHidden;
-
+    newStationMarkerView.canShowCallout = YES;
     
     bool bikesSelected = self.bikesDocksSegmentedControl.selectedSegmentIndex == 0;
     
@@ -97,70 +96,41 @@
 
     }
     else {
-//        newMarkerView.glyphImage = [UIImage imageNamed:@"station"];
+        newStationMarkerView.glyphImage = [UIImage imageNamed:@"fountain"];
         if (station.available_docks <= 10)
             newStationMarkerView.markerTintColor = self.lowStationColor;
     }
-
-    return newStationMarkerView;
     
+    if(newStationMarkerView.isSelected) {
+        newStationMarkerView.markerTintColor = [UIColor greenColor];
+    }
 
-//
-//    if(self.bikesDocksSegmentedControl.selectedSegmentIndex == 1){
-//
-//        MKMarkerAnnotationView *dockAnnotationView = (MKMarkerAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"dockAnnotationView"];
-//
-//        Station *station = (Station *)annotation;
-//
-//        if(dockAnnotationView == nil){
-//
-//            dockAnnotationView = [[MKMarkerAnnotationView alloc] initWithAnnotation:station reuseIdentifier:@"dockAnnotationView"];
-//            dockAnnotationView.canShowCallout = YES;
-//
-//            dockAnnotationView.glyphImage = [UIImage imageNamed:@"bike"];
-//
-//            dockAnnotationView.markerTintColor = self.normalStationColor;
-//
-//            if (station.available_docks <= 3)
-//                dockAnnotationView.markerTintColor = self.lowStationColor;
-//
-//
-//            //                dockAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_docks];
-//            dockAnnotationView.titleVisibility = MKFeatureVisibilityHidden;
-//
-//            return dockAnnotationView;
-//        }
-//
-//        else  dockAnnotationView.annotation = annotation;
-//
-//        return dockAnnotationView;
-//    }
-//    else {
-//        // Try to dequeue an existing pin view first.
-//        MKMarkerAnnotationView *bikeAnnotationView = (MKMarkerAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
-//
-//        Station *station = (Station *)annotation;
-//
-//        if(bikeAnnotationView == nil){
-//            bikeAnnotationView = [[MKMarkerAnnotationView alloc] initWithAnnotation:station reuseIdentifier:@"CustomPinAnnotationView"];
-//            bikeAnnotationView.canShowCallout = YES;
-//
-//            bikeAnnotationView.glyphImage = [UIImage imageNamed:@"bike"];
-//            //            bikeAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_bikes];
-//            bikeAnnotationView.markerTintColor = self.normalStationColor;
-//
-//            if (station.available_bikes <= 10)
-//                bikeAnnotationView.markerTintColor = self.lowStationColor;
-//
-//
-//
-//            bikeAnnotationView.titleVisibility = MKFeatureVisibilityHidden;
-//        }
-//        else {
-//            bikeAnnotationView.annotation = annotation;
-//        }
-//        return  bikeAnnotationView;
-//    }
+    newStationMarkerView.selectedGlyphImage = [UIImage imageNamed:@"phone"];
+
+    
+    return newStationMarkerView;
+}
+
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    if ([view.annotation isKindOfClass:[Station class]]) {
+        MKMarkerAnnotationView *theMarker = (MKMarkerAnnotationView *)view;
+        Station *theStation = (Station *)theMarker.annotation;
+        
+        bool showBikesMode = self.bikesDocksSegmentedControl.selectedSegmentIndex == 0;
+        
+        if (showBikesMode) {
+            theMarker.glyphText = [NSString stringWithFormat:@"%d", theStation.available_bikes];
+        } else {
+            theMarker.glyphText = [NSString stringWithFormat:@"%d", theStation.available_docks];
+        }
+    }
+}
+
+-(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    if ([view.annotation isKindOfClass:[Station class]]) {
+        MKMarkerAnnotationView *theMarker = (MKMarkerAnnotationView *)view;
+        theMarker.glyphText = nil;
+    }
 }
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
@@ -185,13 +155,14 @@
         
         newMarkerView.markerTintColor = supColor;
         newMarkerView.glyphImage = icon;
+        newMarkerView.enabled = NO;
+        
         
         return newMarkerView;
         
     }
 
     
-    // If its a station, use dynamic markers
     if ([annotation isKindOfClass:[Station class]])
     {
         return [self getStationMarkerFor:annotation mapView:mapView];
