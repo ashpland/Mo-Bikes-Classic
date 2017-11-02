@@ -296,10 +296,6 @@
     
     BikewayPolyline *currentBikeway = (BikewayPolyline *)overlay;
     
-    if (currentBikeway.bikewayType == BikewayTypeLocal) {
-        
-    }
-    
     switch (currentBikeway.bikewayType) {
         case BikewayTypeLocal:
             bikewayRenderer.strokeColor = [UIColor greenColor];
@@ -314,17 +310,9 @@
             bikewayRenderer.strokeColor = [UIColor blueColor];
             break;
     }
-    
-    
-    
 
-    
-    
-//    bikewayRenderer.strokeColor = self.view.tintColor;
     bikewayRenderer.lineWidth = 2.0;
-    
-    
-    
+
     return bikewayRenderer;
 }
 
