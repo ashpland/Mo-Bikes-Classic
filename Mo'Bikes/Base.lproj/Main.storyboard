@@ -109,6 +109,7 @@
                         <outlet property="mapView" destination="fU3-1f-Wbl" id="S7Q-K4-Gt3"/>
                         <outlet property="toiletButton" destination="pDi-Vq-Urp" id="q43-8m-CmZ"/>
                         <segue destination="QaR-2X-UhA" kind="show" identifier="showContactSBSegue" id="E4J-uC-IAK"/>
+                        <segue destination="6n5-od-A6H" kind="show" identifier="showStationDamageSBSegue" id="THi-2h-gBr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -122,6 +123,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YS1-Ve-Hfi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="870" y="87"/>
+        </scene>
+        <!--StationDamageStoryboard-->
+        <scene sceneID="FJu-Hc-jGH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StationDamageStoryboard" id="6n5-od-A6H" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J6t-Al-XCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="902" y="251"/>
         </scene>
     </scenes>
     <resources>

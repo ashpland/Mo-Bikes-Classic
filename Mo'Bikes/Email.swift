@@ -10,12 +10,9 @@ import UIKit
 import MessageUI
 
 
-class Email: UIViewController,MFMailComposeViewControllerDelegate {
+@objc class Email: UIViewController,MFMailComposeViewControllerDelegate {
     let destinationEmail = "sanjays_94@hotmail.com"
-    
-    
-    
-   
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
