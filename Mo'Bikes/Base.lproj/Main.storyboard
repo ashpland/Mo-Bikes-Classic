@@ -76,8 +76,8 @@
                                     <constraint firstAttribute="height" constant="50" id="CRE-rt-iB8"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="jm2-p6-ww1"/>
                                 </constraints>
-                                <string key="text">  Bikeway ━
-  Bike Lane ┅   </string>
+                                <string key="text">  Bikeway    ━
+  Bike Lane  ┅   </string>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.47934520244598389" blue="0.99908632040023804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
