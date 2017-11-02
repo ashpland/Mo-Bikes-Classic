@@ -36,8 +36,8 @@
 - (IBAction)layerButtonPressed:(UIBarButtonItem *)sender;
 
 @property (strong, nonatomic) UIColor *disabledButtonColor;
-
-
+@property (strong, nonatomic) UIColor *normalStationColor;
+@property (strong, nonatomic) UIColor *lowStationColor;
 
 @end
 
@@ -121,10 +121,15 @@
                 dockAnnotationView = [[MKMarkerAnnotationView alloc] initWithAnnotation:station reuseIdentifier:@"dockAnnotationView"];
                 dockAnnotationView.canShowCallout = YES;
                 
-                dockAnnotationView.glyphImage = [UIImage imageNamed:@"bikeMarker"];
+                dockAnnotationView.glyphImage = [UIImage imageNamed:@"bike"];
                 
-                dockAnnotationView.markerTintColor = [UIColor colorWithHue:0.75 saturation:0.4 brightness:1.0 alpha:1.0];
-                dockAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_docks];
+                dockAnnotationView.markerTintColor = self.normalStationColor;
+                
+                if (station.available_docks <= 3)
+                    dockAnnotationView.markerTintColor = self.lowStationColor;
+
+                
+//                dockAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_docks];
                 dockAnnotationView.titleVisibility = MKFeatureVisibilityHidden;
                 
                 return dockAnnotationView;
@@ -144,8 +149,15 @@
             bikeAnnotationView = [[MKMarkerAnnotationView alloc] initWithAnnotation:station reuseIdentifier:@"CustomPinAnnotationView"];
             bikeAnnotationView.canShowCallout = YES;
             
-            bikeAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_bikes];
-            bikeAnnotationView.markerTintColor = [UIColor colorWithHue:0.75 saturation:0.8 brightness:1.0 alpha:1.0];
+            bikeAnnotationView.glyphImage = [UIImage imageNamed:@"bike"];
+//            bikeAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_bikes];
+            bikeAnnotationView.markerTintColor = self.normalStationColor;
+            
+            if (station.available_bikes <= 10)
+                bikeAnnotationView.markerTintColor = self.lowStationColor;
+
+            
+            
             bikeAnnotationView.titleVisibility = MKFeatureVisibilityHidden;
         }
         else {
@@ -205,6 +217,11 @@
     [self.compassButton setImage:image forState:UIControlStateNormal];
     
     self.disabledButtonColor = [UIColor lightGrayColor];
+    self.normalStationColor  = [UIColor colorWithHue:0.83 saturation:1.0 brightness:0.5 alpha:1.0];
+    self.lowStationColor     = [UIColor colorWithHue:0.83 saturation:0.1 brightness:0.8 alpha:1.0];
+    
+    
+    
     
     self.fountainButton.tintColor = self.disabledButtonColor;
     self.toiletButton.tintColor = self.disabledButtonColor;
@@ -225,15 +242,6 @@
     self.legendLabel.layer.shadowOpacity = 0.5;
     self.legendLabel.layer.shadowRadius = 1.0;
 
-
-
-//
-//
-//    myBtn.layer.shadowColor = UIColor.black.cgColor
-//    myBtn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-//    myBtn.layer.masksToBounds = false
-//    myBtn.layer.shadowRadius = 1.0
-//    myBtn.layer.shadowOpacity = 0.5
 }
 
 
