@@ -49,6 +49,8 @@
     [self setupUI];
 }
 
+# pragma mark - Setup
+
 - (void)setupDelegate {
     
     self.mapViewDelegate = [MapViewDelegate new];
@@ -126,10 +128,7 @@
     [self.compassButton setImage:image forState:UIControlStateNormal];
     
     self.disabledButtonColor = [UIColor lightGrayColor];
-    
-    
-    
-    
+
     self.fountainButton.tintColor = self.disabledButtonColor;
     self.toiletButton.tintColor = self.disabledButtonColor;
     
@@ -139,8 +138,6 @@
     self.compassButton.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.compassButton.layer.shadowOpacity = 0.5;
     self.compassButton.layer.shadowRadius = 1.0;
-
-    
     
     self.legendLabel.layer.masksToBounds = NO;
     self.legendLabel.layer.cornerRadius = 15;
@@ -149,14 +146,23 @@
     self.legendLabel.layer.shadowOpacity = 0.5;
     self.legendLabel.layer.shadowRadius = 1.0;
     
-    [self displayBikeways];
-    
     [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"SupplementaryAnnotationMarker"];
     [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"StationMarkerView"];
     
     [self.mapView addAnnotations:[StationManager getAllStations]];
+    
+    [self displayBikeways];
 }
 
+- (void)displayBikeways {
+    NSArray<Bikeway *> *bikeways = [SupplementaryLayers sharedInstance].bikeways;
+    for (Bikeway *currentBikeway in bikeways) {
+        [self.mapView addOverlays:[currentBikeway makeMKPolylines] level:MKOverlayLevelAboveRoads];
+    }
+}
+
+
+#pragma mark - UI Responses
 
 - (IBAction)compassButtonPressed:(UIButton *)sender {
     
@@ -283,36 +289,6 @@
     return nil;
 }
 
-- (void)displayBikeways {
-    NSArray<Bikeway *> *bikeways = [SupplementaryLayers sharedInstance].bikeways;
-    for (Bikeway *currentBikeway in bikeways) {
-        [self.mapView addOverlays:[currentBikeway makeMKPolylines] level:MKOverlayLevelAboveRoads];
-    }
-}
-
--(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
-    MKPolylineRenderer *bikewayRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
-    
-    BikewayPolyline *currentBikeway = (BikewayPolyline *)overlay;
-    bikewayRenderer.strokeColor = self.view.tintColor;
-    bikewayRenderer.lineWidth = 3.0;
-    
-    switch (currentBikeway.bikewayType) {
-        case BikewayTypeLocal:
-            break;
-        case BikewayTypeShared:
-            return nil;
-            break;
-        case BikewayTypePainted:
-            bikewayRenderer.lineDashPattern = @[@5, @5];
-            break;
-        case BikewayTypeProtected:
-            break;
-    }
-
-
-    return bikewayRenderer;
-}
 
 
 - (IBAction)unwindFromEmail:(UIStoryboardSegue*)segue{

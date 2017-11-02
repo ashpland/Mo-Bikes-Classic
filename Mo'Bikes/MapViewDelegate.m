@@ -56,9 +56,6 @@
             newStationMarkerView.markerTintColor = self.lowStationColor;
     }
     
-    if(newStationMarkerView.isSelected) {
-        newStationMarkerView.markerTintColor = [UIColor greenColor];
-    }
     return newStationMarkerView;
 }
 
@@ -117,6 +114,30 @@
         return [self getStationMarkerFor:annotation mapView:mapView];
     }
     else return  nil;
+}
+
+-(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+    MKPolylineRenderer *bikewayRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+    
+    BikewayPolyline *currentBikeway = (BikewayPolyline *)overlay;
+    bikewayRenderer.strokeColor = [UIColor colorWithHue:0.59 saturation:1.0 brightness:1.0 alpha:1.0];
+    bikewayRenderer.lineWidth = 3.0;
+    
+    switch (currentBikeway.bikewayType) {
+        case BikewayTypeLocal:
+            break;
+        case BikewayTypeShared:
+            return nil;
+            break;
+        case BikewayTypePainted:
+            bikewayRenderer.lineDashPattern = @[@5, @5];
+            break;
+        case BikewayTypeProtected:
+            break;
+    }
+    
+    
+    return bikewayRenderer;
 }
 
 
