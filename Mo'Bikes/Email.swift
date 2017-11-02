@@ -21,7 +21,7 @@ class Email: UIViewController,MFMailComposeViewControllerDelegate {
         
     }
     
-    func sendEmail(myName: String, myEmail:String) -> Void {
+    func sendEmail(myName: String, qrCode:String, damageArray:Array<Any>) -> Void {
      
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
@@ -33,14 +33,12 @@ class Email: UIViewController,MFMailComposeViewControllerDelegate {
         } else {
             self.showSendMailErrorAlert()
         }
-//        if(!MFMailComposeViewController.canSendMail()){
-//            self.showSendMailErrorAlert()
-//        }
+
         
         //mailVC properties
         mailComposerVC.setToRecipients([destinationEmail])
         mailComposerVC.setSubject(myName + " is reporting damage")
-        mailComposerVC.setMessageBody(("Hi,\n the bike with the following QR Code has damage \n\nLove," + myName), isHTML: false)
+        mailComposerVC.setMessageBody(("Hi,\n the bike with the following QR Code has damage \n\nQRCode:" + qrCode + "\nDamages: \(damageArray[0])" + "\n\nLove," + myName), isHTML: false)
     }
     
     func showSendMailErrorAlert() {
@@ -51,7 +49,20 @@ class Email: UIViewController,MFMailComposeViewControllerDelegate {
     
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
+        
+        switch result {
+            case .cancelled: self.presentingViewController!.dismiss(animated: true)
+            case .saved:
+            print ("Go back to mapView")
+        case .sent:
+                self.performSegue(withIdentifier: "unwindToInitialVC", sender: self)
+             print ("Go back to mapView")
+            
+            case .failed:
+            print ("Mail sent failure: \([error!.localizedDescription])")
+        }
+        
+        
         
     }
     
