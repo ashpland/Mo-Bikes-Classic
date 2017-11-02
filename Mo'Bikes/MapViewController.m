@@ -21,6 +21,8 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *compassButton;
+@property (weak, nonatomic) IBOutlet UILabel *legendLabel;
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *bikesDocksSegmentedControl;
 @property (nonatomic, retain) CLLocation *currentPosition;
 @property (nonatomic, retain) CLLocationManager *locationManager;
@@ -205,6 +207,32 @@
     
     self.fountainButton.tintColor = self.disabledButtonColor;
     self.toiletButton.tintColor = self.disabledButtonColor;
+    
+    self.compassButton.layer.cornerRadius = self.compassButton.frame.size.width / 2.0;
+    self.compassButton.layer.masksToBounds = NO;
+    self.compassButton.layer.shadowOffset = CGSizeMake(0, 2.0);
+    self.compassButton.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.compassButton.layer.shadowOpacity = 0.5;
+    self.compassButton.layer.shadowRadius = 1.0;
+
+    
+    
+    self.legendLabel.layer.masksToBounds = NO;
+    self.legendLabel.layer.cornerRadius = 15;
+    self.legendLabel.layer.shadowOffset = CGSizeMake(0, 2.0);
+    self.legendLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.legendLabel.layer.shadowOpacity = 0.5;
+    self.legendLabel.layer.shadowRadius = 1.0;
+
+
+
+//
+//
+//    myBtn.layer.shadowColor = UIColor.black.cgColor
+//    myBtn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+//    myBtn.layer.masksToBounds = false
+//    myBtn.layer.shadowRadius = 1.0
+//    myBtn.layer.shadowOpacity = 0.5
 }
 
 
@@ -336,23 +364,22 @@
     MKPolylineRenderer *bikewayRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
     
     BikewayPolyline *currentBikeway = (BikewayPolyline *)overlay;
+    bikewayRenderer.strokeColor = self.view.tintColor;
+    bikewayRenderer.lineWidth = 3.0;
     
     switch (currentBikeway.bikewayType) {
         case BikewayTypeLocal:
-            bikewayRenderer.strokeColor = [UIColor greenColor];
             break;
         case BikewayTypeShared:
-            bikewayRenderer.strokeColor = [UIColor redColor];
+            return nil;
             break;
         case BikewayTypePainted:
-            bikewayRenderer.strokeColor = [UIColor orangeColor];
+            bikewayRenderer.lineDashPattern = @[@5, @5];
             break;
         case BikewayTypeProtected:
-            bikewayRenderer.strokeColor = [UIColor blueColor];
             break;
     }
 
-    bikewayRenderer.lineWidth = 2.0;
 
     return bikewayRenderer;
 }

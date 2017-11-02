@@ -4,9 +4,8 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-1f-Wbl">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-1f-Wbl">
                                 <rect key="frame" x="0.0" y="20" width="414" height="672"/>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOI-DP-xzX">
@@ -33,7 +32,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="QKm-3f-gxX"/>
                                     <barButtonItem style="plain" id="JAK-gf-17y">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="gHh-rB-ZpP">
-                                            <rect key="frame" x="154.66666666666669" y="7.6666666666666288" width="105.00000000000006" height="29"/>
+                                            <rect key="frame" x="154.66666666666666" y="7.6666666666666288" width="104.99999999999997" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Bikes"/>
@@ -57,8 +56,9 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veE-bJ-jDd">
-                                <rect key="frame" x="356.66666666666674" y="642.66666666666652" width="41.333333333333314" height="41.333333333333371"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veE-bJ-jDd">
+                                <rect key="frame" x="348" y="634" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.97636479139328003" green="0.97653168439865112" blue="0.97635418176651001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="veE-bJ-jDd" secondAttribute="height" id="DjV-nE-G3t"/>
                                 </constraints>
@@ -67,6 +67,19 @@
                                     <action selector="compassButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9gM-T0-7Rg"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhn-EC-OBg">
+                                <rect key="frame" x="16" y="634.66666666666663" width="100" height="50"/>
+                                <color key="backgroundColor" red="0.97636479139999999" green="0.97653168440000004" blue="0.9763541818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="CRE-rt-iB8"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="jm2-p6-ww1"/>
+                                </constraints>
+                                <string key="text">  Bikeway ━
+  Bike Lane ┅   </string>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.47934520244598389" blue="0.99908632040023804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -77,11 +90,14 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zOI-DP-xzX" secondAttribute="bottom" id="FRb-Hn-W3Z"/>
                             <constraint firstItem="zOI-DP-xzX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="G06-L5-jjN"/>
                             <constraint firstItem="zOI-DP-xzX" firstAttribute="top" secondItem="veE-bJ-jDd" secondAttribute="bottom" constant="8" id="KYH-qm-4iP"/>
-                            <constraint firstItem="fU3-1f-Wbl" firstAttribute="bottom" secondItem="zOI-DP-xzX" secondAttribute="top" id="Oa2-57-AlZ"/>
+                            <constraint firstItem="fU3-1f-Wbl" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="Oa2-57-AlZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zOI-DP-xzX" secondAttribute="bottom" id="UdB-Dy-7aW"/>
-                            <constraint firstItem="veE-bJ-jDd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.1" id="lNf-95-Qiy"/>
-                            <constraint firstItem="fU3-1f-Wbl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oa6-A4-ta1"/>
+                            <constraint firstItem="vhn-EC-OBg" firstAttribute="leading" secondItem="fU3-1f-Wbl" secondAttribute="leading" constant="16" id="hkw-SV-f6k"/>
+                            <constraint firstItem="veE-bJ-jDd" firstAttribute="height" secondItem="vhn-EC-OBg" secondAttribute="height" id="lNf-95-Qiy"/>
+                            <constraint firstItem="fU3-1f-Wbl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="oa6-A4-ta1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="veE-bJ-jDd" secondAttribute="trailing" constant="16" id="paq-BW-FUv"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vhn-EC-OBg" secondAttribute="trailing" constant="20" symbolic="YES" id="tVQ-s8-i8S"/>
+                            <constraint firstItem="vhn-EC-OBg" firstAttribute="centerY" secondItem="veE-bJ-jDd" secondAttribute="centerY" id="wen-1o-qKf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -89,12 +105,14 @@
                         <outlet property="bikesDocksSegmentedControl" destination="gHh-rB-ZpP" id="IKv-dS-Qkz"/>
                         <outlet property="compassButton" destination="veE-bJ-jDd" id="s0b-KB-Dco"/>
                         <outlet property="fountainButton" destination="M9H-Jf-piW" id="qGX-bO-coY"/>
+                        <outlet property="legendLabel" destination="vhn-EC-OBg" id="Ftw-4I-DZf"/>
                         <outlet property="mapView" destination="fU3-1f-Wbl" id="S7Q-K4-Gt3"/>
                         <outlet property="toiletButton" destination="pDi-Vq-Urp" id="q43-8m-CmZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="134.5108695652174"/>
         </scene>
     </scenes>
     <resources>
