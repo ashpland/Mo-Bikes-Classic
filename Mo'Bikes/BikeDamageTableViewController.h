@@ -13,6 +13,4 @@
 @interface BikeDamageTableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 
-
-
 @end

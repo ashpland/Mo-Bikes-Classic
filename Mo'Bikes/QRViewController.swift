@@ -11,22 +11,22 @@ import AVFoundation
 
 @objc class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
-    
     @IBOutlet weak var statusLabel: UILabel!
+    
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
     var didDetect: Bool?
-    
     var damageArray: Array<String>?
     
     let supportedCodeTypes =  [AVMetadataObjectTypeQRCode]
     
 
-    
     override func viewDidAppear(_ animated: Bool) {
         didDetect = false;
+        self.title = "Scan QR Code"
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,9 +64,7 @@ import AVFoundation
             
             // Move the message label and top bar to the front
             view.bringSubview(toFront: statusLabel)
-            //view.bringSubview(toFront: topbar)
-            
-            
+
             qrCodeFrameView = UIView()
             
             if let qrCodeFrameView = qrCodeFrameView {
@@ -76,32 +74,22 @@ import AVFoundation
                 view.bringSubview(toFront: qrCodeFrameView)
             }
             
-            
-            
         } catch {
-            // If any error occurs, simply print it out and don't continue any more.
+        
             print(error)
-            
-
-            
             return
         }
-
-        
-        
-
-        // Do any additional setup after loading the view.
     }
     
     
-    // MARK: - AVCaptureMetadataOutputObjectsDelegate Methods
+    //AVCaptureMetadataOutputObjectsDelegate Methods
 
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
 
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
-            statusLabel.text = "No QR/barcode is detected"
+            statusLabel.text = "No QR barcode is detected"
             return
         }
 
@@ -116,68 +104,31 @@ import AVFoundation
             if metadataObj.stringValue != nil {
                 statusLabel.text = metadataObj.stringValue
                 
-                //segue to mail app.
-            
+                //call sendMail ONLY ONCE after QRCode is detected
                 if(didDetect == false)
                 {
                     self.sendMail()
                 }
                 didDetect = true
-                
             }
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
     func sendMail(){
-        
-        
-        
-        // set modal presentation style to popover on your view controller
-        // must be done before you reference controller.popoverPresentationController
-        //newEmail.modalPresentationStyle = UIModalPresentationPopover;
-        //newEmail.preferredContentSize = CGSizeMake(150, 300);
-        
-        // configure popover style & delegate
-        //UIPopoverPresentationController *popover =  newEmail.popoverPresentationController;
-        //newEmail.popoverPresentationController.delegate = newEmail;
-        //newEmail.popoverPresentationController.sourceView = self.view;
-        
-        // newEmail.popoverPresentationController.sourceRect = CGRectMake(150,300,1,1);
-        //newEmail.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
-        
-        //right now just static info
-
-       
-        // display the controller in the usual way
-            //self.present(newEmail, animated: true, completion: nil)
         self.performSegue(withIdentifier:"showEmailVCSegue", sender: self)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showEmailVCSegue" ){
             
             let newEmail = segue.destination as! Email
-            
-                newEmail.sendEmail(myName: "Sanjay Shah", qrCode: "\(statusLabel.text ?? "No QRCode")", damageArray: damageArray!)
+            newEmail.sendEmail(myName: "Sanjay Shah", qrCode: "\(statusLabel.text ?? "No QRCode")", damageArray: damageArray!)
         }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
-    */
 
 }
