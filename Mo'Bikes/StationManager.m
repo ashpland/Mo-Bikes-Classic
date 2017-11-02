@@ -24,7 +24,6 @@
 
 +(void)updateStationsFromArray:(NSArray<NSDictionary<NSString *,id> *> *)stationArray {
     [[StationManager sharedStationManager] updateStationsFromArray:stationArray];
-    [[StationManager sharedStationManager] checkWhatsInCoreData];
 }
 
 - (void)setCoordinates:(NSString *)coordinatesString forStation:(Station *)newStation {
@@ -107,23 +106,6 @@
         abort();
     } else {
         return results;
-    }
-}
-
-- (void)checkWhatsInCoreData{
-    // TODO: Get rid of this eventually
-
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Station"];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"operative == NO"]];
-    
-    NSError *error = nil;
-    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
-    if (!results) {
-        NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
-        abort();
-    } else {
-        //NSLog(@"%@", results);
-        NSLog(@"Inoperative Stations: %lu", results.count);
     }
 }
 
