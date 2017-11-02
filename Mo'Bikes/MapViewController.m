@@ -64,7 +64,8 @@
      }];
     
     [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"SupplementaryAnnotationMarker"];
-    
+    [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"StationMarkerView"];
+
     
     
     [self getLocation];
@@ -77,6 +78,90 @@
 }
 
 
+
+- (MKAnnotationView * _Nullable)getStationMarkerFor:(id<MKAnnotation> _Nonnull)annotation mapView:(MKMapView * _Nonnull)mapView {
+    
+    Station *station = (Station *)annotation;
+    MKMarkerAnnotationView *newStationMarkerView = (MKMarkerAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"StationMarkerView" forAnnotation:station];
+    
+    newStationMarkerView.markerTintColor = self.normalStationColor;
+    newStationMarkerView.titleVisibility = MKFeatureVisibilityHidden;
+
+    
+    bool bikesSelected = self.bikesDocksSegmentedControl.selectedSegmentIndex == 0;
+    
+    if(bikesSelected){
+        newStationMarkerView.glyphImage = [UIImage imageNamed:@"bike"];
+        if (station.available_bikes <= 10)
+            newStationMarkerView.markerTintColor = self.lowStationColor;
+
+    }
+    else {
+//        newMarkerView.glyphImage = [UIImage imageNamed:@"station"];
+        if (station.available_docks <= 10)
+            newStationMarkerView.markerTintColor = self.lowStationColor;
+    }
+
+    return newStationMarkerView;
+    
+
+//
+//    if(self.bikesDocksSegmentedControl.selectedSegmentIndex == 1){
+//
+//        MKMarkerAnnotationView *dockAnnotationView = (MKMarkerAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"dockAnnotationView"];
+//
+//        Station *station = (Station *)annotation;
+//
+//        if(dockAnnotationView == nil){
+//
+//            dockAnnotationView = [[MKMarkerAnnotationView alloc] initWithAnnotation:station reuseIdentifier:@"dockAnnotationView"];
+//            dockAnnotationView.canShowCallout = YES;
+//
+//            dockAnnotationView.glyphImage = [UIImage imageNamed:@"bike"];
+//
+//            dockAnnotationView.markerTintColor = self.normalStationColor;
+//
+//            if (station.available_docks <= 3)
+//                dockAnnotationView.markerTintColor = self.lowStationColor;
+//
+//
+//            //                dockAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_docks];
+//            dockAnnotationView.titleVisibility = MKFeatureVisibilityHidden;
+//
+//            return dockAnnotationView;
+//        }
+//
+//        else  dockAnnotationView.annotation = annotation;
+//
+//        return dockAnnotationView;
+//    }
+//    else {
+//        // Try to dequeue an existing pin view first.
+//        MKMarkerAnnotationView *bikeAnnotationView = (MKMarkerAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
+//
+//        Station *station = (Station *)annotation;
+//
+//        if(bikeAnnotationView == nil){
+//            bikeAnnotationView = [[MKMarkerAnnotationView alloc] initWithAnnotation:station reuseIdentifier:@"CustomPinAnnotationView"];
+//            bikeAnnotationView.canShowCallout = YES;
+//
+//            bikeAnnotationView.glyphImage = [UIImage imageNamed:@"bike"];
+//            //            bikeAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_bikes];
+//            bikeAnnotationView.markerTintColor = self.normalStationColor;
+//
+//            if (station.available_bikes <= 10)
+//                bikeAnnotationView.markerTintColor = self.lowStationColor;
+//
+//
+//
+//            bikeAnnotationView.titleVisibility = MKFeatureVisibilityHidden;
+//        }
+//        else {
+//            bikeAnnotationView.annotation = annotation;
+//        }
+//        return  bikeAnnotationView;
+//    }
+}
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     
@@ -96,7 +181,6 @@
         else if (curAnnotation.layerType == SupplementaryLayerTypeFountain)
             icon = [UIImage imageNamed:@"fountain"];
         
-        
         MKMarkerAnnotationView *newMarkerView = (MKMarkerAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"SupplementaryAnnotationMarker" forAnnotation:annotation];
         
         newMarkerView.markerTintColor = supColor;
@@ -110,61 +194,7 @@
     // If its a station, use dynamic markers
     if ([annotation isKindOfClass:[Station class]])
     {
-        if(self.bikesDocksSegmentedControl.selectedSegmentIndex == 1){
-            
-            MKMarkerAnnotationView *dockAnnotationView = (MKMarkerAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"dockAnnotationView"];
-            
-            Station *station = (Station *)annotation;
-            
-            if(dockAnnotationView == nil){
-                
-                dockAnnotationView = [[MKMarkerAnnotationView alloc] initWithAnnotation:station reuseIdentifier:@"dockAnnotationView"];
-                dockAnnotationView.canShowCallout = YES;
-                
-                dockAnnotationView.glyphImage = [UIImage imageNamed:@"bike"];
-                
-                dockAnnotationView.markerTintColor = self.normalStationColor;
-                
-                if (station.available_docks <= 3)
-                    dockAnnotationView.markerTintColor = self.lowStationColor;
-
-                
-//                dockAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_docks];
-                dockAnnotationView.titleVisibility = MKFeatureVisibilityHidden;
-                
-                return dockAnnotationView;
-            }
-            
-            else  dockAnnotationView.annotation = annotation;
-            
-            return dockAnnotationView;
-        }
-        else {
-        // Try to dequeue an existing pin view first.
-        MKMarkerAnnotationView *bikeAnnotationView = (MKMarkerAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
-     
-        Station *station = (Station *)annotation;
-  
-        if(bikeAnnotationView == nil){
-            bikeAnnotationView = [[MKMarkerAnnotationView alloc] initWithAnnotation:station reuseIdentifier:@"CustomPinAnnotationView"];
-            bikeAnnotationView.canShowCallout = YES;
-            
-            bikeAnnotationView.glyphImage = [UIImage imageNamed:@"bike"];
-//            bikeAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_bikes];
-            bikeAnnotationView.markerTintColor = self.normalStationColor;
-            
-            if (station.available_bikes <= 10)
-                bikeAnnotationView.markerTintColor = self.lowStationColor;
-
-            
-            
-            bikeAnnotationView.titleVisibility = MKFeatureVisibilityHidden;
-        }
-        else {
-            bikeAnnotationView.annotation = annotation;
-        }
-        return  bikeAnnotationView;
-        }
+        return [self getStationMarkerFor:annotation mapView:mapView];
     }
     else return  nil;
 }
