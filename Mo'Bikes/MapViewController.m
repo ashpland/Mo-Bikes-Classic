@@ -20,19 +20,16 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *compassButton;
-@property (weak, nonatomic) IBOutlet UILabel *legendLabel;
-
-@property (weak, nonatomic) IBOutlet UISegmentedControl *bikesDocksSegmentedControl;
-@property (nonatomic, retain) CLLocation *currentPosition;
-@property (nonatomic, retain) CLLocationManager *locationManager;
-
-@property (strong, nonatomic) NSArray<Station*> *stationsArray;
-
-- (IBAction)contactButtonPressed:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *toiletButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *fountainButton;
+@property (weak, nonatomic) IBOutlet UILabel *legendLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *bikesDocksSegmentedControl;
+
+- (IBAction)contactButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)layerButtonPressed:(UIBarButtonItem *)sender;
 
+@property (nonatomic, retain) CLLocation *currentPosition;
+@property (nonatomic, retain) CLLocationManager *locationManager;
 @property (strong, nonatomic) UIColor *disabledButtonColor;
 @property (strong, nonatomic) UIColor *normalStationColor;
 @property (strong, nonatomic) UIColor *lowStationColor;
@@ -41,39 +38,29 @@
 
 @implementation MapViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mapView.delegate = self;
-    
-    
-    //Test download of API data. It's just logged out currently.
+    [self updateAPIData];
+    [self getLocation];
+    [self setupUI];
+}
+
+- (void)updateAPIData {
     [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"
                         withCompletion:^(NSArray *stationArray)
      {
-         
          [StationManager updateStationsFromArray:stationArray];
          
-         self.stationsArray = [StationManager getAllStations];
-         
          dispatch_async(dispatch_get_main_queue(), ^{
-             [self.mapView addAnnotations:self.stationsArray];
+             [self.mapView addAnnotations:[StationManager getAllStations]];
          });
          
      }];
-    
-    [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"SupplementaryAnnotationMarker"];
-    [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"StationMarkerView"];
-
-    
-    
-    [self getLocation];
-
-    [self setupUI];
-    
-    self.stationsArray = [StationManager getAllStations];
-    [self.mapView addAnnotations:self.stationsArray];
-    [self displayBikeways];
 }
+
 
 
 - (MKAnnotationView * _Nullable)getStationMarkerFor:(id<MKAnnotation> _Nonnull)annotation mapView:(MKMapView * _Nonnull)mapView {
@@ -92,7 +79,6 @@
         newStationMarkerView.glyphImage = [UIImage imageNamed:@"mbike"];
         if (station.available_bikes < 3)
             newStationMarkerView.markerTintColor = self.lowStationColor;
-
     }
     else /*docksSelected */ {
         newStationMarkerView.glyphImage = [UIImage imageNamed:@"mdock"];
@@ -103,7 +89,6 @@
     if(newStationMarkerView.isSelected) {
         newStationMarkerView.markerTintColor = [UIColor greenColor];
     }
-    
     return newStationMarkerView;
 }
 
@@ -240,7 +225,13 @@
     self.legendLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.legendLabel.layer.shadowOpacity = 0.5;
     self.legendLabel.layer.shadowRadius = 1.0;
-
+    
+    [self displayBikeways];
+    
+    [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"SupplementaryAnnotationMarker"];
+    [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"StationMarkerView"];
+    
+    [self.mapView addAnnotations:[StationManager getAllStations]];
 }
 
 
@@ -254,17 +245,19 @@
 
 - (IBAction)bikesDocksSegControlChanged:(UISegmentedControl *)sender {
     
+    NSArray<Station *> *stationsArray = [StationManager getAllStations];
+    
     if (sender.selectedSegmentIndex==0)
     {
         //show bikes
-        [self.mapView removeAnnotations:self.stationsArray];
-        [self.mapView addAnnotations:self.stationsArray];
+        [self.mapView removeAnnotations:stationsArray];
+        [self.mapView addAnnotations:stationsArray];
     }
     else if (sender.selectedSegmentIndex ==1)
     {
         //show docks
-        [self.mapView removeAnnotations:self.stationsArray];
-        [self.mapView addAnnotations:self.stationsArray];
+        [self.mapView removeAnnotations:stationsArray];
+        [self.mapView addAnnotations:stationsArray];
     }
 }
 

@@ -29,6 +29,10 @@
     [self saveContext];
 }
 
+-(void)applicationWillEnterForeground:(UIApplication *)application {
+    // TODO: Update API Data here
+}
+
 
 #pragma mark - Core Data stack
 

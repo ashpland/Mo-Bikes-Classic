@@ -25,6 +25,7 @@
 		495663F11FA7CCE700F74646 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663F01FA7CCE700F74646 /* DownloadManager.m */; };
 		495663F41FA7E33800F74646 /* StationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663F31FA7E33800F74646 /* StationManager.m */; };
 		496579C01FA921A1005C6920 /* SupplementaryLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */; };
+		4983CCD91FABD84D00F3122D /* MapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983CCD81FABD84D00F3122D /* MapViewDelegate.m */; };
 		CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1E61361FA7C37C0083E619 /* LocationManager.m */; };
 		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
 		CE85E3C61FAA584F00AF5B8F /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C51FAA584F00AF5B8F /* Email.swift */; };
@@ -64,6 +65,8 @@
 		495663F21FA7E33800F74646 /* StationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StationManager.h; sourceTree = "<group>"; };
 		495663F31FA7E33800F74646 /* StationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StationManager.m; sourceTree = "<group>"; };
 		496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryLayers.swift; sourceTree = "<group>"; };
+		4983CCD71FABD84D00F3122D /* MapViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewDelegate.h; sourceTree = "<group>"; };
+		4983CCD81FABD84D00F3122D /* MapViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewDelegate.m; sourceTree = "<group>"; };
 		CE1E61351FA7C37C0083E619 /* LocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		CE1E61361FA7C37C0083E619 /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		CE1E61391FA7C3B00083E619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -130,6 +133,8 @@
 				495663D71FA7C08300F74646 /* AppDelegate.m */,
 				CEA2F41F1FA7D2C300564888 /* MapViewController.h */,
 				CEA2F4201FA7D2C300564888 /* MapViewController.m */,
+				4983CCD71FABD84D00F3122D /* MapViewDelegate.h */,
+				4983CCD81FABD84D00F3122D /* MapViewDelegate.m */,
 				CE85E3C71FAA95B700AF5B8F /* ContactStoryboard.storyboard */,
 				CE85E3CE1FABA5AF00AF5B8F /* StationDamageStoryboard.storyboard */,
 				CE85E3D01FABA66200AF5B8F /* StationDamageTableViewController.h */,
@@ -276,6 +281,7 @@
 				493497D11FA99FF5007CE719 /* SupplementaryAnnotation.swift in Sources */,
 				494C1B4D1FA8103600F00593 /* Station+CoreDataClass.m in Sources */,
 				CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */,
+				4983CCD91FABD84D00F3122D /* MapViewDelegate.m in Sources */,
 				495663E11FA7C08300F74646 /* Mo_Bikes.xcdatamodeld in Sources */,
 				CE85E3D21FABA66200AF5B8F /* StationDamageTableViewController.m in Sources */,
 				494C1B4E1FA8103600F00593 /* Station+CoreDataProperties.m in Sources */,
