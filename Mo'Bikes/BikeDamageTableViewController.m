@@ -86,12 +86,15 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString: @"showQRVC"]){
         
-//    
-//        QRViewController *qrvc = 
+//
+        QRViewController *qrvc = (QRViewController*)[segue destinationViewController];
+        qrvc.damageArray= self.tickedDamagesArray;
+        
+        
 //        
 //        (QRViewController*)[segue destinationViewController];
 //        qrvc.damageArray = self.tickedDamagesArray;
-//        
+//
         
         
     

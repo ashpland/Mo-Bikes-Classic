@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-//@class QRViewController;
+@class QRViewController;
 
 @interface BikeDamageTableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
