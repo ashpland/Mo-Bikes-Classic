@@ -8,20 +8,20 @@
   "watchOS" : [
     {
       "name" : "AEXML",
-      "hash" : "7894c139de9f7c6faaff07b5434fcfb1ab3e969fc0427260ed835635f5d9e8c9"
+      "hash" : "43689beb49acdd577d250027e6f44bca49c3af3641c93b5d3c38efb66815ad37"
     }
   ],
   "tvOS" : [
     {
       "name" : "AEXML",
-      "hash" : "652f26e36cdcb5a55298fcc53b3a2f490b4e9f4e3fe054f2d1310825d6e65e05"
+      "hash" : "ec1d12e4d16131047120da7b56cc8540adfdd82f2cbcf3592dfb43aca78537f9"
     }
   ],
   "commitish" : "4.1.0",
   "iOS" : [
     {
       "name" : "AEXML",
-      "hash" : "22336d52f719c05ee118ec1b48107d8d7802a4e1e5fd71087b3647935fd7b7af"
+      "hash" : "6094591aa1c9bb4f941b9deeaa6b47dc00642a40192bb3f2fe4bdfb7eaf30aa3"
     }
   ]
 }

@@ -90,14 +90,14 @@
     bool bikesSelected = self.bikesDocksSegmentedControl.selectedSegmentIndex == 0;
     
     if(bikesSelected){
-        newStationMarkerView.glyphImage = [UIImage imageNamed:@"bike"];
-        if (station.available_bikes <= 10)
+        newStationMarkerView.glyphImage = [UIImage imageNamed:@"mobibike"];
+        if (station.available_bikes < 3)
             newStationMarkerView.markerTintColor = self.lowStationColor;
 
     }
     else {
         newStationMarkerView.glyphImage = [UIImage imageNamed:@"fountain"];
-        if (station.available_docks <= 10)
+        if (station.available_docks < 3)
             newStationMarkerView.markerTintColor = self.lowStationColor;
     }
     
@@ -105,7 +105,7 @@
         newStationMarkerView.markerTintColor = [UIColor greenColor];
     }
 
-    newStationMarkerView.selectedGlyphImage = [UIImage imageNamed:@"phone"];
+    newStationMarkerView.selectedGlyphImage = [UIImage imageNamed:@"mobidock"];
 
     
     return newStationMarkerView;
