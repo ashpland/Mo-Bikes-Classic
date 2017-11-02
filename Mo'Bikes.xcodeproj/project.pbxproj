@@ -28,6 +28,9 @@
 		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
 		CE85E3C41FA942B200AF5B8F /* StationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C31FA942B200AF5B8F /* StationAnnotation.m */; };
 		CE85E3C61FAA584F00AF5B8F /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C51FAA584F00AF5B8F /* Email.swift */; };
+		CE85E3C81FAA95B700AF5B8F /* ContactStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE85E3C71FAA95B700AF5B8F /* ContactStoryboard.storyboard */; };
+		CE85E3CA1FAA96B300AF5B8F /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C91FAA96B300AF5B8F /* QRViewController.swift */; };
+		CE85E3CD1FAA999900AF5B8F /* BikeDamageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3CC1FAA999900AF5B8F /* BikeDamageTableViewController.m */; };
 		CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F4201FA7D2C300564888 /* MapViewController.m */; };
 		CEA2F4231FA7F73100564888 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA2F4221FA7F73100564888 /* MapKit.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +67,10 @@
 		CE85E3C21FA942B200AF5B8F /* StationAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StationAnnotation.h; sourceTree = "<group>"; };
 		CE85E3C31FA942B200AF5B8F /* StationAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StationAnnotation.m; sourceTree = "<group>"; };
 		CE85E3C51FAA584F00AF5B8F /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
+		CE85E3C71FAA95B700AF5B8F /* ContactStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContactStoryboard.storyboard; sourceTree = "<group>"; };
+		CE85E3C91FAA96B300AF5B8F /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
+		CE85E3CB1FAA999900AF5B8F /* BikeDamageTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BikeDamageTableViewController.h; sourceTree = "<group>"; };
+		CE85E3CC1FAA999900AF5B8F /* BikeDamageTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BikeDamageTableViewController.m; sourceTree = "<group>"; };
 		CEA2F41F1FA7D2C300564888 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		CEA2F4201FA7D2C300564888 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		CEA2F4221FA7F73100564888 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -121,6 +128,10 @@
 				495663D71FA7C08300F74646 /* AppDelegate.m */,
 				CEA2F41F1FA7D2C300564888 /* MapViewController.h */,
 				CEA2F4201FA7D2C300564888 /* MapViewController.m */,
+				CE85E3C71FAA95B700AF5B8F /* ContactStoryboard.storyboard */,
+				CE85E3CB1FAA999900AF5B8F /* BikeDamageTableViewController.h */,
+				CE85E3CC1FAA999900AF5B8F /* BikeDamageTableViewController.m */,
+				CE85E3C91FAA96B300AF5B8F /* QRViewController.swift */,
 				CE85E3C51FAA584F00AF5B8F /* Email.swift */,
 				495663EF1FA7CCE700F74646 /* DownloadManager.h */,
 				495663F01FA7CCE700F74646 /* DownloadManager.m */,
@@ -225,6 +236,7 @@
 				495663E31FA7C08300F74646 /* Assets.xcassets in Resources */,
 				495663DE1FA7C08300F74646 /* Main.storyboard in Resources */,
 				490233AF1FA908750048D688 /* public_washrooms.kml in Resources */,
+				CE85E3C81FAA95B700AF5B8F /* ContactStoryboard.storyboard in Resources */,
 				490233B11FA908750048D688 /* bikeways.kml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +276,8 @@
 				CE85E3C61FAA584F00AF5B8F /* Email.swift in Sources */,
 				CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */,
 				495663E91FA7C08300F74646 /* main.m in Sources */,
+				CE85E3CD1FAA999900AF5B8F /* BikeDamageTableViewController.m in Sources */,
+				CE85E3CA1FAA96B300AF5B8F /* QRViewController.swift in Sources */,
 				495663F11FA7CCE700F74646 /* DownloadManager.m in Sources */,
 				496579C01FA921A1005C6920 /* SupplementaryLayers.swift in Sources */,
 				495663D81FA7C08300F74646 /* AppDelegate.m in Sources */,
