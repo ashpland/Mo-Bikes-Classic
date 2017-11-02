@@ -1,19 +1,18 @@
 //
-//  BikeDamageTableViewController.m
+//  StationDamageTableViewController.m
 //  Mo'Bikes
 //
-//  Created by Sanjay Shah on 2017-11-01.
+//  Created by Sanjay Shah on 2017-11-02.
 //  Copyright © 2017 hearthedge. All rights reserved.
 //
 
-#import "BikeDamageTableViewController.h"
+#import "StationDamageTableViewController.h"
 #import "Mo'Bikes-Bridging-Header.h"
 #import "Mo_Bikes-Swift.h"
 
-
-
-@interface BikeDamageTableViewController ()
+@interface StationDamageTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @property NSArray<NSString*> *damageTypesArray;
 
@@ -21,7 +20,7 @@
 
 @end
 
-@implementation BikeDamageTableViewController
+@implementation StationDamageTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,19 +29,14 @@
     self.tableView.dataSource = self;
     //self.tableView.allowsMultipleSelection = true;
     //self.tableView.editing = NO;
-    self.damageTypesArray = [[NSArray alloc] initWithObjects:@"Front Tire", @"Back Tire", @"Gears", @"Seat", @"Brakes" , nil];
+    self.damageTypesArray = [[NSArray alloc] initWithObjects:@"Dock", @"Lock", @"What ", nil];
     self.tickedDamagesArray = [[NSMutableArray alloc] init];
-    
-
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)showQRVC:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"showQRVC" sender:sender];
 }
 
 /*
@@ -56,18 +50,19 @@
 */
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"bikeDamageCellID" forIndexPath:indexPath];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"stationDamageCellID" forIndexPath:indexPath];
     
     cell.textLabel.text = self.damageTypesArray[indexPath.row];
     
     return  cell;
-    
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.damageTypesArray.count;
-    
 }
+
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -82,19 +77,20 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         [self.tickedDamagesArray addObject:(self.damageTypesArray[indexPath.row])];
     }
-
+    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString: @"showQRVC"]){
+    if ([segue.identifier isEqualToString: @"showEmailSegue"]){
         
-        QRViewController *qrvc =  (QRViewController*)[segue destinationViewController];
-        
-        qrvc.damageArray= self.tickedDamagesArray;
-        
-        
-
+        Email *newEmail = [segue destinationViewController];
+        [newEmail sendEmailWithMyName:@"Sanjay Shah" qrCode:@"No QRCode on station" damageArray:self.tickedDamagesArray];
     }
+}
+
+- (IBAction)showEmail:(UIBarButtonItem *)sender {
+    
+    [self performSegueWithIdentifier:@"showEmailSegue" sender:sender];
 }
 
 

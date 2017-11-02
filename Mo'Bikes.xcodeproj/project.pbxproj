@@ -32,6 +32,8 @@
 		CE85E3C81FAA95B700AF5B8F /* ContactStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE85E3C71FAA95B700AF5B8F /* ContactStoryboard.storyboard */; };
 		CE85E3CA1FAA96B300AF5B8F /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C91FAA96B300AF5B8F /* QRViewController.swift */; };
 		CE85E3CD1FAA999900AF5B8F /* BikeDamageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3CC1FAA999900AF5B8F /* BikeDamageTableViewController.m */; };
+		CE85E3CF1FABA5AF00AF5B8F /* StationDamageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE85E3CE1FABA5AF00AF5B8F /* StationDamageStoryboard.storyboard */; };
+		CE85E3D21FABA66200AF5B8F /* StationDamageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3D11FABA66200AF5B8F /* StationDamageTableViewController.m */; };
 		CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F4201FA7D2C300564888 /* MapViewController.m */; };
 		CEA2F4231FA7F73100564888 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA2F4221FA7F73100564888 /* MapKit.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +75,9 @@
 		CE85E3C91FAA96B300AF5B8F /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		CE85E3CB1FAA999900AF5B8F /* BikeDamageTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BikeDamageTableViewController.h; sourceTree = "<group>"; };
 		CE85E3CC1FAA999900AF5B8F /* BikeDamageTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BikeDamageTableViewController.m; sourceTree = "<group>"; };
+		CE85E3CE1FABA5AF00AF5B8F /* StationDamageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StationDamageStoryboard.storyboard; sourceTree = "<group>"; };
+		CE85E3D01FABA66200AF5B8F /* StationDamageTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StationDamageTableViewController.h; sourceTree = "<group>"; };
+		CE85E3D11FABA66200AF5B8F /* StationDamageTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StationDamageTableViewController.m; sourceTree = "<group>"; };
 		CEA2F41F1FA7D2C300564888 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		CEA2F4201FA7D2C300564888 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		CEA2F4221FA7F73100564888 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -131,6 +136,9 @@
 				CEA2F41F1FA7D2C300564888 /* MapViewController.h */,
 				CEA2F4201FA7D2C300564888 /* MapViewController.m */,
 				CE85E3C71FAA95B700AF5B8F /* ContactStoryboard.storyboard */,
+				CE85E3CE1FABA5AF00AF5B8F /* StationDamageStoryboard.storyboard */,
+				CE85E3D01FABA66200AF5B8F /* StationDamageTableViewController.h */,
+				CE85E3D11FABA66200AF5B8F /* StationDamageTableViewController.m */,
 				CE85E3CB1FAA999900AF5B8F /* BikeDamageTableViewController.h */,
 				CE85E3CC1FAA999900AF5B8F /* BikeDamageTableViewController.m */,
 				CE85E3C91FAA96B300AF5B8F /* QRViewController.swift */,
@@ -241,6 +249,7 @@
 				490233AF1FA908750048D688 /* public_washrooms.kml in Resources */,
 				CE85E3C81FAA95B700AF5B8F /* ContactStoryboard.storyboard in Resources */,
 				490233B11FA908750048D688 /* bikeways.kml in Resources */,
+				CE85E3CF1FABA5AF00AF5B8F /* StationDamageStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +282,7 @@
 				494C1B4D1FA8103600F00593 /* Station+CoreDataClass.m in Sources */,
 				CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */,
 				495663E11FA7C08300F74646 /* Mo_Bikes.xcdatamodeld in Sources */,
+				CE85E3D21FABA66200AF5B8F /* StationDamageTableViewController.m in Sources */,
 				494C1B4E1FA8103600F00593 /* Station+CoreDataProperties.m in Sources */,
 				495663F41FA7E33800F74646 /* StationManager.m in Sources */,
 				CE85E3C41FA942B200AF5B8F /* StationAnnotation.m in Sources */,

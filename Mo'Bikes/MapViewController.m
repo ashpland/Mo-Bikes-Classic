@@ -284,7 +284,7 @@
         }];
         UIAlertAction *reportStationDamageAction = [UIAlertAction actionWithTitle:@"Station" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
-            [self performSegueWithIdentifier:@"showContactSBSegue" sender:self];
+            [self performSegueWithIdentifier:@"showStationDamageSBSegue" sender:self];
             
         }];
         UIAlertAction *cancelReportDamageAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
