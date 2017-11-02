@@ -294,8 +294,35 @@
 -(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     MKPolylineRenderer *bikewayRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
     
-    bikewayRenderer.strokeColor = self.view.tintColor;
-    bikewayRenderer.lineWidth = 1.0;
+    BikewayPolyline *currentBikeway = (BikewayPolyline *)overlay;
+    
+    if (currentBikeway.bikewayType == BikewayTypeLocal) {
+        
+    }
+    
+    switch (currentBikeway.bikewayType) {
+        case BikewayTypeLocal:
+            bikewayRenderer.strokeColor = [UIColor greenColor];
+            break;
+        case BikewayTypeShared:
+            bikewayRenderer.strokeColor = [UIColor redColor];
+            break;
+        case BikewayTypePainted:
+            bikewayRenderer.strokeColor = [UIColor orangeColor];
+            break;
+        case BikewayTypeProtected:
+            bikewayRenderer.strokeColor = [UIColor blueColor];
+            break;
+    }
+    
+    
+    
+
+    
+    
+//    bikewayRenderer.strokeColor = self.view.tintColor;
+    bikewayRenderer.lineWidth = 2.0;
+    
     
     
     return bikewayRenderer;

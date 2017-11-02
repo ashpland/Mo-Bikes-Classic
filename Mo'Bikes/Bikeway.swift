@@ -22,7 +22,9 @@ class Bikeway: NSObject {
     func makeMKPolylines() -> Array<MKPolyline> {
         var polylineArray = [MKPolyline]()
         for lineArray in lines {
-            polylineArray.append(MKPolyline(coordinates: lineArray, count: lineArray.count))
+            let newBikewayPolyline = BikewayPolyline(coordinates: lineArray, count: lineArray.count)
+            newBikewayPolyline.bikewayType = self.type
+            polylineArray.append(newBikewayPolyline)
         }
         return polylineArray
     }
@@ -33,9 +35,13 @@ class Bikeway: NSObject {
     }
 }
 
-enum BikewayType {
+@objc public enum BikewayType : Int {
     case local
     case shared
     case painted
     case protected
+}
+
+@objc class BikewayPolyline: MKPolyline {
+    public var bikewayType : BikewayType = BikewayType.local
 }
