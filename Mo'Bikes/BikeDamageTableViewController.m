@@ -97,5 +97,9 @@
     }
 }
 
+- (IBAction)cancelButton:(UIButton *)sender {
+    
+    [self performSegueWithIdentifier:@"unwindToInitialVC" sender:self];
+}
 
 @end

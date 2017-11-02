@@ -13,6 +13,9 @@ import AVFoundation
     
     
     @IBOutlet weak var statusLabel: UILabel!
+    
+
+    
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
@@ -26,6 +29,8 @@ import AVFoundation
     
     override func viewDidAppear(_ animated: Bool) {
         didDetect = false;
+        
+            self.navigationItem.title = "Scan QR Code"
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +67,9 @@ import AVFoundation
             // Start video capture.
             captureSession?.startRunning()
             
-            // Move the message label and top bar to the front
+            // Move the message label to the front
             view.bringSubview(toFront: statusLabel)
-            //view.bringSubview(toFront: topbar)
+           
             
             
             qrCodeFrameView = UIView()

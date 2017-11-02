@@ -11,7 +11,13 @@ import MessageUI
 
 
 @objc class Email: UIViewController,MFMailComposeViewControllerDelegate {
+    
+    //FIXME: Change to mobi email
+    
     let destinationEmail = "sanjays_94@hotmail.com"
+    
+    var bikeOrDock:String = ""
+
 
     
     override func viewDidLoad() {
@@ -33,6 +39,13 @@ import MessageUI
         } else {
             self.showSendMailErrorAlert()
         }
+        
+        //if we are reporting damage on bike or dock
+        if(qrCode == "No QRCode on station"){
+            bikeOrDock = "Dock"
+        }
+        else { bikeOrDock = "Bike" }
+        
         var damageArrayString = ""
 
         for var i in (0..<damageArray.count){
@@ -45,7 +58,7 @@ import MessageUI
         //mailVC properties
         mailComposerVC.setToRecipients([destinationEmail])
         mailComposerVC.setSubject(myName + " is reporting damage")
-        mailComposerVC.setMessageBody(("Hi,\n\nThe bike with the following QR Code has damage \n\nQRCode: " + qrCode + "\n\nDamages to:" + damageArrayString + "\n\nLove," + myName), isHTML: false)
+        mailComposerVC.setMessageBody(("Hi,\n\nThe \(bikeOrDock) with the following QR Code has damage \n\nQRCode: " + qrCode + "\n\nDamages:" + damageArrayString + "\n\nYours," + myName), isHTML: false)
     }
     
     func showSendMailErrorAlert() {
