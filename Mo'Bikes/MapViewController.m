@@ -336,23 +336,22 @@
     MKPolylineRenderer *bikewayRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
     
     BikewayPolyline *currentBikeway = (BikewayPolyline *)overlay;
+    bikewayRenderer.strokeColor = self.view.tintColor;
+    bikewayRenderer.lineWidth = 3.0;
     
     switch (currentBikeway.bikewayType) {
         case BikewayTypeLocal:
-            bikewayRenderer.strokeColor = [UIColor greenColor];
             break;
         case BikewayTypeShared:
-            bikewayRenderer.strokeColor = [UIColor redColor];
+            return nil;
             break;
         case BikewayTypePainted:
-            bikewayRenderer.strokeColor = [UIColor orangeColor];
+            bikewayRenderer.lineDashPattern = @[@5, @5];
             break;
         case BikewayTypeProtected:
-            bikewayRenderer.strokeColor = [UIColor blueColor];
             break;
     }
 
-    bikewayRenderer.lineWidth = 2.0;
 
     return bikewayRenderer;
 }
