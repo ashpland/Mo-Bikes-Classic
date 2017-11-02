@@ -12,6 +12,7 @@
 #import "DownloadManager.h"
 #import "StationAnnotation.h"
 #import "Mo_Bikes-Swift.h"
+#import "BikeDamageTableViewController.h"
 
 
 
@@ -271,6 +272,43 @@
         [application openURL:[NSURL URLWithString: @"tel:7786551800"] options:@{} completionHandler:nil];
         
     }];
+    UIAlertAction *reportDamageAction = [UIAlertAction actionWithTitle:@"Report Damage" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //ask for bikes or station damage
+        UIAlertController *reportDamageAlert = [UIAlertController alertControllerWithTitle:@"Oh no!" message:@"Whats damaged?" preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction *reportBikeDamageAction = [UIAlertAction actionWithTitle:@"Bike" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //go tp new View Controller in storyboard
+            
+            UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"ContactStoryboard" bundle:nil];
+
+            BikeDamageTableViewController *initialReportDamageViewController = (BikeDamageTableViewController *)[secondStoryBoard instantiateViewControllerWithIdentifier:@"bikeDamageViewControllerID"];
+            
+            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:initialReportDamageViewController];
+
+
+            
+            [self presentViewController:navController animated:true completion: nil];
+            
+//            [self presentViewController:initialReportDamageViewController animated:YES completion:nil];
+//
+            
+            
+            
+            
+        }];
+        UIAlertAction *reportStationDamageAction = [UIAlertAction actionWithTitle:@"Station" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        UIAlertAction *cancelReportDamageAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        [reportDamageAlert addAction:reportBikeDamageAction];
+        [reportDamageAlert addAction:reportStationDamageAction];
+        [reportDamageAlert addAction:cancelReportDamageAction];
+        
+        [self presentViewController:reportDamageAlert animated:YES completion:nil];
+        
+        
+    }];
     UIAlertAction *emailAction = [UIAlertAction actionWithTitle:@"Email Mobi" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         Email *newEmail = [[Email alloc] init];
@@ -289,7 +327,8 @@
         //newEmail.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
         
         //right now just static info
-        [newEmail sendEmailWithMyName:@"Sanjay Shah" myEmail:@"sanjay@shah.com"];
+        [newEmail sendEmailWithMyName:@"Sanjay Shah" qrCode:@"sanjay@shah.com" damageArray:NULL];
+        //[newEmail sendEmailWithMyName:@"Sanjay Shah" qrCode:@"sanjay@shah.com"];
         
         // display the controller in the usual way
         [self presentViewController:newEmail animated:YES completion:nil];
@@ -303,6 +342,7 @@
     
     [contactAlert addAction:callAction];
     [contactAlert addAction:emailAction];
+    [contactAlert addAction:reportDamageAction];
     [contactAlert addAction:cancelAction];
     
     [self presentViewController:contactAlert animated:YES completion:nil];
@@ -382,6 +422,11 @@
 
 
     return bikewayRenderer;
+}
+
+
+- (IBAction) unwindForSegue:(UIStoryboardSegue *)unwindSegue towardsViewController:(UIViewController *)subsequentVC{
+    
 }
 
 

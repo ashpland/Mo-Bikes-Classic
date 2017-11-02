@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--What?-->
+        <scene sceneID="ctv-FH-WG8">
+            <objects>
+                <viewController storyboardIdentifier="bikeDamageViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="A6V-xG-f9N" customClass="BikeDamageTableViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7oM-2v-cBV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v1g-pF-6lh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bikeDamageCellID" rowHeight="37" id="cZj-VG-V8F">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="37"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cZj-VG-V8F" id="I0F-y9-xk9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="36.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v1g-pF-6lh" firstAttribute="bottom" secondItem="88Z-Ek-9sc" secondAttribute="bottom" id="8pL-7w-Bws"/>
+                            <constraint firstItem="v1g-pF-6lh" firstAttribute="leading" secondItem="88Z-Ek-9sc" secondAttribute="leading" id="YfQ-YU-kQZ"/>
+                            <constraint firstItem="v1g-pF-6lh" firstAttribute="top" secondItem="88Z-Ek-9sc" secondAttribute="top" id="nAN-CR-C52"/>
+                            <constraint firstItem="v1g-pF-6lh" firstAttribute="trailing" secondItem="88Z-Ek-9sc" secondAttribute="trailing" id="vfH-qX-Qj9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="88Z-Ek-9sc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="What?" id="RvX-Wu-ihQ">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="z8h-sS-Ut3"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="plain" id="w9L-tW-NMq">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="C54-Oe-VnY">
+                                <rect key="frame" x="313" y="7" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="showQRVC:" destination="A6V-xG-f9N" eventType="touchUpInside" id="3hb-er-azo"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="v1g-pF-6lh" id="poD-Fs-Zbo"/>
+                        <segue destination="x5z-GM-6No" kind="show" identifier="showQRVC" id="Ggv-jx-7SI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KgI-Cf-ien" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="426" y="190"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="inZ-6d-Qr2">
+            <objects>
+                <viewController id="x5z-GM-6No" customClass="QRViewController" customModule="Mo_Bikes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WZQ-1J-V17">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No QR code is detected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WdB-Yn-iIO">
+                                <rect key="frame" x="0.0" y="646" width="375" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WdB-Yn-iIO" firstAttribute="trailing" secondItem="pKn-Mh-mvK" secondAttribute="trailing" id="VBf-rc-xoG"/>
+                            <constraint firstItem="WdB-Yn-iIO" firstAttribute="bottom" secondItem="pKn-Mh-mvK" secondAttribute="bottom" id="oHv-2v-4YU"/>
+                            <constraint firstItem="WdB-Yn-iIO" firstAttribute="leading" secondItem="pKn-Mh-mvK" secondAttribute="leading" id="p8h-2l-G2a"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pKn-Mh-mvK"/>
+                    </view>
+                    <connections>
+                        <outlet property="statusLabel" destination="WdB-Yn-iIO" id="gCr-e2-qA1"/>
+                        <segue destination="IsS-YM-vWn" kind="unwind" identifier="unwindToInitialVC" unwindAction="unwindForSegue:towardsViewController:" id="i57-Qq-dEf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eBJ-Ls-cs6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="IsS-YM-vWn" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1233" y="168"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aoJ-37-JRu">
+            <objects>
+                <navigationController storyboardIdentifier="naviController" automaticallyAdjustsScrollViewInsets="NO" id="ky1-W7-re6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Xt-j0-Vfn">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="A6V-xG-f9N" kind="relationship" relationship="rootViewController" id="ppF-NG-FxK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lhb-G7-rWV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-497" y="209"/>
+        </scene>
+    </scenes>
+</document>
