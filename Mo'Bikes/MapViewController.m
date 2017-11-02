@@ -157,11 +157,8 @@
         newMarkerView.glyphImage = icon;
         newMarkerView.enabled = NO;
         
-        
         return newMarkerView;
-        
     }
-
     
     if ([annotation isKindOfClass:[Station class]])
     {
