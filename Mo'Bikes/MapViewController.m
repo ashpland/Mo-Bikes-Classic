@@ -277,28 +277,20 @@
         UIAlertController *reportDamageAlert = [UIAlertController alertControllerWithTitle:@"Oh no!" message:@"Whats damaged?" preferredStyle:UIAlertControllerStyleActionSheet];
         
         UIAlertAction *reportBikeDamageAction = [UIAlertAction actionWithTitle:@"Bike" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //go tp new View Controller in storyboard
-            
-            UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"ContactStoryboard" bundle:nil];
-
-            BikeDamageTableViewController *initialReportDamageViewController = (BikeDamageTableViewController *)[secondStoryBoard instantiateViewControllerWithIdentifier:@"bikeDamageViewControllerID"];
-            
-            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:initialReportDamageViewController];
-
-
-            
-            [self presentViewController:navController animated:true completion: nil];
-            
-//            [self presentViewController:initialReportDamageViewController animated:YES completion:nil];
-//
-            
-            
+          
+            [self performSegueWithIdentifier:@"showContactSBSegue" sender:self];
             
             
         }];
         UIAlertAction *reportStationDamageAction = [UIAlertAction actionWithTitle:@"Station" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            [self performSegueWithIdentifier:@"showContactSBSegue" sender:self];
+            
         }];
         UIAlertAction *cancelReportDamageAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+            [reportDamageAlert dismissViewControllerAnimated:YES completion:nil];
+            NSLog(@"Cacnelled");
         }];
         
         [reportDamageAlert addAction:reportBikeDamageAction];
@@ -309,39 +301,14 @@
         
         
     }];
-    UIAlertAction *emailAction = [UIAlertAction actionWithTitle:@"Email Mobi" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        Email *newEmail = [[Email alloc] init];
-        
-        // set modal presentation style to popover on your view controller
-        // must be done before you reference controller.popoverPresentationController
-       //newEmail.modalPresentationStyle = UIModalPresentationPopover;
-        //newEmail.preferredContentSize = CGSizeMake(150, 300);
-       
-        // configure popover style & delegate
-        //UIPopoverPresentationController *popover =  newEmail.popoverPresentationController;
-        //newEmail.popoverPresentationController.delegate = newEmail;
-        //newEmail.popoverPresentationController.sourceView = self.view;
-        
-       // newEmail.popoverPresentationController.sourceRect = CGRectMake(150,300,1,1);
-        //newEmail.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
-        
-        //right now just static info
-        [newEmail sendEmailWithMyName:@"Sanjay Shah" qrCode:@"sanjay@shah.com" damageArray:NULL];
-        //[newEmail sendEmailWithMyName:@"Sanjay Shah" qrCode:@"sanjay@shah.com"];
-        
-        // display the controller in the usual way
-        [self presentViewController:newEmail animated:YES completion:nil];
 
-        
-    }];
+    
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [contactAlert dismissViewControllerAnimated:YES completion:nil];
         NSLog(@"Cacnelled");
     }];
     
     [contactAlert addAction:callAction];
-    [contactAlert addAction:emailAction];
     [contactAlert addAction:reportDamageAction];
     [contactAlert addAction:cancelAction];
     
@@ -425,7 +392,7 @@
 }
 
 
-- (IBAction) unwindForSegue:(UIStoryboardSegue *)unwindSegue towardsViewController:(UIViewController *)subsequentVC{
+- (IBAction)unwindFromEmail:(UIStoryboardSegue*)segue{
     
 }
 

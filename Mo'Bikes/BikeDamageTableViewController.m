@@ -31,7 +31,7 @@
     self.tableView.dataSource = self;
     //self.tableView.allowsMultipleSelection = true;
     //self.tableView.editing = NO;
-    self.damageTypesArray = [[NSArray alloc] initWithObjects:@"Tires", @"Gears", @"Seats", nil];
+    self.damageTypesArray = [[NSArray alloc] initWithObjects:@"Front Tire", @"Back Tire", @"Gears", @"Seat", @"Brakes" , nil];
     self.tickedDamagesArray = [[NSMutableArray alloc] init];
     
 
@@ -96,5 +96,14 @@
     }
 }
 
+//- (IBAction) unwindForSegue:(UIStoryboardSegue *)unwindSegue towardsViewController:(UIViewController *)subsequentVC{
+//
+//
+//
+//}
+
+//- (IBAction)unwindFromEmail:(UIStoryboardSegue*)segue{
+//    
+//}
 
 @end
