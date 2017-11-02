@@ -10,7 +10,6 @@
 		490233AF1FA908750048D688 /* public_washrooms.kml in Resources */ = {isa = PBXBuildFile; fileRef = 490233AC1FA908750048D688 /* public_washrooms.kml */; };
 		490233B01FA908750048D688 /* drinking_fountains.kml in Resources */ = {isa = PBXBuildFile; fileRef = 490233AD1FA908750048D688 /* drinking_fountains.kml */; };
 		490233B11FA908750048D688 /* bikeways.kml in Resources */ = {isa = PBXBuildFile; fileRef = 490233AE1FA908750048D688 /* bikeways.kml */; };
-		490233B31FA909250048D688 /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490233B21FA909250048D688 /* AEXML.framework */; };
 		490233B71FA9099D0048D688 /* KMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490233B61FA9099D0048D688 /* KMLParser.swift */; };
 		4922BBDE1FAA5E62005323A7 /* Bikeway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4922BBDD1FAA5E62005323A7 /* Bikeway.swift */; };
 		493497D11FA99FF5007CE719 /* SupplementaryAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493497D01FA99FF5007CE719 /* SupplementaryAnnotation.swift */; };
@@ -26,6 +25,7 @@
 		495663F41FA7E33800F74646 /* StationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663F31FA7E33800F74646 /* StationManager.m */; };
 		496579C01FA921A1005C6920 /* SupplementaryLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */; };
 		4983CCD91FABD84D00F3122D /* MapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983CCD81FABD84D00F3122D /* MapViewDelegate.m */; };
+		4983CCDB1FABE27300F3122D /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4983CCDA1FABE27300F3122D /* AEXML.framework */; };
 		CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1E61361FA7C37C0083E619 /* LocationManager.m */; };
 		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
 		CE85E3C61FAA584F00AF5B8F /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C51FAA584F00AF5B8F /* Email.swift */; };
@@ -42,7 +42,6 @@
 		490233AC1FA908750048D688 /* public_washrooms.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = public_washrooms.kml; sourceTree = "<group>"; };
 		490233AD1FA908750048D688 /* drinking_fountains.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = drinking_fountains.kml; sourceTree = "<group>"; };
 		490233AE1FA908750048D688 /* bikeways.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = bikeways.kml; sourceTree = "<group>"; };
-		490233B21FA909250048D688 /* AEXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AEXML.framework; path = Carthage/Build/iOS/AEXML.framework; sourceTree = "<group>"; };
 		490233B51FA9099D0048D688 /* Mo'Bikes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mo'Bikes-Bridging-Header.h"; sourceTree = "<group>"; };
 		490233B61FA9099D0048D688 /* KMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMLParser.swift; sourceTree = "<group>"; };
 		4922BBDD1FAA5E62005323A7 /* Bikeway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bikeway.swift; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryLayers.swift; sourceTree = "<group>"; };
 		4983CCD71FABD84D00F3122D /* MapViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewDelegate.h; sourceTree = "<group>"; };
 		4983CCD81FABD84D00F3122D /* MapViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewDelegate.m; sourceTree = "<group>"; };
+		4983CCDA1FABE27300F3122D /* AEXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AEXML.framework; path = Carthage/Build/iOS/AEXML.framework; sourceTree = "<group>"; };
 		CE1E61351FA7C37C0083E619 /* LocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		CE1E61361FA7C37C0083E619 /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		CE1E61391FA7C3B00083E619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -90,7 +90,7 @@
 			files = (
 				CEA2F4231FA7F73100564888 /* MapKit.framework in Frameworks */,
 				CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */,
-				490233B31FA909250048D688 /* AEXML.framework in Frameworks */,
+				4983CCDB1FABE27300F3122D /* AEXML.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +170,7 @@
 		CE1E61381FA7C3AF0083E619 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				490233B21FA909250048D688 /* AEXML.framework */,
+				4983CCDA1FABE27300F3122D /* AEXML.framework */,
 				CEA2F4221FA7F73100564888 /* MapKit.framework */,
 				CE1E61391FA7C3B00083E619 /* CoreLocation.framework */,
 			);
@@ -187,8 +187,8 @@
 				495663CF1FA7C08300F74646 /* Sources */,
 				495663D01FA7C08300F74646 /* Frameworks */,
 				495663D11FA7C08300F74646 /* Resources */,
-				490233B41FA909310048D688 /* ShellScript */,
 				CE972EF71FABCAED003F6E03 /* ShellScript */,
+				4983CCDC1FABE31200F3122D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -257,7 +257,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		490233B41FA909310048D688 /* ShellScript */ = {
+		4983CCDC1FABE31200F3122D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -445,7 +445,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L4XYQHCH99;
+				DEVELOPMENT_TEAM = T5E8L2XP69;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -468,7 +468,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L4XYQHCH99;
+				DEVELOPMENT_TEAM = T5E8L2XP69;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
