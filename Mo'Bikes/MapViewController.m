@@ -122,7 +122,7 @@
                 
                 dockAnnotationView.glyphImage = [UIImage imageNamed:@"bikeMarker"];
                 
-                dockAnnotationView.markerTintColor = [UIColor purpleColor];
+                dockAnnotationView.markerTintColor = [UIColor colorWithHue:0.75 saturation:0.4 brightness:1.0 alpha:1.0];
                 dockAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_docks];
                 dockAnnotationView.titleVisibility = MKFeatureVisibilityHidden;
                 
@@ -144,7 +144,7 @@
             bikeAnnotationView.canShowCallout = YES;
             
             bikeAnnotationView.glyphText = [NSString stringWithFormat:@"%hd", station.available_bikes];
-            bikeAnnotationView.markerTintColor = [UIColor purpleColor];
+            bikeAnnotationView.markerTintColor = [UIColor colorWithHue:0.75 saturation:0.8 brightness:1.0 alpha:1.0];
             bikeAnnotationView.titleVisibility = MKFeatureVisibilityHidden;
         }
         else {
