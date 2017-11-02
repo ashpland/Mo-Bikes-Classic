@@ -170,9 +170,13 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     //get currentPosition
     self.currentPosition = self.locationManager.location;
-    //set region
     
-    if(self.mapView.region.center.latitude == 0) {
+    //set region
+    //if we are at default Apple coordinate (0,0), then update region
+    float lat = self.mapView.region.center.latitude;
+    float lon = self.mapView.region.center.longitude;
+    
+    if (lat == 0 || lon == 0){
         
         MKCoordinateSpan span = MKCoordinateSpanMake(.007f, .007f);
         self.mapView.region = MKCoordinateRegionMake(self.currentPosition.coordinate, span);
