@@ -86,17 +86,18 @@
     newStationMarkerView.markerTintColor = self.normalStationColor;
     newStationMarkerView.titleVisibility = MKFeatureVisibilityHidden;
     newStationMarkerView.canShowCallout = YES;
+    newStationMarkerView.animatesWhenAdded = YES;
     
     bool bikesSelected = self.bikesDocksSegmentedControl.selectedSegmentIndex == 0;
     
     if(bikesSelected){
-        newStationMarkerView.glyphImage = [UIImage imageNamed:@"mobibike"];
+        newStationMarkerView.glyphImage = [UIImage imageNamed:@"mbike"];
         if (station.available_bikes < 3)
             newStationMarkerView.markerTintColor = self.lowStationColor;
 
     }
-    else {
-        newStationMarkerView.glyphImage = [UIImage imageNamed:@"fountain"];
+    else /*docksSelected */ {
+        newStationMarkerView.glyphImage = [UIImage imageNamed:@"mdock"];
         if (station.available_docks < 3)
             newStationMarkerView.markerTintColor = self.lowStationColor;
     }
@@ -104,9 +105,6 @@
     if(newStationMarkerView.isSelected) {
         newStationMarkerView.markerTintColor = [UIColor greenColor];
     }
-
-    newStationMarkerView.selectedGlyphImage = [UIImage imageNamed:@"mobidock"];
-
     
     return newStationMarkerView;
 }
@@ -156,6 +154,7 @@
         newMarkerView.markerTintColor = supColor;
         newMarkerView.glyphImage = icon;
         newMarkerView.enabled = NO;
+        newMarkerView.animatesWhenAdded = YES;
         
         return newMarkerView;
     }
