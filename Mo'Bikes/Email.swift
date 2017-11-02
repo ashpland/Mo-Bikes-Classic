@@ -14,6 +14,9 @@ class Email: UIViewController,MFMailComposeViewControllerDelegate {
     let destinationEmail = "sanjays_94@hotmail.com"
     
     
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.popoverPresentationController!.delegate = self;
@@ -21,7 +24,7 @@ class Email: UIViewController,MFMailComposeViewControllerDelegate {
         
     }
     
-    func sendEmail(myName: String, qrCode:String, damageArray:Array<Any>) -> Void {
+    func sendEmail(myName: String, qrCode:String, damageArray:Array<String>) -> Void {
      
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
@@ -33,12 +36,19 @@ class Email: UIViewController,MFMailComposeViewControllerDelegate {
         } else {
             self.showSendMailErrorAlert()
         }
+        var damageArrayString = ""
 
+        for var i in (0..<damageArray.count){
+            
+            damageArrayString = damageArrayString + "\n\(damageArray[i])"
+            i = i+1
+            
+        }
         
         //mailVC properties
         mailComposerVC.setToRecipients([destinationEmail])
         mailComposerVC.setSubject(myName + " is reporting damage")
-        mailComposerVC.setMessageBody(("Hi,\n the bike with the following QR Code has damage \n\nQRCode:" + qrCode + "\nDamages: \(damageArray[0])" + "\n\nLove," + myName), isHTML: false)
+        mailComposerVC.setMessageBody(("Hi,\n\nThe bike with the following QR Code has damage \n\nQRCode: " + qrCode + "\n\nDamages to:" + damageArrayString + "\n\nLove," + myName), isHTML: false)
     }
     
     func showSendMailErrorAlert() {
@@ -55,7 +65,8 @@ class Email: UIViewController,MFMailComposeViewControllerDelegate {
             case .saved:
             print ("Go back to mapView")
         case .sent:
-                self.performSegue(withIdentifier: "unwindToInitialVC", sender: self)
+            
+            self.performSegue(withIdentifier: "unwindToInitialVC", sender: self)
              print ("Go back to mapView")
             
             case .failed:

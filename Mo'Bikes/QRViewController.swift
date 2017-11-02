@@ -18,7 +18,7 @@ import AVFoundation
     var qrCodeFrameView:UIView?
     var didDetect: Bool?
     
-    var damageArray: Array<Any>?
+    var damageArray: Array<String>?
     
     let supportedCodeTypes =  [AVMetadataObjectTypeQRCode]
     
@@ -136,7 +136,7 @@ import AVFoundation
 
     func sendMail(){
         
-        let newEmail = Email()
+        
         
         // set modal presentation style to popover on your view controller
         // must be done before you reference controller.popoverPresentationController
@@ -152,11 +152,21 @@ import AVFoundation
         //newEmail.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
         
         //right now just static info
-        newEmail.sendEmail(myName: "Sanjay Shah", qrCode: "\(statusLabel.text ?? "No QRCode")", damageArray: damageArray!)
+
        
         // display the controller in the usual way
-        self.present(newEmail, animated: true, completion: nil)
+            //self.present(newEmail, animated: true, completion: nil)
+        self.performSegue(withIdentifier:"showEmailVCSegue", sender: self)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "showEmailVCSegue" ){
+            
+            let newEmail = segue.destination as! Email
+            
+                newEmail.sendEmail(myName: "Sanjay Shah", qrCode: "\(statusLabel.text ?? "No QRCode")", damageArray: damageArray!)
+        }
     }
 
 

@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +32,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="QKm-3f-gxX"/>
                                     <barButtonItem style="plain" id="JAK-gf-17y">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="gHh-rB-ZpP">
-                                            <rect key="frame" x="154.66666666666666" y="7.6666666666666288" width="104.99999999999997" height="29"/>
+                                            <rect key="frame" x="154.66666666666669" y="7.6666666666666288" width="105.00000000000006" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Bikes"/>
@@ -108,11 +108,20 @@
                         <outlet property="legendLabel" destination="vhn-EC-OBg" id="Ftw-4I-DZf"/>
                         <outlet property="mapView" destination="fU3-1f-Wbl" id="S7Q-K4-Gt3"/>
                         <outlet property="toiletButton" destination="pDi-Vq-Urp" id="q43-8m-CmZ"/>
+                        <segue destination="QaR-2X-UhA" kind="show" identifier="showContactSBSegue" id="E4J-uC-IAK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="134.5108695652174"/>
+            <point key="canvasLocation" x="159" y="164"/>
+        </scene>
+        <!--ContactStoryboard-->
+        <scene sceneID="PiN-D0-LzL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ContactStoryboard" id="QaR-2X-UhA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YS1-Ve-Hfi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="870" y="87"/>
         </scene>
     </scenes>
     <resources>
