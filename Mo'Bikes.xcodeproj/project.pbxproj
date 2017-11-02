@@ -187,7 +187,6 @@
 				495663CF1FA7C08300F74646 /* Sources */,
 				495663D01FA7C08300F74646 /* Frameworks */,
 				495663D11FA7C08300F74646 /* Resources */,
-				490233B41FA909310048D688 /* ShellScript */,
 				CE972EF71FABCAED003F6E03 /* ShellScript */,
 			);
 			buildRules = (
@@ -257,20 +256,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		490233B41FA909310048D688 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/AEXML.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
 		CE972EF71FABCAED003F6E03 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -445,7 +430,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L4XYQHCH99;
+				DEVELOPMENT_TEAM = T5E8L2XP69;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -468,7 +453,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L4XYQHCH99;
+				DEVELOPMENT_TEAM = T5E8L2XP69;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
