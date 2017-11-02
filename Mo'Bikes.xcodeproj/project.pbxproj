@@ -27,7 +27,6 @@
 		496579C01FA921A1005C6920 /* SupplementaryLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */; };
 		CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1E61361FA7C37C0083E619 /* LocationManager.m */; };
 		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
-		CE85E3C41FA942B200AF5B8F /* StationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C31FA942B200AF5B8F /* StationAnnotation.m */; };
 		CE85E3C61FAA584F00AF5B8F /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C51FAA584F00AF5B8F /* Email.swift */; };
 		CE85E3C81FAA95B700AF5B8F /* ContactStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE85E3C71FAA95B700AF5B8F /* ContactStoryboard.storyboard */; };
 		CE85E3CA1FAA96B300AF5B8F /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C91FAA96B300AF5B8F /* QRViewController.swift */; };
@@ -68,8 +67,6 @@
 		CE1E61351FA7C37C0083E619 /* LocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		CE1E61361FA7C37C0083E619 /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		CE1E61391FA7C3B00083E619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		CE85E3C21FA942B200AF5B8F /* StationAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StationAnnotation.h; sourceTree = "<group>"; };
-		CE85E3C31FA942B200AF5B8F /* StationAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StationAnnotation.m; sourceTree = "<group>"; };
 		CE85E3C51FAA584F00AF5B8F /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
 		CE85E3C71FAA95B700AF5B8F /* ContactStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContactStoryboard.storyboard; sourceTree = "<group>"; };
 		CE85E3C91FAA96B300AF5B8F /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
@@ -127,8 +124,6 @@
 		495663D51FA7C08300F74646 /* Mo'Bikes */ = {
 			isa = PBXGroup;
 			children = (
-				CE85E3C21FA942B200AF5B8F /* StationAnnotation.h */,
-				CE85E3C31FA942B200AF5B8F /* StationAnnotation.m */,
 				CE1E61351FA7C37C0083E619 /* LocationManager.h */,
 				CE1E61361FA7C37C0083E619 /* LocationManager.m */,
 				495663D61FA7C08300F74646 /* AppDelegate.h */,
@@ -285,7 +280,6 @@
 				CE85E3D21FABA66200AF5B8F /* StationDamageTableViewController.m in Sources */,
 				494C1B4E1FA8103600F00593 /* Station+CoreDataProperties.m in Sources */,
 				495663F41FA7E33800F74646 /* StationManager.m in Sources */,
-				CE85E3C41FA942B200AF5B8F /* StationAnnotation.m in Sources */,
 				CE85E3C61FAA584F00AF5B8F /* Email.swift in Sources */,
 				CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */,
 				495663E91FA7C08300F74646 /* main.m in Sources */,
