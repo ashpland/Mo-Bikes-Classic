@@ -11,4 +11,6 @@
 
 @interface MapViewDelegate : NSObject <MKMapViewDelegate>
 
+@property (strong, nonatomic) UISegmentedControl *bikesDocksSegmentedControl;
+
 @end
