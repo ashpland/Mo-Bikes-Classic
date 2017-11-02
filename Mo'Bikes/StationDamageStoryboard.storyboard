@@ -41,8 +41,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1C5-SF-u3V"/>
                     </view>
-                    <navigationItem key="navigationItem" title="What's Damaged?" id="x8A-x4-Z4I">
+                    <navigationItem key="navigationItem" title="What's Damaged?" leftItemsSupplementBackButton="YES" id="x8A-x4-Z4I">
                         <barButtonItem key="backBarButtonItem" title="Back" id="tbQ-kO-Tdc"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="ke6-OK-n2N">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="P4I-Fu-1TD">
+                                <rect key="frame" x="16" y="7" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButton:" destination="kkB-Ba-suG" eventType="touchUpInside" id="HvZ-OJ-zQi"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="To4-7W-Spm">
                             <connections>
                                 <action selector="showEmail:" destination="kkB-Ba-suG" id="Dyj-y1-BGD"/>
@@ -52,9 +62,11 @@
                     <connections>
                         <outlet property="tableView" destination="GqK-37-RXd" id="RPU-JP-t2E"/>
                         <segue destination="hOn-QK-FD9" kind="show" identifier="showEmailSegue" id="lh5-M5-Y8F"/>
+                        <segue destination="zhi-id-PMc" kind="unwind" identifier="unwindToInitialVC" unwindAction="unwindFromEmail:" id="vGC-wI-6xz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Opc-CE-2vk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="zhi-id-PMc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1004" y="-586.05697151424295"/>
         </scene>
