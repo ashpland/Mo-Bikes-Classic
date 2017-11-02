@@ -29,7 +29,7 @@
     self.tableView.dataSource = self;
     //self.tableView.allowsMultipleSelection = true;
     //self.tableView.editing = NO;
-    self.damageTypesArray = [[NSArray alloc] initWithObjects:@"Dock", @"Lock", @"What ", nil];
+    self.damageTypesArray = [[NSArray alloc] initWithObjects:@"Blocked off", @"Lock Failing", @"Dirty Dock", nil];
     self.tickedDamagesArray = [[NSMutableArray alloc] init];
     // Do any additional setup after loading the view.
 }
@@ -92,6 +92,12 @@
     
     [self performSegueWithIdentifier:@"showEmailSegue" sender:sender];
 }
+
+- (IBAction)cancelButton:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"unwindToInitialVC" sender:self];
+    
+}
+
 
 
 @end
