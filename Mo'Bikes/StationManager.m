@@ -10,6 +10,12 @@
 
 #import "StationManager.h"
 
+@interface StationManager()
+
+@property (strong, nonatomic) NSArray<NSDictionary<NSString *,id> *> *stationArray;
+
+@end
+
 @implementation StationManager
 
 + (instancetype)sharedStationManager {
@@ -18,19 +24,31 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         theStationManager = [self new];
+        [[NSNotificationCenter defaultCenter] addObserver:theStationManager
+                                                 selector:NSSelectorFromString(@"managedObjectContextDidSave")
+                                                     name:NSManagedObjectContextDidSaveNotification object:nil];
+
     });
     return theStationManager;
 }
 
+
 # pragma mark - Adding and Updating Stations
 
 +(void)updateStationsFromArray:(NSArray<NSDictionary<NSString *,id> *> *)stationArray {
-    [[StationManager sharedStationManager] checkStationNumber:0 fromArray:stationArray];
+    StationManager *stationManager = [StationManager sharedStationManager];
+    stationManager.stationArray = stationArray;
+    [stationManager checkStationNumber:0];
 }
 
--(void)checkStationNumber:(NSInteger)index fromArray:(NSArray<NSDictionary<NSString *,id> *> *)stationArray {
-    if (index < stationArray.count) {
-        NSDictionary<NSString *, id> *stationDict = stationArray[index];
+-(void)managedObjectContextDidSave {
+    NSLog(@"Managed Object Context Did Save");
+    [self checkStationNumber:0];
+}
+
+-(void)checkStationNumber:(NSInteger)index {
+    if (index < self.stationArray.count) {
+        NSDictionary<NSString *, id> *stationDict = self.stationArray[index];
         NSArray<Station *> *checkExistingResults = [self checkIfExisiting:[stationDict objectForKey:@"name"]];
         bool stationDoesNotExist = checkExistingResults.count == 0;
         
@@ -48,7 +66,7 @@
             }
         }
         
-        [self checkStationNumber:index + 1 fromArray:stationArray];
+        [self checkStationNumber:index + 1];
     }
     else {
         return;
