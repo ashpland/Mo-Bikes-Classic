@@ -31,7 +31,6 @@
 }
 
 -(void)applicationWillEnterForeground:(UIApplication *)application {
-    NSLog(@"enter foreground called");
     [APIManager updateData];
 }
 
