@@ -15,16 +15,13 @@ import MessageUI
     //FIXME: Change to mobi email
     
     let destinationEmail = "sanjays_94@hotmail.com"
-    
     var bikeOrDock:String = ""
 
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.popoverPresentationController!.delegate = self;
         self.title = "Reporting Damage"
-        
     }
     
     func sendEmail(myName: String, qrCode:String, damageArray:Array<String>) -> Void {
@@ -49,16 +46,14 @@ import MessageUI
         var damageArrayString = ""
 
         for var i in (0..<damageArray.count){
-            
             damageArrayString = damageArrayString + "\n\(damageArray[i])"
             i = i+1
-            
         }
         
         //mailVC properties
         mailComposerVC.setToRecipients([destinationEmail])
         mailComposerVC.setSubject(myName + " is reporting damage")
-        mailComposerVC.setMessageBody(("Hi,\n\nThe \(bikeOrDock) with the following QR Code has damage \n\nQRCode: " + qrCode + "\n\nDamages:" + damageArrayString + "\n\nYours," + myName), isHTML: false)
+        mailComposerVC.setMessageBody(("Hi,\n\nThe \(bikeOrDock) with the following QR Code has damage \n\nQRCode: " + qrCode + "\n\nDamages:" + damageArrayString + "\n\nYours"), isHTML: false)
     }
     
     func showSendMailErrorAlert() {
@@ -74,16 +69,11 @@ import MessageUI
             case .cancelled: self.presentingViewController!.dismiss(animated: true)
             case .saved:
             print ("Go back to mapView")
-        case .sent:
-            
-            self.performSegue(withIdentifier: "unwindToInitialVC", sender: self)
-             print ("Go back to mapView")
+            case .sent: self.performSegue(withIdentifier: "unwindToInitialVC", sender: self)
+                         print ("Go back to mapView")
             
             case .failed:
             print ("Mail sent failure: \([error!.localizedDescription])")
         }
-  
-        
     }
-    
 }
