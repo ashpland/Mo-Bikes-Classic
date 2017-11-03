@@ -83,13 +83,29 @@
     }
 }
 
-
-
 - (void)updateBikesFor:(Station *)station stationDict:(NSDictionary<NSString *,id> *)stationDict {
-    station.total_docks = [[stationDict objectForKey:@"total_slots"] integerValue];
-    station.available_bikes = [[stationDict objectForKey:@"avl_bikes"] integerValue];
-    station.available_docks = [[stationDict objectForKey:@"free_slots"] integerValue];
+    NSLog(@"%@", station.name);
+    if (station.total_docks != [[stationDict objectForKey:@"total_slots"] integerValue]) {
+        station.total_docks = [[stationDict objectForKey:@"total_slots"] integerValue];
+        NSLog(@"  Updated total");
+    }
+    
+    if(station.available_bikes != [[stationDict objectForKey:@"avl_bikes"] integerValue]) {
+        station.available_bikes = [[stationDict objectForKey:@"avl_bikes"] integerValue];
+        NSLog(@"  Updated bikes");
+    }
+    
+    if(station.available_docks != [[stationDict objectForKey:@"free_slots"] integerValue]){
+        station.available_docks = [[stationDict objectForKey:@"free_slots"] integerValue];
+        NSLog(@"  Updated docks");
+    }
 }
+
+//- (void)updateBikesFor:(Station *)station stationDict:(NSDictionary<NSString *,id> *)stationDict {
+//    station.total_docks = [[stationDict objectForKey:@"total_slots"] integerValue];
+//    station.available_bikes = [[stationDict objectForKey:@"avl_bikes"] integerValue];
+//    station.available_docks = [[stationDict objectForKey:@"free_slots"] integerValue];
+//}
 
 - (void)setCoordinates:(NSString *)coordinatesString forStation:(Station *)newStation {
     NSString *latString = [coordinatesString substringToIndex:9];
