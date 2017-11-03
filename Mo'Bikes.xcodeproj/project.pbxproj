@@ -25,7 +25,6 @@
 		495663F41FA7E33800F74646 /* StationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663F31FA7E33800F74646 /* StationManager.m */; };
 		496579C01FA921A1005C6920 /* SupplementaryLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */; };
 		4983CCD91FABD84D00F3122D /* MapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983CCD81FABD84D00F3122D /* MapViewDelegate.m */; };
-		4983CCDB1FABE27300F3122D /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4983CCDA1FABE27300F3122D /* AEXML.framework */; };
 		CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1E61361FA7C37C0083E619 /* LocationManager.m */; };
 		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
 		CE85E3C61FAA584F00AF5B8F /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C51FAA584F00AF5B8F /* Email.swift */; };
@@ -66,7 +65,6 @@
 		496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryLayers.swift; sourceTree = "<group>"; };
 		4983CCD71FABD84D00F3122D /* MapViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewDelegate.h; sourceTree = "<group>"; };
 		4983CCD81FABD84D00F3122D /* MapViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewDelegate.m; sourceTree = "<group>"; };
-		4983CCDA1FABE27300F3122D /* AEXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AEXML.framework; path = Carthage/Build/iOS/AEXML.framework; sourceTree = "<group>"; };
 		CE1E61351FA7C37C0083E619 /* LocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		CE1E61361FA7C37C0083E619 /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		CE1E61391FA7C3B00083E619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -90,7 +88,6 @@
 			files = (
 				CEA2F4231FA7F73100564888 /* MapKit.framework in Frameworks */,
 				CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */,
-				4983CCDB1FABE27300F3122D /* AEXML.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +167,6 @@
 		CE1E61381FA7C3AF0083E619 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4983CCDA1FABE27300F3122D /* AEXML.framework */,
 				CEA2F4221FA7F73100564888 /* MapKit.framework */,
 				CE1E61391FA7C3B00083E619 /* CoreLocation.framework */,
 			);
