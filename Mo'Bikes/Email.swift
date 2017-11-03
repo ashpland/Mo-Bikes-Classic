@@ -82,11 +82,8 @@ import MessageUI
             case .failed:
             print ("Mail sent failure: \([error!.localizedDescription])")
         }
-        
-        
+  
         
     }
     
-
-
 }
