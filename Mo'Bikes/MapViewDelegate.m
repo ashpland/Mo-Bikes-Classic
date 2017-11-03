@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) UIColor *normalStationColor;
 @property (strong, nonatomic) UIColor *lowStationColor;
-@property (assign, nonatomic) BOOL isUpdating;
+@property (assign, nonatomic) BOOL hasCurrentData;
 
 @end
 
@@ -29,7 +29,7 @@
     if (self) {
         self.normalStationColor  = [UIColor colorWithHue:0.83 saturation:1.0 brightness:0.5 alpha:1.0];
         self.lowStationColor     = [UIColor colorWithHue:0.83 saturation:0.1 brightness:0.8 alpha:1.0];
-        self.isUpdating = NO;
+        self.hasCurrentData = NO;
     }
     return self;
 }
