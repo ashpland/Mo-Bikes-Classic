@@ -10,6 +10,7 @@
 #import "DownloadManager.h"
 #import "StationManager.h"
 #import "Mo_Bikes-Swift.h"
+#import "APIManager.h"
 
 
 @interface AppDelegate ()
@@ -30,7 +31,7 @@
 }
 
 -(void)applicationWillEnterForeground:(UIApplication *)application {
-    // TODO: Update API Data here
+    [APIManager updateData];
 }
 
 

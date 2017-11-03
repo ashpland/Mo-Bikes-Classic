@@ -44,15 +44,16 @@
     newStationMarkerView.animatesWhenAdded = YES;
     
     bool bikesSelected = self.bikesDocksSegmentedControl.selectedSegmentIndex == 0;
+    bool haveActualData = !(station.available_bikes == 0 && station.available_docks == 0);
     
     if(bikesSelected){
         newStationMarkerView.glyphImage = [UIImage imageNamed:@"mbike"];
-        if (station.available_bikes < 3)
+        if (station.available_bikes < 3 && haveActualData)
             newStationMarkerView.markerTintColor = self.lowStationColor;
     }
     else /*docksSelected */ {
         newStationMarkerView.glyphImage = [UIImage imageNamed:@"mdock"];
-        if (station.available_docks < 3)
+        if (station.available_docks < 3 && haveActualData)
             newStationMarkerView.markerTintColor = self.lowStationColor;
     }
     
@@ -67,9 +68,9 @@
         bool showBikesMode = self.bikesDocksSegmentedControl.selectedSegmentIndex == 0;
         
         if (showBikesMode) {
-            theMarker.glyphText = [NSString stringWithFormat:@"%d", theStation.available_bikes];
+            theMarker.glyphText = theStation.available_bikes_string;
         } else {
-            theMarker.glyphText = [NSString stringWithFormat:@"%d", theStation.available_docks];
+            theMarker.glyphText = theStation.available_docks_string;
         }
     }
 }

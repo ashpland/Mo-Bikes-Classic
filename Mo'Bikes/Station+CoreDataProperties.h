@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *name;
 @property (nonatomic) BOOL operative;
 @property (nonatomic) int16_t total_docks;
+@property (nonatomic, readonly, copy) NSString *available_bikes_string;
+@property (nonatomic, readonly, copy) NSString *available_docks_string;
 
 @end
 

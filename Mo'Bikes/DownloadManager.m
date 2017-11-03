@@ -37,7 +37,10 @@
                                             completionHandler:^(NSData *returnDownloadedData,
                                                                 NSURLResponse *response,
                                                                 NSError *error){
-                                                whenDownloaded(returnDownloadedData);
+                                                if (returnDownloadedData) {
+                                                    whenDownloaded(returnDownloadedData);
+                                                }
+                                                
     }];
     
     [dataTask resume];

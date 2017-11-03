@@ -17,5 +17,6 @@
 + (instancetype)sharedStationManager;
 + (void)updateStationsFromArray:(NSArray<NSDictionary<NSString *, id> *> *)stationArray;
 + (NSArray<Station *> *)getAllStations;
++ (void)clearStationCounts;
 
 @end
