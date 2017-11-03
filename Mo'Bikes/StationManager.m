@@ -34,11 +34,19 @@
         NSArray<Station *> *checkExistingResults = [self checkIfExisiting:[stationDict objectForKey:@"name"]];
         bool stationDoesNotExist = checkExistingResults.count == 0;
         
-        if (stationDoesNotExist)
+        if (stationDoesNotExist) {
             [self createNewStation:stationDict];
+            [self.managedObjectContext save:nil];
+            return;
+        }
         
-        else /*stationDoesExist*/
-            [self updateExistingStation:checkExistingResults[0] withDictionary:stationDict];
+        else /*stationDoesExist*/ {
+            bool didChangeSomething = [self updateExistingStation:checkExistingResults[0] withDictionary:stationDict];
+            if (didChangeSomething) {
+                [self.managedObjectContext save:nil];
+                return;
+            }
+        }
         
         [self checkStationNumber:index + 1 fromArray:stationArray];
     }
@@ -74,32 +82,55 @@
     }
 }
 
--(void)updateExistingStation:(Station *)existingStation withDictionary:(NSDictionary<NSString *, id> *)stationDict {
-    bool stationIsOperative = [[stationDict objectForKey:@"operative"] boolValue];
-    if (stationIsOperative) {
-        [self updateBikesFor:existingStation stationDict:stationDict];
+-(bool)updateExistingStation:(Station *)existingStation withDictionary:(NSDictionary<NSString *, id> *)stationDict {
+    bool didChangeSomething = NO;
+    bool stationIsNowOperative = [[stationDict objectForKey:@"operative"] boolValue];
+    
+    if (stationIsNowOperative) {
+        didChangeSomething = [self updateBikesFor:existingStation stationDict:stationDict];
+        if (existingStation.operative != YES) {
+            existingStation.operative = YES;
+            didChangeSomething = YES;
+        }
     } else {
-        existingStation.operative = NO;
+        if (existingStation.operative != NO) {
+            existingStation.operative = NO;
+            didChangeSomething = YES;
+        }
     }
+    return didChangeSomething;
 }
 
-- (void)updateBikesFor:(Station *)station stationDict:(NSDictionary<NSString *,id> *)stationDict {
-    NSLog(@"%@", station.name);
+- (bool)updateBikesFor:(Station *)station stationDict:(NSDictionary<NSString *,id> *)stationDict {
+    
+    bool didChangeSomething = NO;
+    
     if (station.total_docks != [[stationDict objectForKey:@"total_slots"] integerValue]) {
         station.total_docks = [[stationDict objectForKey:@"total_slots"] integerValue];
-        NSLog(@"  Updated total");
+        didChangeSomething = YES;
     }
-    
+
     if(station.available_bikes != [[stationDict objectForKey:@"avl_bikes"] integerValue]) {
         station.available_bikes = [[stationDict objectForKey:@"avl_bikes"] integerValue];
-        NSLog(@"  Updated bikes");
+        didChangeSomething = YES;
     }
-    
+
     if(station.available_docks != [[stationDict objectForKey:@"free_slots"] integerValue]){
         station.available_docks = [[stationDict objectForKey:@"free_slots"] integerValue];
-        NSLog(@"  Updated docks");
+        didChangeSomething = YES;
     }
+    
+    return didChangeSomething;
 }
+
+//- (void)updateBikesFor:(Station *)station stationDict:(NSDictionary<NSString *,id> *)stationDict {
+//    NSLog(@"%@", station.name);
+//    station.total_docks = [[stationDict objectForKey:@"total_slots"] integerValue];
+//    station.available_bikes = [[stationDict objectForKey:@"avl_bikes"] integerValue];
+//    station.available_docks = [[stationDict objectForKey:@"free_slots"] integerValue];
+//}
+
+
 
 //- (void)updateBikesFor:(Station *)station stationDict:(NSDictionary<NSString *,id> *)stationDict {
 //    station.total_docks = [[stationDict objectForKey:@"total_slots"] integerValue];
