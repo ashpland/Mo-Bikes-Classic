@@ -63,7 +63,7 @@
 
 - (void)updateAPIData {
     [APIManager sharedAPIManager].mapView = self.mapView;
-    [APIManager updateData];
+    [APIManager startUpdateData];
 }
 
 
