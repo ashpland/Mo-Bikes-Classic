@@ -89,6 +89,19 @@
     }
 }
 
++(void)clearStationCounts {
+    [[StationManager sharedStationManager] clearStationCounts];
+}
+
+-(void)clearStationCounts {
+    NSArray<Station *> *stationArray = [self getAllStations];
+    for (Station *curStation in stationArray) {
+        curStation.available_bikes = 0;
+        curStation.available_docks = 0;
+    }
+}
+
+
 #pragma mark - Getting Stations
 
 +(NSArray<Station *> *)getAllStations {

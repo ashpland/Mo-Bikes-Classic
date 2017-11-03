@@ -67,9 +67,9 @@
         bool showBikesMode = self.bikesDocksSegmentedControl.selectedSegmentIndex == 0;
         
         if (showBikesMode) {
-            theMarker.glyphText = [NSString stringWithFormat:@"%d", theStation.available_bikes];
+            theMarker.glyphText = theStation.available_bikes_string;
         } else {
-            theMarker.glyphText = [NSString stringWithFormat:@"%d", theStation.available_docks];
+            theMarker.glyphText = theStation.available_docks_string;
         }
     }
 }
