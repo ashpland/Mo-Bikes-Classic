@@ -31,7 +31,7 @@
 }
 
 -(void)applicationWillEnterForeground:(UIApplication *)application {
-//    [APIManager updateData];
+    [APIManager updateData];
 }
 
 
