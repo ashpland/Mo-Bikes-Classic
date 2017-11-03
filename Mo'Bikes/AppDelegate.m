@@ -31,6 +31,7 @@
 }
 
 -(void)applicationWillEnterForeground:(UIApplication *)application {
+    [StationManager removeObservers];
     [APIManager startUpdateData];
 }
 

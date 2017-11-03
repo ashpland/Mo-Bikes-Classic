@@ -9,6 +9,7 @@
 #define NSLog(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 
 #import "StationManager.h"
+#import "APIManager.h"
 
 @interface StationManager()
 
@@ -27,9 +28,17 @@
         [[NSNotificationCenter defaultCenter] addObserver:theStationManager
                                                  selector:NSSelectorFromString(@"managedObjectContextDidSave")
                                                      name:NSManagedObjectContextDidSaveNotification object:nil];
-
     });
     return theStationManager;
+}
+
++(void)removeObservers{
+    [[StationManager sharedStationManager] removeObservers];
+}
+
+-(void)removeObservers{
+    NSLog(@"Observers Removed");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -42,7 +51,7 @@
 }
 
 -(void)managedObjectContextDidSave {
-    NSLog(@"Managed Object Context Did Save");
+    NSLog(@"MOC Save");
     [self checkStationNumber:0];
 }
 
@@ -69,7 +78,7 @@
         [self checkStationNumber:index + 1];
     }
     else {
-        return;
+        [APIManager endUpdateData];
     }
 }
 
