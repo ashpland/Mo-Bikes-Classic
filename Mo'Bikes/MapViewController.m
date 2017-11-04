@@ -62,11 +62,22 @@
 }
 
 - (void)updateAPIData {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(finishedUpdatingStationData)
+                                                 name:@"finishedUpdatingStationData"
+                                               object:nil];
+
     [APIManager sharedAPIManager].mapView = self.mapView;
     [APIManager startUpdateData];
 }
 
-
+- (void)finishedUpdatingStationData {
+    NSArray *selectedAnnotations = [self.mapView selectedAnnotations];
+    if (selectedAnnotations.count > 0) {
+        [self.mapView deselectAnnotation:selectedAnnotations[0] animated:NO];
+        [self.mapView setSelectedAnnotations:selectedAnnotations];
+    }
+}
 
 
 
