@@ -28,8 +28,8 @@
 
 - (void)startUpdateData {
 
-    // TODO: SEND START MESSAGE
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatingStationData" object:nil];
+
     [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"
                         withCompletion:^(NSArray *stationArray)
      {
@@ -44,7 +44,7 @@
 - (void)endUpdateData {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.mapView addAnnotations:[StationManager getAllStations]];
-        // TODO: SEND END MESSAGE
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"finishedUpdatingStationData" object:nil];
     });
 }
 

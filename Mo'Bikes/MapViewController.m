@@ -69,6 +69,7 @@
 
 
 
+
 //updates our location after we authorize
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     //get currentPosition

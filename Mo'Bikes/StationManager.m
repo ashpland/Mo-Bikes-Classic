@@ -41,7 +41,6 @@
 }
 
 -(void)removeObservers{
-    NSLog(@"Observers Removed");
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -63,7 +62,6 @@
 }
 
 -(void)checkStationNumber:(NSInteger)index {
-    NSLog(@"%lu", index);
     if (index < self.stationArray.count) {
         NSDictionary<NSString *, id> *stationDict = self.stationArray[index];
         NSArray<Station *> *checkExistingResults = [self checkIfExisiting:[stationDict objectForKey:@"name"]];
