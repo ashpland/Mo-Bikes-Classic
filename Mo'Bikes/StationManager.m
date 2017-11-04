@@ -25,6 +25,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         theStationManager = [self new];
+        theStationManager.isWaitingForWriteToFinish = NO;
         [[NSNotificationCenter defaultCenter] addObserver:theStationManager
                                                  selector:NSSelectorFromString(@"managedObjectContextDidSave")
                                                      name:NSManagedObjectContextDidSaveNotification object:nil];
@@ -52,7 +53,10 @@
 
 -(void)managedObjectContextDidSave {
     NSLog(@"MOC Save");
-    [self checkStationNumber:0];
+    if (self.isWaitingForWriteToFinish) {
+        self.isWaitingForWriteToFinish = NO;
+        [self checkStationNumber:0];
+    }
 }
 
 -(void)checkStationNumber:(NSInteger)index {
@@ -63,6 +67,7 @@
         
         if (stationDoesNotExist) {
             [self createNewStation:stationDict];
+            self.isWaitingForWriteToFinish = YES;
             [self.managedObjectContext save:nil];
             return;
         }
@@ -70,6 +75,7 @@
         else /*stationDoesExist*/ {
             bool didChangeSomething = [self updateExistingStation:checkExistingResults[0] withDictionary:stationDict];
             if (didChangeSomething) {
+                self.isWaitingForWriteToFinish = YES;
                 [self.managedObjectContext save:nil];
                 return;
             }
