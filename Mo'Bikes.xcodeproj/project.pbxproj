@@ -34,6 +34,7 @@
 		CE85E3CD1FAA999900AF5B8F /* BikeDamageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3CC1FAA999900AF5B8F /* BikeDamageTableViewController.m */; };
 		CE85E3CF1FABA5AF00AF5B8F /* StationDamageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE85E3CE1FABA5AF00AF5B8F /* StationDamageStoryboard.storyboard */; };
 		CE85E3D21FABA66200AF5B8F /* StationDamageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3D11FABA66200AF5B8F /* StationDamageTableViewController.m */; };
+		CE97B9601FAD3D5400DC75D2 /* Directions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE97B95F1FAD3D5400DC75D2 /* Directions.swift */; };
 		CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F4201FA7D2C300564888 /* MapViewController.m */; };
 		CEA2F4231FA7F73100564888 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA2F4221FA7F73100564888 /* MapKit.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		CE85E3CE1FABA5AF00AF5B8F /* StationDamageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StationDamageStoryboard.storyboard; sourceTree = "<group>"; };
 		CE85E3D01FABA66200AF5B8F /* StationDamageTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StationDamageTableViewController.h; sourceTree = "<group>"; };
 		CE85E3D11FABA66200AF5B8F /* StationDamageTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StationDamageTableViewController.m; sourceTree = "<group>"; };
+		CE97B95F1FAD3D5400DC75D2 /* Directions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Directions.swift; sourceTree = "<group>"; };
 		CEA2F41F1FA7D2C300564888 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		CEA2F4201FA7D2C300564888 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		CEA2F4221FA7F73100564888 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -162,6 +164,7 @@
 				496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */,
 				493497D01FA99FF5007CE719 /* SupplementaryAnnotation.swift */,
 				4922BBDD1FAA5E62005323A7 /* Bikeway.swift */,
+				CE97B95F1FAD3D5400DC75D2 /* Directions.swift */,
 				490233B61FA9099D0048D688 /* KMLParser.swift */,
 				490233AB1FA9085A0048D688 /* Spatial Data */,
 				490233B51FA9099D0048D688 /* Mo'Bikes-Bridging-Header.h */,
@@ -311,6 +314,7 @@
 				496579C01FA921A1005C6920 /* SupplementaryLayers.swift in Sources */,
 				4922BBDE1FAA5E62005323A7 /* Bikeway.swift in Sources */,
 				495663D81FA7C08300F74646 /* AppDelegate.m in Sources */,
+				CE97B9601FAD3D5400DC75D2 /* Directions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +451,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = T5E8L2XP69;
+				DEVELOPMENT_TEAM = L4XYQHCH99;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -470,7 +474,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = T5E8L2XP69;
+				DEVELOPMENT_TEAM = L4XYQHCH99;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
