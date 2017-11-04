@@ -14,6 +14,10 @@
 @interface StationManager()
 
 @property (strong, nonatomic) NSArray<NSDictionary<NSString *,id> *> *stationArray;
+@property (assign, nonatomic) NSInteger didSave;
+@property (assign, nonatomic) NSInteger willSave;
+@property (assign, nonatomic) NSInteger netSave;
+
 
 @end
 
@@ -29,6 +33,9 @@
         [[NSNotificationCenter defaultCenter] addObserver:theStationManager
                                                  selector:NSSelectorFromString(@"managedObjectContextDidSave")
                                                      name:NSManagedObjectContextDidSaveNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:theStationManager
+                                                 selector:NSSelectorFromString(@"managedObjectContextWillSave")
+                                                     name:NSManagedObjectContextWillSaveNotification object:nil];
     });
     return theStationManager;
 }
@@ -52,14 +59,29 @@
 }
 
 -(void)managedObjectContextDidSave {
-    NSLog(@"MOC Save");
+    
+    self.didSave = self.didSave + 1;
+    self.netSave = self.netSave - 1;
+    
+    NSLog(@"Did save:  w: %lu, d: %lu, n:%lu", self.willSave, self.didSave, self.netSave);
+
+    
     if (self.isWaitingForWriteToFinish) {
         self.isWaitingForWriteToFinish = NO;
         [self checkStationNumber:0];
     }
 }
 
+-(void)managedObjectContextWillSave {
+
+    self.willSave = self.willSave + 1;
+    self.netSave = self.netSave + 1;
+    NSLog(@"Will save: w: %lu, d: %lu, n:%lu", self.willSave, self.didSave, self.netSave);
+
+}
+
 -(void)checkStationNumber:(NSInteger)index {
+//    NSLog(@"%lu", index);
     if (index < self.stationArray.count) {
         NSDictionary<NSString *, id> *stationDict = self.stationArray[index];
         NSArray<Station *> *checkExistingResults = [self checkIfExisiting:[stationDict objectForKey:@"name"]];
