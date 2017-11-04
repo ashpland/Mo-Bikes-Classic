@@ -29,13 +29,9 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         theStationManager = [self new];
-        theStationManager.isWaitingForWriteToFinish = NO;
         [[NSNotificationCenter defaultCenter] addObserver:theStationManager
                                                  selector:NSSelectorFromString(@"managedObjectContextDidSave")
                                                      name:NSManagedObjectContextDidSaveNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:theStationManager
-                                                 selector:NSSelectorFromString(@"managedObjectContextWillSave")
-                                                     name:NSManagedObjectContextWillSaveNotification object:nil];
     });
     return theStationManager;
 }
@@ -60,28 +56,14 @@
 
 -(void)managedObjectContextDidSave {
     
-    self.didSave = self.didSave + 1;
-    self.netSave = self.netSave - 1;
-    
-    NSLog(@"Did save:  w: %lu, d: %lu, n:%lu", self.willSave, self.didSave, self.netSave);
-
-    
-    if (self.isWaitingForWriteToFinish) {
-        self.isWaitingForWriteToFinish = NO;
+    NSBlockOperation *checkStation = [NSBlockOperation blockOperationWithBlock:^{
         [self checkStationNumber:0];
-    }
-}
-
--(void)managedObjectContextWillSave {
-
-    self.willSave = self.willSave + 1;
-    self.netSave = self.netSave + 1;
-    NSLog(@"Will save: w: %lu, d: %lu, n:%lu", self.willSave, self.didSave, self.netSave);
-
+    }];
+    [[NSOperationQueue mainQueue] addOperation:checkStation];
 }
 
 -(void)checkStationNumber:(NSInteger)index {
-//    NSLog(@"%lu", index);
+    NSLog(@"%lu", index);
     if (index < self.stationArray.count) {
         NSDictionary<NSString *, id> *stationDict = self.stationArray[index];
         NSArray<Station *> *checkExistingResults = [self checkIfExisiting:[stationDict objectForKey:@"name"]];
@@ -89,7 +71,6 @@
         
         if (stationDoesNotExist) {
             [self createNewStation:stationDict];
-            self.isWaitingForWriteToFinish = YES;
             [self.managedObjectContext save:nil];
             return;
         }
@@ -97,7 +78,6 @@
         else /*stationDoesExist*/ {
             bool didChangeSomething = [self updateExistingStation:checkExistingResults[0] withDictionary:stationDict];
             if (didChangeSomething) {
-                self.isWaitingForWriteToFinish = YES;
                 [self.managedObjectContext save:nil];
                 return;
             }

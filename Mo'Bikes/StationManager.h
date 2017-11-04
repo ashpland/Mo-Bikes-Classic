@@ -13,7 +13,6 @@
 @interface StationManager : NSObject
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (assign, nonatomic) bool isWaitingForWriteToFinish;
 
 + (instancetype)sharedStationManager;
 + (void)updateStationsFromArray:(NSArray<NSDictionary<NSString *, id> *> *)stationArray;
