@@ -16,5 +16,6 @@
 
 + (instancetype)sharedAPIManager;
 + (void)updateData;
++(void) getDirectionsData;
 
 @end

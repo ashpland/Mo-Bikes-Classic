@@ -13,6 +13,7 @@
 #import "BikeDamageTableViewController.h"
 #import "MapViewDelegate.h"
 #import "APIManager.h"
+#import "DirectionsManager.h"
 
 
 
@@ -70,6 +71,8 @@
     [APIManager sharedAPIManager].mapView = self.mapView;
     [APIManager updateData];
 }
+
+
 
 
 
@@ -148,6 +151,7 @@
     [self.mapView registerClass:[MKMarkerAnnotationView class] forAnnotationViewWithReuseIdentifier:@"StationMarkerView"];
     
     [self.mapView addAnnotations:[StationManager getAllStations]];
+   
     
     [self displayBikeways];
 }
@@ -157,6 +161,22 @@
     for (Bikeway *currentBikeway in bikeways) {
         [self.mapView addOverlays:[currentBikeway makeMKPolylines] level:MKOverlayLevelAboveRoads];
     }
+}
+
+- (void)displayDirections {
+    
+
+        [APIManager sharedAPIManager].mapView = self.mapView;
+        [APIManager getDirectionsData];
+
+    
+    //NSArray<Directions *> *directions = [DirectionsManager sharedDirectionsManager].directionsArray;
+    
+//    [self.mapView addOverlay:[DirectionsManager sharedDirectionsManager].directionsPolyline level:MKOverlayLevelAboveLabels];
+    
+//    for (Directions *currentDirection in directions) {
+//        [self.mapView addOverlays:[currentDirection makeMKPolylines] level:MKOverlayLevelAboveRoads];
+//    }
 }
 
 
@@ -287,6 +307,11 @@
     return nil;
 }
 
+//- (NSArray *)getDirectionsArray:(UIBarButtonItem *)thisButton {
+//        return [SupplementaryLayers sharedInstance].directions;
+//
+//}
+
 
 
 - (IBAction)unwindFromEmail:(UIStoryboardSegue*)segue{
@@ -298,31 +323,41 @@
 
 - (IBAction)directionsButton:(UIButton *)sender {
     
-    //statit destination right now
-    CLLocationCoordinate2D destination = CLLocationCoordinate2DMake(49.279480, -123.132326);
     
-    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
-    [request setSource:[MKMapItem mapItemForCurrentLocation]];
-    //ask for destination
-    //use MKPlaceMark to inialize a MKMapItem from coordinates
-    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:destination addressDictionary:nil];
-    MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+    //ask for destination, then call
     
-    [request setDestination:destinationMapItem];
-    [request setTransportType:MKDirectionsTransportTypeAny];
-    [request setRequestsAlternateRoutes:YES]; // Gives you several route options.
+    //[self getDirectionsData(destinationData)];
     
-    MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
-    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
-        if (!error) {
-           for (MKRoute *route in [response routes]) {
-               
-               [route polyline].title = [NSString stringWithFormat:@"Direction"];
-            
-               [self.mapView addOverlay:[route polyline] level:MKOverlayLevelAboveLabels];
-            }
-        }
-    }];
+    //[self getDirectionsData];
+    
+    [self displayDirections];
+    
+    
+//    //statit destination right now
+//    CLLocationCoordinate2D destination = CLLocationCoordinate2DMake(49.279480, -123.132326);
+//    
+//    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
+//    [request setSource:[MKMapItem mapItemForCurrentLocation]];
+//    //ask for destination
+//    //use MKPlaceMark to inialize a MKMapItem from coordinates
+//    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:destination addressDictionary:nil];
+//    MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+//    
+//    [request setDestination:destinationMapItem];
+//    [request setTransportType:MKDirectionsTransportTypeAny];
+//    [request setRequestsAlternateRoutes:YES]; // Gives you several route options.
+//    
+//    MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
+//    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+//        if (!error) {
+//           for (MKRoute *route in [response routes]) {
+//               
+//               [route polyline].title = [NSString stringWithFormat:@"Direction"];
+//            
+//               [self.mapView addOverlay:[route polyline] level:MKOverlayLevelAboveLabels];
+//            }
+//        }
+//    }];
 }
 
 

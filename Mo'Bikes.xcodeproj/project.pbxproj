@@ -25,7 +25,6 @@
 		495663F41FA7E33800F74646 /* StationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495663F31FA7E33800F74646 /* StationManager.m */; };
 		496579C01FA921A1005C6920 /* SupplementaryLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */; };
 		4983CCD91FABD84D00F3122D /* MapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983CCD81FABD84D00F3122D /* MapViewDelegate.m */; };
-		498EE22F1FAC0431007901F8 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 498EE22E1FAC0431007901F8 /* APIManager.m */; };
 		CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1E61361FA7C37C0083E619 /* LocationManager.m */; };
 		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
 		CE85E3C61FAA584F00AF5B8F /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C51FAA584F00AF5B8F /* Email.swift */; };
@@ -35,6 +34,9 @@
 		CE85E3CF1FABA5AF00AF5B8F /* StationDamageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE85E3CE1FABA5AF00AF5B8F /* StationDamageStoryboard.storyboard */; };
 		CE85E3D21FABA66200AF5B8F /* StationDamageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3D11FABA66200AF5B8F /* StationDamageTableViewController.m */; };
 		CE97B9601FAD3D5400DC75D2 /* Directions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE97B95F1FAD3D5400DC75D2 /* Directions.swift */; };
+		CE97B9631FAE563600DC75D2 /* DirectionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97B9621FAE563600DC75D2 /* DirectionsManager.m */; };
+		CE97B9691FAE9BAE00DC75D2 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 498EE22E1FAC0431007901F8 /* APIManager.m */; };
+		CE97B96A1FAE9C3B00DC75D2 /* MyMKPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97B9651FAE965F00DC75D2 /* MyMKPolyline.m */; };
 		CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F4201FA7D2C300564888 /* MapViewController.m */; };
 		CEA2F4231FA7F73100564888 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA2F4221FA7F73100564888 /* MapKit.framework */; };
 /* End PBXBuildFile section */
@@ -81,6 +83,10 @@
 		CE85E3D01FABA66200AF5B8F /* StationDamageTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StationDamageTableViewController.h; sourceTree = "<group>"; };
 		CE85E3D11FABA66200AF5B8F /* StationDamageTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StationDamageTableViewController.m; sourceTree = "<group>"; };
 		CE97B95F1FAD3D5400DC75D2 /* Directions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Directions.swift; sourceTree = "<group>"; };
+		CE97B9611FAE563600DC75D2 /* DirectionsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DirectionsManager.h; sourceTree = "<group>"; };
+		CE97B9621FAE563600DC75D2 /* DirectionsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DirectionsManager.m; sourceTree = "<group>"; };
+		CE97B9641FAE965F00DC75D2 /* MyMKPolyline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMKPolyline.h; sourceTree = "<group>"; };
+		CE97B9651FAE965F00DC75D2 /* MyMKPolyline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMKPolyline.m; sourceTree = "<group>"; };
 		CEA2F41F1FA7D2C300564888 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		CEA2F4201FA7D2C300564888 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		CEA2F4221FA7F73100564888 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -149,6 +155,10 @@
 				498EE22E1FAC0431007901F8 /* APIManager.m */,
 				495663EF1FA7CCE700F74646 /* DownloadManager.h */,
 				495663F01FA7CCE700F74646 /* DownloadManager.m */,
+				CE97B9611FAE563600DC75D2 /* DirectionsManager.h */,
+				CE97B9621FAE563600DC75D2 /* DirectionsManager.m */,
+				CE97B9641FAE965F00DC75D2 /* MyMKPolyline.h */,
+				CE97B9651FAE965F00DC75D2 /* MyMKPolyline.m */,
 				495663F21FA7E33800F74646 /* StationManager.h */,
 				495663F31FA7E33800F74646 /* StationManager.m */,
 				495663DC1FA7C08300F74646 /* Main.storyboard */,
@@ -295,8 +305,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE97B96A1FAE9C3B00DC75D2 /* MyMKPolyline.m in Sources */,
+				CE97B9691FAE9BAE00DC75D2 /* APIManager.m in Sources */,
 				490233B71FA9099D0048D688 /* KMLParser.swift in Sources */,
-				498EE22F1FAC0431007901F8 /* APIManager.m in Sources */,
 				493497D11FA99FF5007CE719 /* SupplementaryAnnotation.swift in Sources */,
 				494C1B4D1FA8103600F00593 /* Station+CoreDataClass.m in Sources */,
 				CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */,
@@ -305,6 +316,7 @@
 				CE85E3D21FABA66200AF5B8F /* StationDamageTableViewController.m in Sources */,
 				494C1B4E1FA8103600F00593 /* Station+CoreDataProperties.m in Sources */,
 				495663F41FA7E33800F74646 /* StationManager.m in Sources */,
+				CE97B9631FAE563600DC75D2 /* DirectionsManager.m in Sources */,
 				CE85E3C61FAA584F00AF5B8F /* Email.swift in Sources */,
 				CEA2F4211FA7D2C400564888 /* MapViewController.m in Sources */,
 				495663E91FA7C08300F74646 /* main.m in Sources */,

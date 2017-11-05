@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class Directions: NSObject {
+@objc class Directions: NSObject {
 
     var lines : Array<Array<CLLocationCoordinate2D>>
     

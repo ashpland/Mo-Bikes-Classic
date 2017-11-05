@@ -22,6 +22,10 @@
 
 + (void)downloadJsonAtURL:(NSString *)urlString withCompletion:(void (^)(NSArray *jsonArray))whenDownloaded {
     DownloadManager *sharedDownloadManager = [DownloadManager sharedDownloadManager];
+    
+    //if we want to download directions, do another data request
+    
+    
     [sharedDownloadManager downloadJsonAtURL:urlString withCompletion:^(NSData *downloadedData){
         NSArray *returnArray = [sharedDownloadManager processJSON:downloadedData];
         whenDownloaded(returnArray);

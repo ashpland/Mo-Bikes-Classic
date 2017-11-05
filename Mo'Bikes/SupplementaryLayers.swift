@@ -33,6 +33,18 @@ class SupplementaryLayers: NSObject {
         return bikewaysArray
     }
     
+//    public var directions : Array<Directions> {
+//        if (directionsArray == nil) {
+//            //FIXME: get directionsArray from Direction Manager
+//            directionsArray = [DirectionsManager getAllDirections];
+//
+//
+//
+//           // directionsArray = makeBikeways(rawBikewaysArray: rawBikeways)
+//        }
+//        return directionsArray;
+//    }
+    
     
     private let fountainsKML = Bundle.main.url(forResource: "drinking_fountains", withExtension: "kml")!
     private let washroomsKML = Bundle.main.url(forResource: "public_washrooms", withExtension: "kml")!
@@ -53,6 +65,7 @@ class SupplementaryLayers: NSObject {
     private var washroomAnnotations : Array<MKAnnotation>!
     private var fountainAnnotations : Array<MKAnnotation>!
     private var bikewaysArray: Array<Bikeway>!
+    private var directionsArray: Array<Directions>!
 
     private func makeAnnotations(coordinatesArray: Array<String>, ofType: SupplementaryLayerType) -> Array<MKAnnotation> {
         var annotationArray = [MKAnnotation]()
@@ -105,6 +118,9 @@ class SupplementaryLayers: NSObject {
         
         return bikewayArray
     }
+    
+    
+    
     
     
 }
