@@ -11,7 +11,6 @@
 		490233B01FA908750048D688 /* drinking_fountains.kml in Resources */ = {isa = PBXBuildFile; fileRef = 490233AD1FA908750048D688 /* drinking_fountains.kml */; };
 		490233B11FA908750048D688 /* bikeways.kml in Resources */ = {isa = PBXBuildFile; fileRef = 490233AE1FA908750048D688 /* bikeways.kml */; };
 		490233B71FA9099D0048D688 /* KMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490233B61FA9099D0048D688 /* KMLParser.swift */; };
-		491566861FACFB0900A5EB24 /* Debug Output in Resources */ = {isa = PBXBuildFile; fileRef = 491566851FACFB0900A5EB24 /* Debug Output */; };
 		4922BBDE1FAA5E62005323A7 /* Bikeway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4922BBDD1FAA5E62005323A7 /* Bikeway.swift */; };
 		493497D11FA99FF5007CE719 /* SupplementaryAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493497D01FA99FF5007CE719 /* SupplementaryAnnotation.swift */; };
 		494C1B4D1FA8103600F00593 /* Station+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 494C1B4B1FA8103600F00593 /* Station+CoreDataClass.m */; };
@@ -46,7 +45,6 @@
 		490233AE1FA908750048D688 /* bikeways.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = bikeways.kml; sourceTree = "<group>"; };
 		490233B51FA9099D0048D688 /* Mo'Bikes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mo'Bikes-Bridging-Header.h"; sourceTree = "<group>"; };
 		490233B61FA9099D0048D688 /* KMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMLParser.swift; sourceTree = "<group>"; };
-		491566851FACFB0900A5EB24 /* Debug Output */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Debug Output"; sourceTree = "<group>"; };
 		4922BBDD1FAA5E62005323A7 /* Bikeway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bikeway.swift; sourceTree = "<group>"; };
 		493497D01FA99FF5007CE719 /* SupplementaryAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryAnnotation.swift; sourceTree = "<group>"; };
 		494C1B491FA8103600F00593 /* Station+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Station+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 		495663CA1FA7C08200F74646 = {
 			isa = PBXGroup;
 			children = (
-				491566851FACFB0900A5EB24 /* Debug Output */,
 				495663D51FA7C08300F74646 /* Mo'Bikes */,
 				495663D41FA7C08300F74646 /* Products */,
 				CE1E61381FA7C3AF0083E619 /* Frameworks */,
@@ -254,7 +251,6 @@
 				490233B01FA908750048D688 /* drinking_fountains.kml in Resources */,
 				495663E31FA7C08300F74646 /* Assets.xcassets in Resources */,
 				495663DE1FA7C08300F74646 /* Main.storyboard in Resources */,
-				491566861FACFB0900A5EB24 /* Debug Output in Resources */,
 				490233AF1FA908750048D688 /* public_washrooms.kml in Resources */,
 				CE85E3C81FAA95B700AF5B8F /* ContactStoryboard.storyboard in Resources */,
 				490233B11FA908750048D688 /* bikeways.kml in Resources */,
