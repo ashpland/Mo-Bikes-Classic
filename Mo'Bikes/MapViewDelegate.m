@@ -120,12 +120,14 @@
 -(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     
     //directions
+    /*
     if([overlay.title isEqualToString:@"Direction"]){
         MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
         [renderer setStrokeColor:[UIColor greenColor]];
         [renderer setLineWidth:5.0];
         return renderer;
     }
+    */
     
     MKPolylineRenderer *bikewayRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
     
