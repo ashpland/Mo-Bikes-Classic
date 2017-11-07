@@ -40,8 +40,10 @@ class Bikeway: NSObject {
     case shared
     case painted
     case protected
+   
 }
 
 @objc class BikewayPolyline: MKPolyline {
     public var bikewayType : BikewayType = BikewayType.local
 }
+

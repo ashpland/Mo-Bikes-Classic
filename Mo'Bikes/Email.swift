@@ -67,8 +67,9 @@ import MessageUI
         
         switch result {
             case .cancelled: self.presentingViewController!.dismiss(animated: true)
-            case .saved:
-            print ("Go back to mapView")
+        case .saved: self.performSegue(withIdentifier: "unwindToInitialVC", sender: self)
+                        print ("Go back to mapView")
+          
             case .sent: self.performSegue(withIdentifier: "unwindToInitialVC", sender: self)
                          print ("Go back to mapView")
             

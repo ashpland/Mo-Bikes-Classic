@@ -143,13 +143,25 @@
 }
 
 -(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+    
+    //directions
+    if([overlay.title isEqualToString:@"Direction"]){
+        MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+        [renderer setStrokeColor:[UIColor greenColor]];
+        [renderer setLineWidth:5.0];
+        return renderer;
+    }
+    
     MKPolylineRenderer *bikewayRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+    
     
     BikewayPolyline *currentBikeway = (BikewayPolyline *)overlay;
     bikewayRenderer.strokeColor = [UIColor colorWithHue:0.59 saturation:1.0 brightness:1.0 alpha:1.0];
     bikewayRenderer.lineWidth = 3.0;
     
+    
     switch (currentBikeway.bikewayType) {
+        
         case BikewayTypeLocal:
             break;
         case BikewayTypeShared:
