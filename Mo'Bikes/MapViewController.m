@@ -186,7 +186,7 @@
 
 
 - (IBAction)contactButtonPressed:(UIBarButtonItem *)sender {
-    UIAlertController *contactAlert = [UIAlertController alertControllerWithTitle:@"Wow!" message:@"Something wrong brah?" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *contactAlert = [UIAlertController alertControllerWithTitle:@"Wow!" message:@"Something wrong?" preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *callAction = [UIAlertAction actionWithTitle:@"Call Mobi" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //call mobi
@@ -196,7 +196,7 @@
     }];
     UIAlertAction *reportDamageAction = [UIAlertAction actionWithTitle:@"Report Damage" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //ask for bikes or station damage
-        UIAlertController *reportDamageAlert = [UIAlertController alertControllerWithTitle:@"Oh no!" message:@"Whats damaged?" preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertController *reportDamageAlert = [UIAlertController alertControllerWithTitle:@"Oh no!" message:@"What's damaged?" preferredStyle:UIAlertControllerStyleActionSheet];
         
         UIAlertAction *reportBikeDamageAction = [UIAlertAction actionWithTitle:@"Bike" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
           
@@ -212,7 +212,6 @@
         UIAlertAction *cancelReportDamageAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             
             [reportDamageAlert dismissViewControllerAnimated:YES completion:nil];
-            NSLog(@"Cacnelled");
         }];
         
         [reportDamageAlert addAction:reportBikeDamageAction];
@@ -227,7 +226,6 @@
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [contactAlert dismissViewControllerAnimated:YES completion:nil];
-        NSLog(@"Cacnelled");
     }];
     
     [contactAlert addAction:callAction];
