@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) UIColor *normalStationColor;
 @property (strong, nonatomic) UIColor *lowStationColor;
+@property (assign, nonatomic) BOOL hasCurrentData;
 
 @end
 
@@ -28,10 +29,32 @@
     if (self) {
         self.normalStationColor  = [UIColor colorWithHue:0.83 saturation:1.0 brightness:0.5 alpha:1.0];
         self.lowStationColor     = [UIColor colorWithHue:0.83 saturation:0.1 brightness:0.8 alpha:1.0];
+        self.hasCurrentData = NO;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(finishedUpdatingStationData)
+                                                     name:@"finishedUpdatingStationData"
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(updatingStationData)
+                                                     name:@"updatingStationData"
+                                                   object:nil];
     }
     return self;
 }
 
+- (void)updatingStationData {
+    self.hasCurrentData = NO;
+    NSLog(@"updatingStationData");
+}
+
+- (void)finishedUpdatingStationData {
+    self.hasCurrentData = YES;
+     
+    
+    NSLog(@"FinishedUpdatingStationData");
+}
 
 - (MKAnnotationView * _Nullable)getStationMarkerFor:(id<MKAnnotation> _Nonnull)annotation mapView:(MKMapView * _Nonnull)mapView {
     
@@ -61,16 +84,18 @@
 }
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    if ([view.annotation isKindOfClass:[Station class]]) {
-        MKMarkerAnnotationView *theMarker = (MKMarkerAnnotationView *)view;
-        Station *theStation = (Station *)theMarker.annotation;
-        
-        bool showBikesMode = self.bikesDocksSegmentedControl.selectedSegmentIndex == 0;
-        
-        if (showBikesMode) {
-            theMarker.glyphText = theStation.available_bikes_string;
-        } else {
-            theMarker.glyphText = theStation.available_docks_string;
+    if (self.hasCurrentData) {
+        if ([view.annotation isKindOfClass:[Station class]]) {
+            MKMarkerAnnotationView *theMarker = (MKMarkerAnnotationView *)view;
+            Station *theStation = (Station *)theMarker.annotation;
+            
+            bool showBikesMode = self.bikesDocksSegmentedControl.selectedSegmentIndex == 0;
+            
+            if (showBikesMode) {
+                theMarker.glyphText = theStation.available_bikes_string;
+            } else {
+                theMarker.glyphText = theStation.available_docks_string;
+            }
         }
     }
 }

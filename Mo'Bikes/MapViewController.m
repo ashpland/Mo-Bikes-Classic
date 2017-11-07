@@ -67,10 +67,22 @@
 }
 
 - (void)updateAPIData {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshSelectedAnnotation)
+                                                 name:@"finishedUpdatingStationData"
+                                               object:nil];
+
     [APIManager sharedAPIManager].mapView = self.mapView;
-    [APIManager updateData];
+    [APIManager startUpdateData];
 }
 
+- (void)refreshSelectedAnnotation {
+    NSArray *selectedAnnotations = [self.mapView selectedAnnotations];
+    if (selectedAnnotations.count > 0) {
+        [self.mapView deselectAnnotation:selectedAnnotations[0] animated:NO];
+        [self.mapView setSelectedAnnotations:selectedAnnotations];
+    }
+}
 
 
 
@@ -171,21 +183,19 @@
 }
 
 - (IBAction)bikesDocksSegControlChanged:(UISegmentedControl *)sender {
+    UIImage *newGlyphImage;
     
-    NSArray<Station *> *stationsArray = [StationManager getAllStations];
-    
-    if (sender.selectedSegmentIndex==0)
-    {
-        //show bikes
-        [self.mapView removeAnnotations:stationsArray];
-        [self.mapView addAnnotations:stationsArray];
-    }
+    if (sender.selectedSegmentIndex == 0)
+        newGlyphImage = [UIImage imageNamed:@"mbike"];
     else if (sender.selectedSegmentIndex ==1)
-    {
-        //show docks
-        [self.mapView removeAnnotations:stationsArray];
-        [self.mapView addAnnotations:stationsArray];
+        newGlyphImage = [UIImage imageNamed:@"mdock"];
+    
+    for (Station *currentStation in [StationManager getAllStations]) {
+        MKMarkerAnnotationView *stationMarkerView = (MKMarkerAnnotationView *)[self.mapView viewForAnnotation:currentStation];
+        stationMarkerView.glyphImage = newGlyphImage;
     }
+    
+    [self refreshSelectedAnnotation];
 }
 
 

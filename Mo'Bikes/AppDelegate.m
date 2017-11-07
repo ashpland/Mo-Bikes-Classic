@@ -31,8 +31,11 @@
 }
 
 -(void)applicationWillEnterForeground:(UIApplication *)application {
-  // [APIManager updateData];
+    [StationManager removeObservers];
+    [APIManager startUpdateData];
 }
+
+
 
 
 #pragma mark - Core Data stack

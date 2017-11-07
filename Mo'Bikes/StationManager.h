@@ -18,5 +18,6 @@
 + (void)updateStationsFromArray:(NSArray<NSDictionary<NSString *, id> *> *)stationArray;
 + (NSArray<Station *> *)getAllStations;
 + (void)clearStationCounts;
++ (void)removeObservers;
 
 @end
