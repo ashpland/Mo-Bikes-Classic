@@ -27,11 +27,11 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    [StationManager removeObservers];
     [self saveContext];
 }
 
 -(void)applicationWillEnterForeground:(UIApplication *)application {
-    [StationManager removeObservers];
     [APIManager startUpdateData];
 }
 
