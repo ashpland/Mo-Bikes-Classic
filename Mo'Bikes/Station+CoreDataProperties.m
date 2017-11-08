@@ -22,5 +22,7 @@
 @dynamic name;
 @dynamic operative;
 @dynamic total_docks;
+@dynamic available_bikes_string;
+@dynamic available_docks_string;
 
 @end

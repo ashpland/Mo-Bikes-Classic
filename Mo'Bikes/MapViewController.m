@@ -16,6 +16,7 @@
 
 
 
+
 @import MapKit;
 
 @interface MapViewController ()
@@ -48,6 +49,10 @@
     [self updateAPIData];
     [self getLocation];
     [self setupUI];
+    
+    
+    
+    
 }
 
 # pragma mark - Setup
@@ -62,10 +67,22 @@
 }
 
 - (void)updateAPIData {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshSelectedAnnotation)
+                                                 name:@"finishedUpdatingStationData"
+                                               object:nil];
+
     [APIManager sharedAPIManager].mapView = self.mapView;
-    [APIManager updateData];
+    [APIManager startUpdateData];
 }
 
+- (void)refreshSelectedAnnotation {
+    NSArray *selectedAnnotations = [self.mapView selectedAnnotations];
+    if (selectedAnnotations.count > 0) {
+        [self.mapView deselectAnnotation:selectedAnnotations[0] animated:NO];
+        [self.mapView setSelectedAnnotations:selectedAnnotations];
+    }
+}
 
 
 
@@ -166,27 +183,25 @@
 }
 
 - (IBAction)bikesDocksSegControlChanged:(UISegmentedControl *)sender {
+    UIImage *newGlyphImage;
     
-    NSArray<Station *> *stationsArray = [StationManager getAllStations];
-    
-    if (sender.selectedSegmentIndex==0)
-    {
-        //show bikes
-        [self.mapView removeAnnotations:stationsArray];
-        [self.mapView addAnnotations:stationsArray];
-    }
+    if (sender.selectedSegmentIndex == 0)
+        newGlyphImage = [UIImage imageNamed:@"mbike"];
     else if (sender.selectedSegmentIndex ==1)
-    {
-        //show docks
-        [self.mapView removeAnnotations:stationsArray];
-        [self.mapView addAnnotations:stationsArray];
+        newGlyphImage = [UIImage imageNamed:@"mdock"];
+    
+    for (Station *currentStation in [StationManager getAllStations]) {
+        MKMarkerAnnotationView *stationMarkerView = (MKMarkerAnnotationView *)[self.mapView viewForAnnotation:currentStation];
+        stationMarkerView.glyphImage = newGlyphImage;
     }
+    
+    [self refreshSelectedAnnotation];
 }
 
 
 
 - (IBAction)contactButtonPressed:(UIBarButtonItem *)sender {
-    UIAlertController *contactAlert = [UIAlertController alertControllerWithTitle:@"Wow!" message:@"Something wrong brah?" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *contactAlert = [UIAlertController alertControllerWithTitle:@"Wow!" message:@"Something wrong?" preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *callAction = [UIAlertAction actionWithTitle:@"Call Mobi" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //call mobi
@@ -196,7 +211,7 @@
     }];
     UIAlertAction *reportDamageAction = [UIAlertAction actionWithTitle:@"Report Damage" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //ask for bikes or station damage
-        UIAlertController *reportDamageAlert = [UIAlertController alertControllerWithTitle:@"Oh no!" message:@"Whats damaged?" preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertController *reportDamageAlert = [UIAlertController alertControllerWithTitle:@"Oh no!" message:@"What's damaged?" preferredStyle:UIAlertControllerStyleActionSheet];
         
         UIAlertAction *reportBikeDamageAction = [UIAlertAction actionWithTitle:@"Bike" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
           
@@ -212,7 +227,6 @@
         UIAlertAction *cancelReportDamageAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             
             [reportDamageAlert dismissViewControllerAnimated:YES completion:nil];
-            NSLog(@"Cacnelled");
         }];
         
         [reportDamageAlert addAction:reportBikeDamageAction];
@@ -227,7 +241,6 @@
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [contactAlert dismissViewControllerAnimated:YES completion:nil];
-        NSLog(@"Cacnelled");
     }];
     
     [contactAlert addAction:callAction];

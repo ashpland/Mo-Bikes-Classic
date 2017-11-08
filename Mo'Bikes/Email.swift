@@ -12,9 +12,8 @@ import MessageUI
 
 @objc class Email: UIViewController,MFMailComposeViewControllerDelegate {
     
-    //FIXME: Change to mobi email
     
-    let destinationEmail = "sanjays_94@hotmail.com"
+    let destinationEmail = "info@mobibikes.ca"
     var bikeOrDock:String = ""
 
 
@@ -52,8 +51,8 @@ import MessageUI
         
         //mailVC properties
         mailComposerVC.setToRecipients([destinationEmail])
-        mailComposerVC.setSubject(myName + " is reporting damage")
-        mailComposerVC.setMessageBody(("Hi,\n\nThe \(bikeOrDock) with the following QR Code has damage \n\nQRCode: " + qrCode + "\n\nDamages:" + damageArrayString + "\n\nYours"), isHTML: false)
+        mailComposerVC.setSubject("Reporting damage")
+        mailComposerVC.setMessageBody(("Hi,\n\nThe \(bikeOrDock) with the following QR Code has damage \n\nQRCode: " + qrCode + "\n\nDamages:\n" + damageArrayString + "\n\nYours"), isHTML: false)
     }
     
     func showSendMailErrorAlert() {
@@ -67,8 +66,9 @@ import MessageUI
         
         switch result {
             case .cancelled: self.presentingViewController!.dismiss(animated: true)
-            case .saved:
-            print ("Go back to mapView")
+        case .saved: self.performSegue(withIdentifier: "unwindToInitialVC", sender: self)
+                        print ("Go back to mapView")
+          
             case .sent: self.performSegue(withIdentifier: "unwindToInitialVC", sender: self)
                          print ("Go back to mapView")
             

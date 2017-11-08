@@ -15,6 +15,7 @@
 @property (nonatomic, strong) MKMapView *mapView;
 
 + (instancetype)sharedAPIManager;
-+ (void)updateData;
++ (void)startUpdateData;
++ (void)endUpdateData;
 
 @end

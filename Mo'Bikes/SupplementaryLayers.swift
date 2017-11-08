@@ -81,6 +81,7 @@ class SupplementaryLayers: NSObject {
             case "Shared Lanes": bikewayType = BikewayType.shared
             case "Painted Lanes": bikewayType = BikewayType.painted
             case "Protected Bike Lanes": bikewayType = BikewayType.protected
+                
             default: continue
             }
             

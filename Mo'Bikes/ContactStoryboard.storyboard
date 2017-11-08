@@ -42,8 +42,7 @@
                         <viewLayoutGuide key="safeArea" id="88Z-Ek-9sc"/>
                     </view>
                     <navigationItem key="navigationItem" title="What's Damaged?" id="RvX-Wu-ihQ">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="FAu-tY-9Fc"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="U1D-G1-G8P">
+                        <barButtonItem key="leftBarButtonItem" id="U1D-G1-G8P">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CdY-Ar-C00">
                                 <rect key="frame" x="16" y="7" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -53,7 +52,7 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" style="plain" id="w9L-tW-NMq">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="w9L-tW-NMq">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="C54-Oe-VnY">
                                 <rect key="frame" x="313" y="7" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

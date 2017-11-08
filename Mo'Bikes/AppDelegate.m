@@ -27,12 +27,15 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    [StationManager removeObservers];
     [self saveContext];
 }
 
 -(void)applicationWillEnterForeground:(UIApplication *)application {
-//    [APIManager updateData];
+    [APIManager startUpdateData];
 }
+
+
 
 
 #pragma mark - Core Data stack

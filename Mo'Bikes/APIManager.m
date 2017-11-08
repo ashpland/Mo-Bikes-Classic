@@ -22,23 +22,30 @@
     return theAPIManager;
 }
 
-+ (void)updateData {
-    [[APIManager sharedAPIManager] updateData];
++ (void)startUpdateData {
+    [[APIManager sharedAPIManager] startUpdateData];
 }
 
-- (void)updateData {
-    [StationManager clearStationCounts];
-    
+- (void)startUpdateData {
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatingStationData" object:nil];
+
     [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"
                         withCompletion:^(NSArray *stationArray)
      {
          [StationManager updateStationsFromArray:stationArray];
-         
-         dispatch_async(dispatch_get_main_queue(), ^{
-             [self.mapView addAnnotations:[StationManager getAllStations]];
-         });
-         
      }];
+}
+
++ (void)endUpdateData {
+    [[APIManager sharedAPIManager] endUpdateData];
+}
+
+- (void)endUpdateData {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.mapView addAnnotations:[StationManager getAllStations]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"finishedUpdatingStationData" object:nil];
+    });
 }
 
 
