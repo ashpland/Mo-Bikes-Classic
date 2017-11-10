@@ -7,10 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Station+CoreDataClass.h"
+
 @import MapKit;
 
 @interface MapViewDelegate : NSObject <MKMapViewDelegate>
 
 @property (strong, nonatomic) UISegmentedControl *bikesDocksSegmentedControl;
+
+@property (strong, nonatomic) UIColor *normalStationColor;
+@property (strong, nonatomic) UIColor *lowStationColor;
+@property (assign, nonatomic) BOOL hasCurrentData;
+
+- (void)setStationMarkerPropertiesFor:(MKMarkerAnnotationView *)newStationMarkerView withStation:(Station *)station;
 
 @end

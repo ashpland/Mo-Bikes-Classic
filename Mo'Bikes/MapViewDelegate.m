@@ -7,15 +7,11 @@
 //
 
 #import "MapViewDelegate.h"
-#import "Station+CoreDataClass.h"
 #import "Mo_Bikes-Swift.h"
 
 
 @interface MapViewDelegate()
 
-@property (strong, nonatomic) UIColor *normalStationColor;
-@property (strong, nonatomic) UIColor *lowStationColor;
-@property (assign, nonatomic) BOOL hasCurrentData;
 
 @end
 
@@ -57,32 +53,36 @@
     NSLog(@"");
 }
 
-- (MKAnnotationView * _Nullable)getStationMarkerFor:(id<MKAnnotation> _Nonnull)annotation mapView:(MKMapView * _Nonnull)mapView {
-    
-    Station *station = (Station *)annotation;
-    MKMarkerAnnotationView *newStationMarkerView = (MKMarkerAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"StationMarkerView" forAnnotation:station];
-    
+- (void)setStationMarkerPropertiesFor:(MKMarkerAnnotationView *)newStationMarkerView withStation:(Station *)station {
     newStationMarkerView.markerTintColor = self.normalStationColor;
     newStationMarkerView.titleVisibility = MKFeatureVisibilityHidden;
     newStationMarkerView.canShowCallout = YES;
     newStationMarkerView.animatesWhenAdded = YES;
     
     bool bikesSelected = self.bikesDocksSegmentedControl.selectedSegmentIndex == 0;
-    bool haveActualData = !(station.available_bikes == 0 && station.available_docks == 0);
     
     if(bikesSelected){
         newStationMarkerView.glyphImage = [UIImage imageNamed:@"mbike"];
-        if (station.available_bikes < 3 && haveActualData)
+        if (station.available_bikes < 3 && self.hasCurrentData)
             newStationMarkerView.markerTintColor = self.lowStationColor;
     }
     else /*docksSelected */ {
         newStationMarkerView.glyphImage = [UIImage imageNamed:@"mdock"];
-        if (station.available_docks < 3 && haveActualData)
+        if (station.available_docks < 3 && self.hasCurrentData)
             newStationMarkerView.markerTintColor = self.lowStationColor;
     }
+}
+
+- (MKAnnotationView * _Nullable)getStationMarkerFor:(id<MKAnnotation> _Nonnull)annotation mapView:(MKMapView * _Nonnull)mapView {
+    
+    Station *station = (Station *)annotation;
+    MKMarkerAnnotationView *newStationMarkerView = (MKMarkerAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"StationMarkerView" forAnnotation:station];
+    
+    [self setStationMarkerPropertiesFor:newStationMarkerView withStation:station];
     
     return newStationMarkerView;
 }
+
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     if (self.hasCurrentData) {
