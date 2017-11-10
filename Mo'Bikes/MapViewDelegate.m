@@ -54,6 +54,7 @@
      
     
     NSLog(@"FinishedUpdatingStationData");
+    NSLog(@"");
 }
 
 - (MKAnnotationView * _Nullable)getStationMarkerFor:(id<MKAnnotation> _Nonnull)annotation mapView:(MKMapView * _Nonnull)mapView {

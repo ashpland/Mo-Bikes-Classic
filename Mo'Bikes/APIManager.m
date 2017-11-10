@@ -10,6 +10,18 @@
 #import "StationManager.h"
 #import "DownloadManager.h"
 
+
+static double refreshInterval = 30.0;
+
+
+@interface APIManager ()
+
+
+@property (nonatomic, strong) NSTimer *refreshTimer;
+@property (nonatomic, strong) NSDate *lastUpdate;
+
+@end
+
 @implementation APIManager
 
 + (instancetype)sharedAPIManager {
@@ -27,21 +39,61 @@
 }
 
 - (void)startUpdateData {
+    
+    NSLog(@"startUpdateData");
+    
+    if ([self enoughtTimeHasPassed]) {
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatingStationData" object:nil];
-
-    [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"
-                        withCompletion:^(NSArray *stationArray)
-     {
-         [StationManager updateStationsFromArray:stationArray];
-     }];
+        NSLog(@"enoughTimeHasPassed");
+        
+        [self setNewTimer];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updatingStationData" object:nil];
+        
+        [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"
+                            withCompletion:^(NSArray *stationArray)
+         {
+             [StationManager updateStationsFromArray:stationArray];
+         }];
+    }
 }
+
+- (bool)enoughtTimeHasPassed {
+    
+    if (self.lastUpdate) {
+        return fabs([self.lastUpdate timeIntervalSinceNow]) > refreshInterval;
+    } else {
+        return YES;
+    }
+    
+}
+
+- (void)setNewTimer {
+    NSLog(@"setNewTimer");
+    if (self.refreshTimer) {
+        [self.refreshTimer invalidate];
+    }
+    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:refreshInterval * 2
+                                                         target:self
+                                                       selector:@selector(startUpdateData)
+                                                       userInfo:nil
+                                                        repeats:NO];
+}
+
+
++ (void)invalidateUpdateDataTimer {
+    NSLog(@"stopUpdateData");
+    [[APIManager sharedAPIManager].refreshTimer invalidate];
+}
+
+
 
 + (void)endUpdateData {
     [[APIManager sharedAPIManager] endUpdateData];
 }
 
 - (void)endUpdateData {
+    self.lastUpdate = [NSDate date];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.mapView addAnnotations:[StationManager getAllStations]];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"finishedUpdatingStationData" object:nil];

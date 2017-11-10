@@ -16,6 +16,7 @@
 
 + (instancetype)sharedAPIManager;
 + (void)startUpdateData;
++ (void)invalidateUpdateDataTimer;
 + (void)endUpdateData;
 
 @end
