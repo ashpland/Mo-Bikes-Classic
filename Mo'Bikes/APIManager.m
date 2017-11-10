@@ -11,7 +11,7 @@
 #import "DownloadManager.h"
 
 
-static double refreshInterval = 10.0;
+static double refreshInterval = 30.0;
 
 
 @interface APIManager ()
@@ -45,8 +45,6 @@ static double refreshInterval = 10.0;
     if ([self enoughtTimeHasPassed]) {
 
         NSLog(@"enoughTimeHasPassed");
-
-        self.lastUpdate = [NSDate date];
         
         [self setNewTimer];
         
@@ -72,7 +70,10 @@ static double refreshInterval = 10.0;
 
 - (void)setNewTimer {
     NSLog(@"setNewTimer");
-    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:refreshInterval
+    if (self.refreshTimer) {
+        [self.refreshTimer invalidate];
+    }
+    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:refreshInterval * 2
                                                          target:self
                                                        selector:@selector(startUpdateData)
                                                        userInfo:nil
@@ -80,7 +81,8 @@ static double refreshInterval = 10.0;
 }
 
 
-+ (void)stopUpdateData {
++ (void)invalidateUpdateDataTimer {
+    NSLog(@"stopUpdateData");
     [[APIManager sharedAPIManager].refreshTimer invalidate];
 }
 
@@ -91,6 +93,7 @@ static double refreshInterval = 10.0;
 }
 
 - (void)endUpdateData {
+    self.lastUpdate = [NSDate date];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.mapView addAnnotations:[StationManager getAllStations]];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"finishedUpdatingStationData" object:nil];

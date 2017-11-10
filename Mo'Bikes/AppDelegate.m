@@ -36,7 +36,7 @@
 }
 
 -(void)applicationWillResignActive:(UIApplication *)application {
-    
+//    [APIManager invalidateUpdateDataTimer];
 }
 
 
