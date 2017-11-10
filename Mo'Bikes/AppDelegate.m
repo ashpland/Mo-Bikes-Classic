@@ -35,6 +35,10 @@
     [APIManager startUpdateData];
 }
 
+-(void)applicationWillResignActive:(UIApplication *)application {
+    
+}
+
 
 
 

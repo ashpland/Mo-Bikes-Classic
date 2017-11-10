@@ -10,6 +10,18 @@
 #import "StationManager.h"
 #import "DownloadManager.h"
 
+
+static double refreshInterval = 10.0;
+
+
+@interface APIManager ()
+
+
+@property (nonatomic, strong) NSTimer *refreshTimer;
+@property (nonatomic, strong) NSDate *lastUpdate;
+
+@end
+
 @implementation APIManager
 
 + (instancetype)sharedAPIManager {
@@ -27,15 +39,52 @@
 }
 
 - (void)startUpdateData {
+    
+    NSLog(@"startUpdateData");
+    
+    if ([self enoughtTimeHasPassed]) {
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatingStationData" object:nil];
+        NSLog(@"enoughTimeHasPassed");
 
-    [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"
-                        withCompletion:^(NSArray *stationArray)
-     {
-         [StationManager updateStationsFromArray:stationArray];
-     }];
+        self.lastUpdate = [NSDate date];
+        
+        [self setNewTimer];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updatingStationData" object:nil];
+        
+        [DownloadManager downloadJsonAtURL:@"https://vancouver-ca.smoove.pro/api-public/stations"
+                            withCompletion:^(NSArray *stationArray)
+         {
+             [StationManager updateStationsFromArray:stationArray];
+         }];
+    }
 }
+
+- (bool)enoughtTimeHasPassed {
+    
+    if (self.lastUpdate) {
+        return fabs([self.lastUpdate timeIntervalSinceNow]) > refreshInterval;
+    } else {
+        return YES;
+    }
+    
+}
+
+- (void)setNewTimer {
+    NSLog(@"setNewTimer");
+    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:refreshInterval
+                                                         target:self
+                                                       selector:@selector(startUpdateData)
+                                                       userInfo:nil
+                                                        repeats:NO];
+}
+
+
++ (void)stopUpdateData {
+    [[APIManager sharedAPIManager].refreshTimer invalidate];
+}
+
+
 
 + (void)endUpdateData {
     [[APIManager sharedAPIManager] endUpdateData];
