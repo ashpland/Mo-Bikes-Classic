@@ -26,6 +26,7 @@
 		496579C01FA921A1005C6920 /* SupplementaryLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496579BF1FA921A1005C6920 /* SupplementaryLayers.swift */; };
 		4983CCD91FABD84D00F3122D /* MapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983CCD81FABD84D00F3122D /* MapViewDelegate.m */; };
 		498EE22F1FAC0431007901F8 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 498EE22E1FAC0431007901F8 /* APIManager.m */; };
+		49C78A181FB56314001E74E7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49C78A171FB56314001E74E7 /* Settings.bundle */; };
 		CE1E61371FA7C37C0083E619 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1E61361FA7C37C0083E619 /* LocationManager.m */; };
 		CE1E613A1FA7C3B00083E619 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1E61391FA7C3B00083E619 /* CoreLocation.framework */; };
 		CE85E3C61FAA584F00AF5B8F /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85E3C51FAA584F00AF5B8F /* Email.swift */; };
@@ -68,6 +69,7 @@
 		4983CCD81FABD84D00F3122D /* MapViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewDelegate.m; sourceTree = "<group>"; };
 		498EE22D1FAC0431007901F8 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		498EE22E1FAC0431007901F8 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
+		49C78A171FB56314001E74E7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CE1E61351FA7C37C0083E619 /* LocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		CE1E61361FA7C37C0083E619 /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		CE1E61391FA7C3B00083E619 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -165,6 +167,7 @@
 				490233B61FA9099D0048D688 /* KMLParser.swift */,
 				490233AB1FA9085A0048D688 /* Spatial Data */,
 				490233B51FA9099D0048D688 /* Mo'Bikes-Bridging-Header.h */,
+				49C78A171FB56314001E74E7 /* Settings.bundle */,
 			);
 			path = "Mo'Bikes";
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				490233AF1FA908750048D688 /* public_washrooms.kml in Resources */,
 				CE85E3C81FAA95B700AF5B8F /* ContactStoryboard.storyboard in Resources */,
 				490233B11FA908750048D688 /* bikeways.kml in Resources */,
+				49C78A181FB56314001E74E7 /* Settings.bundle in Resources */,
 				CE85E3CF1FABA5AF00AF5B8F /* StationDamageStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
