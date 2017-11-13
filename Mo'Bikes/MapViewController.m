@@ -183,16 +183,12 @@
 }
 
 - (IBAction)bikesDocksSegControlChanged:(UISegmentedControl *)sender {
-    UIImage *newGlyphImage;
-    
-    if (sender.selectedSegmentIndex == 0)
-        newGlyphImage = [UIImage imageNamed:@"mbike"];
-    else if (sender.selectedSegmentIndex ==1)
-        newGlyphImage = [UIImage imageNamed:@"mdock"];
-    
+
     for (Station *currentStation in [StationManager getAllStations]) {
         MKMarkerAnnotationView *stationMarkerView = (MKMarkerAnnotationView *)[self.mapView viewForAnnotation:currentStation];
-        stationMarkerView.glyphImage = newGlyphImage;
+        
+        [self.mapViewDelegate setStationMarkerPropertiesFor:stationMarkerView withStation:currentStation];
+        
     }
     
     [self refreshSelectedAnnotation];
